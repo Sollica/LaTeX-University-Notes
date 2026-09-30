@@ -1,2 +1,0 @@
-{"rule":"MORFOLOGIK_RULE_RU_RU","sentence":"^\\QТотальная функция \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-|Atrapa-|Dummy\\+|Dummy's\\+)[0-9]+\\Q называется сюръекцией, если \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-|Atrapa-|Dummy\\+|Dummy's\\+)[0-9]+$"}
-{"rule":"MORFOLOGIK_RULE_RU_RU","sentence":"^\\QТотальная функция \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-|Atrapa-|Dummy\\+|Dummy's\\+)[0-9]+\\Q называется сюръекцией, если \\E(?:Dummy|Ina|Jimmy-|Dummy-|Maniquí-|Maniquíes-|Atrapa-|Dummy\\+|Dummy's\\+)[0-9]+\\Q.\\E$"}
