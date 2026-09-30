@@ -1,0 +1,306 @@
+% Формат файла
+\documentclass[12pt]{article}
+\usepackage[paperheight=297mm,
+	paperwidth=210mm,
+	top=20mm,
+	bottom=20mm,
+	left=15mm,
+right=15mm]{geometry}
+
+% Импорт преамбулы
+\usepackage{../mypreamble}
+
+% Оглавление
+\title{\textbf{Линейная алгебра и геометрия}}\date{}\author{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\label{toc}
+\newpage
+
+\section{Основные определения и свойства}
+
+\subsection{Введение}
+
+\begin{definition}
+	Матрица размера $m \times n$ -- это прямоугольная таблица, состоящая
+	из $m$ строк и $n$ столбцов. Множество матриц размера $m \times n$
+	над полем $F$ обозначается как $\mat_{m \times n}(F)$.
+\end{definition}
+\begin{definition}
+	Матрицы $A,B\in \mat_{m \times n}$ называются равными, если:
+	$$\forall 1 \leq i \leq m, 1 \leq j \leq n\ a_{ij} = b_{ij}$$
+\end{definition}
+\begin{definition}
+	Пространством $\R^n$ называется:
+	$$\R^n \coloneqq \{(x_1, x_2, \ldots, x_n) \mid x_i \in \R\}$$
+\end{definition}
+\begin{definition}
+	Матрица $A\in \mat_{n \times n}$ (или $A \in M_n$) называется
+	квадратной порядка $n$.
+\end{definition}
+\begin{definition}
+	Матрица $A\in M_n$ называется диагональной, если:
+	$$\forall i, j, i \neq j\ a_{ij}=0$$
+	Такие матрицы обозначаются $\diag(a_1, \ldots, a_n)$, где $a_k$ --
+	$k$-й элемент главной диагонали.
+\end{definition}
+\begin{definition}
+	Матрица $E_n=\diag(1,\ldots,1)$ называется единичной матрицей порядка $n$.
+\end{definition}
+\begin{definition}
+	Пусть $A\in \mat_{m \times n}$. Транспонированной матрицей $B=A^T\in
+	\mat_{n \times m}$ называется матрица, для которой:
+	$$\forall i, j\ b_{ij}=a_{ji}$$
+\end{definition}
+
+\subsection{Сложение матриц и умножение на скаляр}
+
+\begin{definition}
+	Пусть $A,B \in \mat_{m \times n}$. Суммой матриц $A$ и $B$ называется:
+	$$A + B \coloneqq C \in \mat_{m \times n}\colon c_{ij} = a_{ij} +
+	b_{ij}\ \forall 1 \leq i \leq m, 1 \leq j \leq n$$
+\end{definition}
+\begin{definition}
+	Пусть $A\in \mat_{m \times n}, \lambda \in \R$. Умножением матрицы
+	$A$ на скаляр $\lambda$ называется:
+	$$\lambda A \coloneqq B \in \mat_{m \times n}\colon b_{ij} = \lambda
+	a_{ij}\ \forall 1 \leq i \leq m, 1 \leq j \leq n$$
+\end{definition}
+\begin{statement}[Свойства сложения матриц и умножения на скаляр]
+	Пусть $A,B,C \in \mat_{m \times n}, \lambda, \mu \in \R$. Тогда:
+	\begin{center}
+		\begin{minipage}{0.75\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item $A + B = B + A$ (коммутативность сложения);
+				\item $(A + B) + C = A + (B + C)$ (ассоциативность сложения);
+				\item $A + 0 = A$ (нейтральный элемент по сложению);
+				\item $1\cdot A = A$ (нейтральный элемент по умножению на скаляр);
+				\item $A + (-A) = 0$ (противоположный элемент по сложению);
+				\item $\lambda(A + B) = \lambda A + \lambda B$ (дистрибутивность
+					относительно сложения);
+				\item $(\lambda + \mu)A = \lambda A + \mu A$ (дистрибутивность
+					относительно скаляров);
+				\item $\lambda(\mu A) = (\lambda\mu)A$ (ассоциативность умножения
+					на скаляр).
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{statement}
+
+\subsection{Умножение матриц}
+
+\begin{definition}
+	Пусть $A \in \mat_{m \times n}$, $B \in \mat_{n \times p}$,
+	умножением матриц $A$ и $B$ называется:
+	$$AB \coloneqq C \in \mat_{m \times p} \colon
+	c_{ij}=A_{(i)}B^{(j)}=\sum_{k=1}^{n}a_{ik}\cdot b_{kj}$$
+\end{definition}
+\begin{statement}[Левая дистрибутивность умножения]
+	$$A(B+C) = AB + AC;\  A \in \mat_{m \times n}, B, C \in \mat_{n
+	\times p}$$
+	\begin{proof}
+		Пусть $X=A(B+C), Y=AB + AC$. Тогда:
+		$$x_{ij}=\sum_{k=1}^na_{ik}(b_{kj}+c_{kj})=\sum_{k=1}^{n}a_{ik}b_{kj}+\sum_{k=1}^{n}a_{ik}c_{kj}=y_{ij}$$
+	\end{proof}
+\end{statement}
+\begin{statement}[Правая дистрибутивность умножения]
+	$$(A+B)C = AC + BC;\  A, B \in \mat_{m \times n}, C \in \mat_{n
+	\times p}$$
+\end{statement}
+\begin{statement}
+	$$\lambda(AB)=(\lambda A)B=A(\lambda B);\ A \in \mat_{m \times n}, B
+	\in \mat_{n \times p}, \lambda \in \R$$
+\end{statement}
+\begin{statement}[Ассоциотивность умножения]
+	$$(AB)C=A(BC);\ A \in \mat_{m \times n}, B \in \mat_{n \times p}, C
+	\in \mat_{p \times q}$$
+	\begin{proof}
+		Пусть $X=(AB)C, Y=A(BC), U=AB, V=BC$. Тогда:
+		$$x_{ij}=\sum_{k=1}^p u_{ik}c_{kj} =
+		\sum_{k=1}^{p}\left(\sum_{l=1}^{n}a_{il}b_{lk}\right)c_{kj}=\sum_{l=1}^{n}\left(a_{il}\sum_{k=1}^{p}b_{lk}c_{kj}\right)=\sum_{l=1}^{n}a_{il}v_{lj}=y_{ij}$$
+	\end{proof}
+\end{statement}
+\begin{statement}
+	$$(AB)^T=B^TA^T;\ A \in \mat_{m \times n}, B \in \mat_{n \times p}$$
+	\begin{proof}
+		Пусть $X=(AB)^T, Y=B^TA^T$. Тогда:
+		$$x_{ij}=(AB)_{ji}=A_{(j)}B^{(i)}=(B^T)_{(i)}(A^T)^{(j)}=y_{ij}$$
+	\end{proof}
+\end{statement}
+
+\subsection{След матрицы}
+
+\begin{definition}
+	Следом матрицы называется сумма элементов на её главной диагонали.
+\end{definition}
+\begin{statement}[Свойства следа]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.35\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item $\tr(A+B)=\tr(A)+\tr(B)$;
+				\item $\forall \lambda \in \R\ \tr(\lambda A)=\lambda\tr(A)$;
+				\item $\tr(A^T)=\tr(A)$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{statement}
+\begin{statement}
+	$$\forall A\in \mat_{m \times n}, B \in \mat_{n \times m}\ \tr(AB)=\tr(BA)$$
+	\begin{proof}
+		Пусть $X=AB, Y=BA$. Тогда:
+		$$\tr(X)=\sum_{i=1}^{m}x_{ii}=\sum_{i=1}^{m}\left(\sum_{j=1}^{n}a_{ij}b_{ji}\right)=\sum_{j=1}^{n}y_{jj}=\tr(Y)$$
+	\end{proof}
+\end{statement}
+
+\section{Системы линейных уравнений}
+
+\begin{definition}
+	СЛУ называется совместной, если у неё есть хотя бы одно решение.
+\end{definition}
+\begin{definition}
+	Две СЛУ от одних и тех же неизвестных называются эквивалентными,
+	если множество их решений совпадает.
+\end{definition}
+
+\subsection{Элементарные преобразования СЛУ}
+
+\begin{definition}[Элементарные преобразование СЛУ]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.7\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item К $i$-му уравнению прибавить $j$-е, домноженное на $\lambda
+					\in R, i \neq j$;
+				\item Поменять местами $i$-ю и $j$-ю строки, $i \neq j$;
+				\item Умножить $i$-е уравнение на $\lambda \in \R \setminus \{0\}$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{definition}
+\begin{lemma}
+	Элементарные преобразования СЛУ сохраняют множество её решений.
+	\begin{proof}
+		Заметим, что для всякого элементарного преобразования СЛУ
+		существует обратное:
+		\begin{center}
+			\begin{tblr}{|c|c|}
+				\hline
+				Прямое преобразование & Обратное преобразование\\
+				\hline
+				Э$_1(i, j, \lambda)$ & Э$_1(i, j, -\lambda)$\\
+				Э$_2(i, j)$ & Э$_2(i, j)$\\
+				Э$_3(i, \lambda)$ & Э$_3(i, \frac{1}{\lambda})$\\
+				\hline
+			\end{tblr}
+		\end{center}
+		Значит всякое решение СЛУ сохраняется при её элементарном преобразовании.
+	\end{proof}
+\end{lemma}
+\begin{definition}
+	Ведущим элементом строки называется её первый ненулевой элемент.
+\end{definition}
+\begin{definition}
+	Матрица называется ступенчатой (или имеет ступенчатый вид), если
+	номера ведущих элементов её ненулевых строк строго возрастают, а все
+	нулевые строки находятся в конце.
+\end{definition}
+\begin{definition}
+	Матрица имеет улучшенный ступенчатый вид, если:
+	\begin{center}
+		\begin{minipage}{0.71\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item Она имеет ступенчатый вид;
+				\item Ведущие элементы всех ненулевых строк равны 1;
+				\item В одном столбце с ведущим элементом находятся только нули.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{definition}
+\begin{theorem}
+	Всякую матрицу элементарными преобразованиями можно привести к
+	улучшенному ступенчатому виду.
+\end{theorem}
+\begin{definition}
+	СЛУ называется однородной (ОСЛУ), если все её правые части равны нулю.
+\end{definition}
+\begin{statement}
+	Всякая ОСЛУ имеет тривиальное решение и всякая ОСЛУ, у которой
+	переменных больше, чем уравнений, имеет нетривиальное решение.
+\end{statement}
+\begin{definition}
+	Пусть $A\in \mat_{m \times n}(\R), x\in \R^n, b\in \R^m$. Если СЛУ
+	$Ax=b$ совместна, то её частое решение -- это какое-нибудь одно её решение.
+\end{definition}
+\begin{lemma}
+	Пусть $A\in \mat_{m \times n}(\R), x\in \R^n, b\in \R^m$, СЛУ $Ax=b$
+	совместна, $L\subseteq \R^n$ -- её множество решений,
+	$x_0\in L$ -- её частное решение, $S\subseteq \R^n$ -- множество
+	решений ОСЛУ. Тогда:
+	$$L=x_0+S\text{, где }x_0+S\coloneqq \{x_0+v\mid v\in S\}$$
+	\begin{proof}
+		Так как $x_0\in L$, имеем $Ax_0=b$. Рассмотрим $u\in L$. Пусть
+		$v=u-x_0$, то есть $u=x_0+v$, значит:
+		$$Av=A(u-x_0)=Au-Ax_0=b-b=0\implies v\in S\implies u\in
+		x_0+S\implies L\subseteq x_0+S$$
+		Теперь докажем, что $x_0+S$ также подмножество $L$:
+		$$v\in S\implies Av=0\implies A(x_0+v)=Ax_0+Av=b+0=b\implies
+		x_0+v\in L\implies x_0+S\subseteq L$$
+	\end{proof}
+\end{lemma}
+\begin{statement}
+	Всякое элементарное преобразование строк матрицы $A\in \mat_{m\times
+	n}$ реализуется при помощи умножения слева на подходящую элементарную матрицу:
+	$$\text{Э}_1(i,j,\lambda)\colon A\mapsto U_1(i,j,\lambda)\cdot A$$
+	Где $U_1(i,j,\lambda)$ -- единичная матрица, в которой $U_{1ij}=\lambda$.
+	$$\text{Э}_2(i,j)\colon A\mapsto U_2(i,j)\cdot A$$
+	Где $U_2(i,j)$ -- единичная матрица, в которой $U_{2ii}=U_{2jj}=0,
+	U_{2ij}=U_{2ji}=1$.
+	$$\text{Э}_3(i,\lambda)\colon A\mapsto U_3(i,\lambda)\cdot A$$
+	Где $U_3(i,\lambda)$ -- единичная матрица, в которой $U_{3ii}=\lambda$.
+\end{statement}
+\begin{statement}
+	Всякое элементарное преобразование столбцов матрицы $A\in \mat_{m\times
+	n}$ реализуется при помощи умножения справа на подходящую
+	элементарную матрицу. Причём элементарные матрицы для преобразования
+	столбцов будут иметь вид, аналогичный транспонированным элементарным
+	матрицам для преобразования строк.
+\end{statement}
+
+\subsection{Перестановки}
+
+\begin{definition}
+	Перестановкой (или подстановкой) множества $M=\{1, \ldots, n\}$
+	называется биективное отображение $\sigma\colon M\to M$. Множество
+	$S_n$ -- множества всех таких перестановок.
+\end{definition}
+\begin{definition}
+	Пусть $\sigma \in S_n, i, j\in \{1, \ldots, n\}, i\neq j$. Говорят,
+	что неупорядоченная пара $\{i, j\}$ образует инверсию в $\sigma$,
+	если $i-j$ и $\sigma(i)-\sigma(j)$ имеют разный знак.
+\end{definition}
+\begin{definition}
+	Знак перестановки $\sigma \in S_n$ -- это число:
+	$$\sgn(\sigma)\coloneqq (-1)^{\text{число инверсий в }\sigma}$$
+\end{definition}
+\begin{definition}
+	Перестановка $\sigma \in S_n$ называется чётной, если
+	$\sgn(\sigma)=1$. Перестановка называется нечётной, если $\sgn(\sigma)=-1$.
+\end{definition}
+
+\subsection{Обратные матрицы}
+
+\begin{definition}
+	Пусть $A\in M_n$. Матрица $B=A^{-1}\in M_n$ называется обратной к
+	$A$, если $AB=BA=E$.
+\end{definition}
+\begin{statement}
+	Если у матрицы существует обратная, то она единственная.
+\end{statement}
+\begin{statement}
+	Если $A,B\in M_n$ таковы, что $AB=E$, то $BA=E$.
+\end{statement}
+\end{document}

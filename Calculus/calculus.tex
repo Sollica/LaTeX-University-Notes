@@ -1,0 +1,283 @@
+% Формат файла
+\documentclass[12pt]{article}
+\usepackage[paperheight=297mm,
+	paperwidth=210mm,
+	top=20mm,
+	bottom=20mm,
+	left=15mm,
+right=15mm]{geometry}
+
+% Импорт преамбулы
+\usepackage{../mypreamble}
+
+% Оглавление
+\title{\textbf{Математический анализ}}\date{}\author{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\label{toc}
+\newpage
+
+\section{Аксиоматика действительных чисел}
+
+\begin{axiom}[Аксиомы сложения]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.4\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item $\forall a, b\in \R\ a+b=b+a$;
+				\item $\forall a, b, c \in \R\ (a+b)+c=a+(b+c)$;
+				\item $\exists\,0\in\R\colon \forall a\in \R\ a+0=a$;
+				\item $\forall a\in \R\ \exists\,(-a)\in\R\colon a+(-a)=0$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{axiom}
+\begin{axiom}[Аксиомы умножения]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.4\textwidth}
+			\begin{enumerate}[itemsep=0pt, start=5]
+				\item $\forall a, b\in \R\ a\cdot b=b\cdot a$;
+				\item $\forall a, b, c \in \R\ (a\cdot b)\cdot c=a\cdot(b\cdot c)$;
+				\item $\exists\,1\in\R\colon \forall a\in \R\ a\cdot 1=a$;
+				\item $\forall a\in
+					\R\setminus\{0\}\ \exists\,\frac{1}{a}\in\R\colon a\cdot\frac{1}{a}=1$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{axiom}
+\begin{axiom}[Аксиома связи сложения и умножения]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.4\textwidth}
+			\begin{enumerate}[itemsep=0pt, start=9]
+				\item $\forall a, b, c \in \R\ a\cdot (b+c)=a\cdot b+a\cdot c$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{axiom}
+\begin{axiom}[Аксиомы отношения порядка]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.45\textwidth}
+			\begin{enumerate}[itemsep=0pt, start=10]
+				\item $\forall a\in \R\ a\leq a$;
+				\item $\forall a, b\in \R\ a\leq b \lor b\leq a$;
+				\item $\forall a, b\in \R\ (a\leq b \land b\leq a)\implies a=b$;
+				\item $\forall a, b, c\in \R\ (a\leq b \land b\leq c)\implies a \leq c$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{axiom}
+\begin{axiom}[Аксиома отношения порядка и сложения]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.45\textwidth}
+			\begin{enumerate}[itemsep=0pt, start=14]
+				\item $\forall a, b, c\in \R\ a\leq b\implies a+c\leq b+c$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{axiom}
+\begin{axiom}[Аксиома отношения порядка и умножения]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.5\textwidth}
+			\begin{enumerate}[itemsep=0pt, start=15]
+				\item $\forall a, b, c\in \R\ (a\leq b \land 0\leq c)\implies a
+					\cdot c\leq b\cdot c$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{axiom}
+\begin{axiom}[Аксиома непрерывности]
+	\hfill
+	\begin{center}
+		\begin{minipage}{0.91\textwidth}
+			\begin{enumerate}[itemsep=0pt, start=16]
+				\item $A, B \subset \R, A\neq \varnothing, B \neq \varnothing, \forall
+					a\in A, b\in B\ a\leq b\implies \exists\, c\in \R\colon \forall a\in
+					A, b\in B\ a\leq c\leq b$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{axiom}
+
+\begin{definition}
+	Вещественное число можно определить как бесконечную десятичную дробь:
+	$$\pm a_0,a_1a_2\ldots a_n\ldots$$
+	Где $a_0$ -- целое неотрицательное число, $a_1,a_2,\ldots,
+	a_n,\ldots$ -- последовательность десятичных знаков. При этом
+	$a_0,a_1a_2\ldots a_n(9)=a_0,a_1a_2\ldots a_n+10^{-n}$, поэтому
+	запись с 9 в периоде всегда заменяется эквивалентной с нулём в
+	периоде. Сравнение вещественных чисел в такой форме производится поразрядно.
+\end{definition}
+\begin{theorem}
+	Для вещественных чисел в форме бесконечной десятичной дроби
+	выполняется аксиома непрерывности.
+	\begin{proof}
+		Если $\forall a\in A, b\in B\ a\leq 0, b\geq 0\implies c=0$.\bigskip
+
+		Если $\exists\, a\in A\colon a>0$, то $\forall b\in B\ b>0$.
+		Рассмотрим $c_0=\min\{b_0\mid \exists\, b\in B\colon
+		b=b_0\ldots\}$, $c_1=\min\{b_1\mid \exists\, b\in B\colon b=c_0b_1\ldots\}$,
+		$c_k=\min\{b_k\mid \exists\, b\in B\colon b=c_0c_1\ldots
+		c_{k-1}b_k\ldots\}$. Пусть $c=c_0c_1\ldots c_k\ldots$. Тогда $\forall a\in
+		A, b\in B\ a\leq c\leq b$ по построению.\bigskip
+
+		Если $\exists\, b\in B\colon b<0$, то рассмотрим $A'=-B, B'=-A$,
+		далее аналогично предыдущему случаю.
+	\end{proof}
+\end{theorem}
+\begin{statement}[Неравенство треугольника]
+	$$|a+b|\leq |a|+|b|$$
+\end{statement}
+\setcounter{subsection}{2}
+\begin{consequence}
+	$$|a|-|b|\leq |a-b|$$
+	\begin{proof}
+		Пусть $a'=a-b, b'=b$, тогда:
+		$$|a'+b'|\leq |a'|+|b'| \implies |(a-b)+b|\leq |a-b|+|b|\implies
+		|a|-|b|\leq |a-b|$$
+	\end{proof}
+\end{consequence}
+\setcounter{subsection}{0}
+
+\section{Пределы}
+
+\subsection{Верхняя и нижняя грани}
+
+\begin{definition}
+	Число $M\in \R$ называется верхней гранью $A\subset \R$, если
+	$\forall a\in A\ a\leq M$.
+\end{definition}
+\begin{definition}
+	Множество $A\subset \R$ называется ограниченным сверху, если:
+	$$\exists\,M\in\R\colon \forall a\in A\ a\leq M$$
+\end{definition}
+\begin{definition}
+	Число $M\in \R$ называется нижней гранью $A\subset \R$, если
+	$\forall a\in A\ a\geq M$.
+\end{definition}
+\begin{definition}
+	Множество $A\subset \R$ называется ограниченным снизу, если:
+	$$\exists\,M\in\R\colon \forall a\in A\ a\geq M$$
+\end{definition}
+\begin{definition}
+	Множество $A\subset \R$ называется ограниченным, если оно ограничено
+	сверху и ограничено снизу.
+\end{definition}
+\begin{definition}
+	Число $M$ называется максимальным элементом $A\subset \R$, если $M$
+	является верхней гранью $A$ и $M\in A$.
+\end{definition}
+\begin{definition}
+	Число $M$ называется минимальным элементом $A\subset \R$, если $M$
+	является нижней гранью $A$ и $M\in A$.
+\end{definition}
+\begin{definition}
+	Число $M\in \R$ называется точной верхней гранью (или супремумом)
+	$A\subset \R$, если:
+	$$M=\sup A\iff (\forall a\in A\ a\leq M) \land (\forall M'<M\
+	\exists\,a\in A\colon a>M')$$
+\end{definition}
+\begin{definition}
+	Число $M\in \R$ называется точной нижней гранью (или инфинумом)
+	$A\subset \R$, если:
+	$$M=\inf A\iff (\forall a\in A\ a\geq M) \land (\forall M'>M\
+	\exists\,a\in A\colon a<M')$$
+\end{definition}
+\begin{theorem}
+	Пусть множество $A\subset\R, A\neq\varnothing$ ограничено сверху,
+	тогда $\exists!\,M\colon M=\sup A$.
+	\begin{proof}
+		Пусть $B$ -- множество всех верхних граней $A$. По аксиоме
+		непрерывности $\exists\,c\in \R\colon \forall a\in A, b\in B\ a\leq
+		c\leq b$. Пусть $\exists\,M'<c\colon \forall a\in A\ a\leq M'$.
+		$M'$ -- верхняя грань, то есть $M'\in B\implies c\leq M'$, но
+		$M'<c$ по предположению, противоречие.
+	\end{proof}
+\end{theorem}
+
+\subsection{Пределы числовых последовательностей}
+
+\begin{definition}
+	Числовой последовательностью $\{a_n\}$ называется функция $a\colon
+	\N\to\R$, где $\forall n\in \N\ a(n)=a_n$. Элемент
+	последовательности -- это пара $(n, a_n)$.
+\end{definition}
+\begin{definition}
+	Пусть $a,\varepsilon \in \R, \varepsilon>0$. Интервал
+	$B_\varepsilon(a)=(a-\varepsilon, a+\varepsilon)$ называется
+	$\varepsilon$-окрестностью числа $a$.
+\end{definition}
+\begin{definition}
+	Число $a\in \R$ называется пределом последовательности $\{a_n\}$, если:
+	$$a=\lim_{n\to\infty}a_n\iff
+	\forall\varepsilon>0\ \exists\,N(\varepsilon)\colon \forall n\geq
+	N(\varepsilon)\ a_n\in B_\varepsilon(a)$$
+\end{definition}
+\begin{statement}
+	Пусть $\alpha>0$ -- фиксированное число, тогда:
+	$$a=\lim_{n\to\infty}a_n\iff
+	\forall\varepsilon>0\ \exists\,N(\varepsilon)\colon \forall n>
+	N(\varepsilon)\ |a_n-a|\leq \alpha\varepsilon$$
+\end{statement}
+\begin{statement}[Единственность предела]
+	$$\lim_{n\to\infty}a_n=a, \lim_{n\to\infty}a_n=b \implies a=b$$
+	\begin{proof}
+		Пусть $a>b$, тогда $a-b=\varepsilon_0>0$. Рассмотрим
+		$\varepsilon=\frac{\varepsilon_0}{2}$, тогда:
+		$$\exists\,N_1\colon \forall n\geq N_1\ |a_n-a|<\varepsilon, \qquad
+		\exists\,N_2\colon \forall n\geq N_2\ |a_n-b|<\varepsilon$$
+		$$\forall n\geq \max(N_1,
+		N_2)\ \varepsilon_0=|a-b|\leq|a_n-a|+|a_n-b|<\frac{\varepsilon_0}{2}+\frac{\varepsilon_0}{2}=\varepsilon_0$$
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Последовательность $\{a_n\}_{n=1}^\infty$ называется ограниченной, если:
+	$$\exists\, c, C\in \R\colon\forall n\in \N\  c\leq a_n\leq C$$
+\end{definition}
+\begin{definition}
+	Последовательность называется сходящейся, если у неё есть предел.
+\end{definition}
+\begin{statement}
+	Сходящаяся последовательность ограничена.
+	\begin{proof}
+		$$a=\lim_{n\to\infty}a_n\iff \forall \varepsilon >0\ \exists\,
+		N\colon \forall n\geq N\ |a_n-a|<\varepsilon$$
+		Пусть $\varepsilon=1$, тогда $|a_n-a|<1$ и $|a_n-a|\geq|a_n|-|a|$,
+		то есть $|a_n|<1+|a|$. Тогда возьмем:
+		$$C=\max\{a_1,a_2,\ldots,a_{N-1}, 1+|a|\}, \qquad
+		c=\min\{a_1,a_2,\ldots,a_{N-1}, -(1+|a|)\}$$
+		Получаем, что $\forall n\in \N\ c\leq a_n \leq C$, то есть
+		последовательность ограничена.
+	\end{proof}
+\end{statement}
+\begin{lemma}
+	Если $a_n\to a, a\neq0$, то $\exists\, N\in \N\colon \forall
+	n>N\ |a_n|>\frac{|a|}{2}>0$.
+	\begin{proof}
+		Пусть $\varepsilon=\frac{|a|}{2}>0$. Тогда $\exists\, N\in \N\colon
+		\forall n>N\ |a_n-a|<\frac{|a|}{2}$, но
+		$|a|-|a_n|\leq|a_n-a|<\frac{|a|}{2}$, то есть $|a_n|>\frac{|a|}{2}$.
+	\end{proof}
+\end{lemma}
+\begin{theorem}[Арифметические свойства предела]
+	Пусть $\lim\limits_{n\to\infty}a_n=a, \lim\limits_{n\to\infty}b_n=b$, тогда:
+	\begin{center}
+		\begin{minipage}{0.35\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item $\lim\limits_{n\to\infty}(\alpha a_n+\beta b_n)=\alpha a+\beta b$;
+				\item $\lim\limits_{n\to\infty}a_nb_n=ab$;
+				\item $\lim\limits_{n\to\infty}\dfrac{a_n}{b_n}=\dfrac{a}{b}, b\neq
+					0, b_n\neq 0$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{theorem}
+
+\end{document}
