@@ -258,11 +258,12 @@ right=15mm]{geometry}
 		последовательность ограничена.
 	\end{proof}
 \end{statement}
-\begin{lemma}
-	Если $a_n\to a, a\neq0$, то $\exists\, N\in \N\colon \forall
-	n>N\ |a_n|>\frac{|a|}{2}>0$.
+\begin{lemma}[Об отделимости]
+	$$a_n\to a, a\neq0 \implies \exists\, N\in \N\colon \forall
+	n>N\ |a_n|>\frac{|a|}{2}>0$$
 	\begin{proof}
-		Пусть $\varepsilon=\frac{|a|}{2}>0$. Тогда $\exists\, N\in \N\colon
+		Пусть $\varepsilon=\frac{|a|}{2}>0$. Тогда:
+		$\exists\, N\in \N\colon
 		\forall n>N\ |a_n-a|<\frac{|a|}{2}$, но
 		$|a|-|a_n|\leqslant|a_n-a|<\frac{|a|}{2}$, то есть $|a_n|>\frac{|a|}{2}$.
 	\end{proof}
@@ -279,6 +280,83 @@ right=15mm]{geometry}
 			\end{enumerate}
 		\end{minipage}
 	\end{center}
+	\begin{proof}
+		\hfill
+		\begin{enumerate}
+			\item Докажем, что предел линейной комбинации равен линейной
+				комбинации пределов.
+				$$|\alpha a_n+\beta b_n-(\alpha a+\beta
+				b)|=|\alpha(a_n-a)+\beta(b_n-b)|\leqslant
+				|\alpha|\cdot|a_n-a|+|\beta|\cdot|b_n-b|$$
+				Тогда воспользуемся определением предела при $\gamma=|\alpha|+|\beta|$:
+				$$\forall \varepsilon>0\ \exists\, N\colon \forall
+				n>N\ |\alpha a_n+\beta b_n-(\alpha a+\beta b)|\leqslant \gamma\varepsilon$$
+			\item Докажем, что предел произведения равен произведению пределов.
+				$$|a_nb_n|\leqslant |a_nb_n-a_nb| +
+				|a_nb-ab|=|a_n|\cdot|b_n-b|+|b|\cdot|a_n-a|$$
+				$a_n$ и $b_n$ сходятся, а значит ограничены, то есть для
+				фиксированного $\varepsilon$ верно:
+				$$|a_n|\leqslant M, |b_n-b|<\varepsilon,
+				|a_n-a|<\varepsilon\implies
+				|a_n|\cdot|b_n-b|+|b|\cdot|a_n-a|\leqslant
+				M\varepsilon+|b|\varepsilon=(M+|b|)\varepsilon$$
+				Тогда воспользуемся определением предела при $\alpha=M+|b|$:
+				$$\forall \varepsilon>0\ \exists\, N\colon \forall
+				n>N\ |a_nb_n-ab|\leqslant \alpha\varepsilon$$
+			\item Докажем, что предел отношения равен отношению пределов.
+				$$\left|\frac{1}{b_n}-\frac{1}{b}\right|=\left|\frac{b-b_n}{b\cdot
+				b_n}\right|=\frac{|b-b_n|}{|b|\cdot|b_n|}$$
+				По лемме об отделимости:
+				$$\exists\, N\in \N\colon \forall
+				n>N\ |b_n|>\frac{|b|}{2}$$
+				Отсюда получаем предел $b_n^{-1}$ при $\varepsilon=\frac{b^2}{2}$:
+				$$\frac{|b-b_n|}{|b|\cdot|b_n|}<\frac{2|b-b_n|}{b^2}<\frac{2\varepsilon}{b^2}$$
+				Тогда предел отношения $a_n$ к $b_n$ получается умножением
+				пределов $a_n$ и $b_n^{-1}$, что уже было
+				доказано в предыдущем пункте.
+		\end{enumerate}
+	\end{proof}
+\end{theorem}
+\begin{lemma}[О переходе к пределу в неравенстве]
+	Пусть $\lim\limits_{n\to\infty}a_n=a,
+	\lim\limits_{n\to\infty}a_n=a$, тогда:
+	$$\exists\,N\colon \forall
+	n>N\ a_n\leqslant b_n\implies a\leqslant b$$
+	\begin{proof}
+		Пусть $a>b$, $a-b=\varepsilon_0>0$,  $N$ -- номер, для которого:
+		$$\forall n>N\ |a-a_n|<\frac{\varepsilon_0}{2},
+		|b-b_n|<\frac{\varepsilon_0}{2}$$
+		$$\varepsilon_0=a-b=a-a_n+a_n-b_n+b_n-b\leqslant
+		a-a_n+b_n-b\leqslant |a-a_n|+|b_n-b|<\varepsilon_0$$
+	\end{proof}
+\end{lemma}
+\begin{lemma}[О зажатой последовательности]
+	Пусть $\lim\limits_{n\to\infty}a_n=\lim\limits_{n\to\infty}b_n=a$, тогда
+	$$\exists\,N\colon \forall n>N\ a_n\leqslant c_n\leqslant
+	b_n\implies \lim\limits_{n\to\infty}c_n=a$$
+	\begin{proof}
+		Для фиксированного $\varepsilon$ справедливо:
+		$$|a_n-a|<\varepsilon\iff
+		\begin{+cases}
+			a_n-a<\varepsilon\\
+			-a_n+a<\varepsilon
+		\end{+cases}\implies a-\varepsilon<a_n\qquad b_n<a+\varepsilon$$
+		Тогда есть $N$, для которого:
+		$$a_n-\varepsilon<a_n\leqslant c_n \leqslant b_n < a+\varepsilon$$
+	\end{proof}
+\end{lemma}
+\begin{theorem}[Вейерштрасс]
+	Пусть последовательность $\{a_n\}_{n=1}^\infty$ не убывает и
+	ограничена сверху, тогда:
+	$$\lim_{n\to\infty}a_n=\sup a_n$$
+	Аналогичное утверждение верно для инфинума.
+	\begin{proof}
+		Пусть $M=\sup a_n$, он существует, так как $a_n$
+		ограничена, тогда:
+		$$(\forall n\ a_n\leqslant M)\land (\forall M'<M\ \exists\, n\colon a_n>M')$$
+		Возьмём $M'=M-\varepsilon<M$, тогда $\exists\, N\colon
+		a_N>M-\varepsilon\implies \forall n\geqslant N\  |a_n-M|<\varepsilon$.
+	\end{proof}
 \end{theorem}
 
 \end{document}
