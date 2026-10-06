@@ -270,6 +270,19 @@ right=15mm]{geometry}
 	матрицам для преобразования строк.
 \end{statement}
 
+\subsection{Обратные матрицы}
+
+\begin{definition}
+	Пусть $A\in M_n$. Матрица $B=A^{-1}\in M_n$ называется обратной к
+	$A$, если $AB=BA=E$.
+\end{definition}
+\begin{statement}
+	Если у матрицы существует обратная, то она единственная.
+\end{statement}
+\begin{statement}
+	Если $A,B\in M_n$ таковы, что $AB=E$, то $BA=E$.
+\end{statement}
+
 \subsection{Перестановки}
 
 \begin{definition}
@@ -290,17 +303,105 @@ right=15mm]{geometry}
 	Перестановка $\sigma \in S_n$ называется чётной, если
 	$\sgn(\sigma)=1$. Перестановка называется нечётной, если $\sgn(\sigma)=-1$.
 \end{definition}
-
-\subsection{Обратные матрицы}
-
 \begin{definition}
-	Пусть $A\in M_n$. Матрица $B=A^{-1}\in M_n$ называется обратной к
-	$A$, если $AB=BA=E$.
+	Произведением (или композицией) двух перестановок $\sigma, \rho\in
+	S_n$ называется перестановка $\sigma\cdot\rho$, действующая по правилу:
+	$$\forall x\in \{1,2,\ldots,n\}\ (\sigma\cdot \rho)(x)=\sigma(\rho(x))$$
+\end{definition}
+\begin{statement}[Умножение перестановок ассоциативно]
+	$$\forall \sigma, \rho, \pi\in
+	S_n\ (\sigma\rho)\pi=\sigma(\rho\pi)$$
+	\begin{proof}
+		$$\forall \sigma, \rho, \pi\in
+		S_n\ ((\sigma\rho)\pi)(x)=(\sigma\rho)(\pi(x))=\sigma(\rho(\pi(x))),
+		(\sigma(\rho\pi))(x)=\sigma((\rho\pi)(x))=\sigma(\rho(\pi(x)))$$
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Перестановка $\id\colon x\mapsto x, \id\in S_n$ называется тождественной.
+\end{definition}
+\begin{definition}
+	Для всякой перестановки $\sigma\in S_n$ перестановка
+	$\sigma^{-1}\colon \sigma(x)\mapsto x$ называется обратной к $\sigma$.
+\end{definition}
+\begin{definition}
+	Транспозициями называются перестановки $\tau_{ij}, i\neq j$ вида:
+	$$\tau_{ij}(i)=j, \tau_{ij}(j)=i, \forall k\neq i, j\ \tau_{ij}(k)=k$$
+\end{definition}
+\begin{definition}
+	Перестановки вида $\tau_{i,i+1}$ называются элементарными транспозициями.
 \end{definition}
 \begin{statement}
-	Если у матрицы существует обратная, то она единственная.
+	Всякая перестановка $\sigma\in S_n$ представима в виде произведения
+	конечного числа элементарных транспозиций.
+	\begin{proof}
+		Применим сортировку «пузырьком« к $\sigma$, тогда
+		$\sigma\tau_1\ldots\tau_k=\id$. Умножим равенство справа на
+		$\tau_k\ldots\tau_1$, поскольку $\tau^2=\id$, получаем
+		$\sigma=\tau_k\ldots\tau_1$.
+	\end{proof}
 \end{statement}
+\begin{lemma}
+	Число инверсий в $\sigma$ и $\sigma\tau$ отличается на 1.
+\end{lemma}
+\setcounter{subsection}{9}
+\begin{consequence}
+	Пусть $\sigma\in S_n$ и $\sigma=\tau_1\ldots\tau_k$, тогда
+	$\sgn(\sigma)=(-1)^k$.
+\end{consequence}
+\begin{consequence}
+	Для произвольной транспозиции $\tau_{ij}\in S_n$ $\sgn(\tau)=-1$.
+	\begin{proof}
+		Пусть $i<j$ (доказательство при $i>j$ аналогично), тогда:
+		$$\tau_{ij}=\tau_{i,i+1}\cdot\tau_{i+1,i+2}\cdot\ldots\cdot\tau_{j-2,j-1}\cdot\tau_{j-1,j}\cdot\tau_{j-2,j-1}\cdot\ldots\cdot\tau_{i,i+1}$$
+		Получаем произведение $2(j-i-1)+1$ элементарных транспозиций, то
+		есть $\sgn(\tau_{ij})=-1$.
+	\end{proof}
+\end{consequence}
+\begin{theorem}
+	$$\forall \sigma,\rho\in S_n\ \sgn(\sigma\rho)=\sgn(\sigma)\cdot\sgn(\rho)$$
+	\begin{proof}
+		Пусть $\sigma=\tau_1\ldots\tau_k, \rho=\tau_1'\ldots\tau_m'$, тогда
+		$\sgn(\sigma)=(-1)^k, \sgn(\rho)=(-1)^m$, при этом:
+		$$\sigma\rho=\tau_1\ldots\tau_k\tau_1'\ldots\tau_m'\implies
+		\sgn(\sigma\rho)=(-1)^{k+m}=\sgn(\sigma)\cdot\sgn(\rho)$$
+	\end{proof}
+\end{theorem}
+\setcounter{subsection}{10}
+\begin{consequence}
+	$$\forall \sigma\in S_n\ \sgn(\sigma)=\sgn(\sigma^{-1})$$
+\end{consequence}
+\setcounter{subsection}{3}
 \begin{statement}
-	Если $A,B\in M_n$ таковы, что $AB=E$, то $BA=E$.
+	Пусть $\tau\in S_n$ -- некоторая транспозиция, тогда отображение
+	$\sigma\mapsto\sigma\tau$ задаёт биекцию между множествами чётных и
+	нечётных перестановок в $S_n$.
 \end{statement}
+
+\section{Определители}
+
+\begin{definition}
+	Пусть $A\in M_n$, определителем матрицы $A$ называется величина:
+	$$\det A=|A|=\sum_{\sigma\in S_n}\sgn \sigma\cdot
+	a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{n,\sigma(n)}$$
+\end{definition}
+\begin{statement}
+	$$\det A = \det A^T, A\in M_n$$
+	\begin{proof}
+		Пусть $B=A^T$, тогда:
+		\begin{multline*}
+			\det B=\sum_{\sigma\in S_n}\sgn \sigma\cdot
+			b_{1,\sigma(1)}b_{2,\sigma(2)}\ldots
+			b_{n,\sigma(n)}=\sum_{\sigma\in S_n}\sgn \sigma\cdot
+			a_{\sigma(1), 1}a_{\sigma(2),2}\ldots
+			a_{\sigma(n),n}=\\
+			=\sum_{\sigma\in S_n}\sgn \sigma^{-1}\cdot
+			a_{1, \sigma^{-1}(1)}a_{2,\sigma^{-1}(2)}\ldots
+			a_{n,\sigma^{-1}(n)}=\sum_{\rho\in S_n}\sgn \rho\cdot
+			a_{1, \rho(1)}a_{2,\rho(2)}\ldots
+			a_{n,\rho(n)}=\det A
+		\end{multline*}
+	\end{proof}
+\end{statement}
+
 \end{document}
