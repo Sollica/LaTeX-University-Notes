@@ -202,6 +202,40 @@ right=15mm]{geometry}
 		$M'<c$ по предположению, противоречие.
 	\end{proof}
 \end{theorem}
+\begin{theorem}[Принцип Архимеда]
+	$$\forall x\in \R\ \exists\,n\in\N\colon n>x$$
+	\begin{proof}
+		Пусть $\exists\,x\in\R\colon \forall n\in \N\ n\leqslant x$. Тогда
+		$\exists\,c=\sup\N$, то есть $\forall n\ n\leqslant c,
+		\forall\varepsilon>0\ \exists\,n\colon n>c-\varepsilon$. Рассмотрим
+		$\varepsilon=1$, тогда $n>c-1$, значит $n+1>c$, но $(n+1)\in\N$, то
+		есть $c$ -- не точная верхняя грань.
+	\end{proof}
+\end{theorem}
+\setcounter{subsection}{2}
+\begin{consequence}[Целая часть числа]
+	$$\forall x\in\R\ \exists!\,m\in\Z\colon m\leqslant x < m+1$$
+	\begin{proof}
+		Рассмотрим $x\geqslant0$. Пусть $c=\inf\{n\in\N\colon n>x\}$, тогда
+		$c\in\N$, и $m=c-1$. При $x<0$ аналогично.
+	\end{proof}
+\end{consequence}
+\begin{consequence}[Плотность $\Q$ в $\R$]
+	$$\forall a,b\in\R\colon a<b\ \exists\, q\in\Q\colon a<q<b$$
+	\begin{proof}
+		По принципу Архимеда:
+		$$\exists\,n\in\N\colon n>\frac{1}{b-a}\implies \frac{1}{n}<b-a$$
+		В силу существования целой части числа:
+		$$\exists\,k\in\Z\colon  k-1\leqslant an < k\implies
+		\frac{k-1}{n}\leqslant a<\frac{k}{n}$$
+		Пусть $q=\frac{k}{n}$, тогда $q\in\Q$ по определению, по построению получаем:
+		$$a\geqslant \frac{k-1}{n}=q-\frac{1}{n}$$
+		Предположим $q\geqslant b$, тогда:
+		$$b-a\geqslant q-\left(q-\frac{1}{n}\right)=\frac{1}{n}$$
+		Противоречие, то есть $a<q<b$.
+	\end{proof}
+\end{consequence}
+\setcounter{subsection}{1}
 
 \subsection{Пределы числовых последовательностей}
 
@@ -366,5 +400,99 @@ right=15mm]{geometry}
 	Последовательность $\{a_n\}$ называется бесконечно большой, если:
 	$$\forall c>0\ \exists\, N\colon \forall n>N\ |a_n|>c$$
 \end{definition}
+
+\begin{statement}
+	$$\forall k \in \N\ k!\geqslant2^{k-1}$$
+	\begin{proof}
+		Заметим, что для $k=1$ верно: $1!=1\geqslant 2^0$. Пусть для $n$
+		верно, рассмотрим для $n+1$:
+		$$(k+1)!=k!\cdot(k+1)\geqslant 2^{k-1}\cdot(k+1)\geqslant 2^{k-1}\cdot2=2^k$$
+	\end{proof}
+\end{statement}
+
+\begin{theorem}
+	$$\exists\,a\colon a=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n$$
+	\begin{proof}
+		Покажем, что последовательность ограничена:
+		\begin{multline*}
+			a_n=\left(1+\frac{1}{n}\right)^n=\sum_{k=0}^{n}C_n^k\frac{1}{n^k}=2+\sum_{k=2}^{n}\frac{n!}{k!\cdot(n-k)!}\cdot\frac{1}{n^k}=\\
+			=2+\sum_{k=2}^{n}\frac{1}{k!}\left(\frac{n}{n}\cdot\frac{n-1}{n}\cdot\ldots\cdot\frac{n-(k-1)}{n}\right)=2+\sum_{k=2}^{n}\frac{1}{k!}\left(1-\frac{1}{n}\right)\cdot\left(1-\frac{2}{n}\right)\cdot\ldots\cdot\left(1-\frac{k-1}{n}\right)\leqslant\\
+			\leqslant2+\sum_{k=2}^{n}\frac{1}{k!}\leqslant2+\sum_{k=2}^{n}\frac{1}{2^{k-1}}\leqslant2+1=3
+		\end{multline*}
+		Покажем, что последовательность не убывает:
+		\begin{multline*}
+			a_n=2+\sum_{k=2}^{n}\frac{1}{k!}\left(1-\frac{1}{n}\right)\cdot\left(1-\frac{2}{n}\right)\cdot\ldots\cdot\left(1-\frac{k-1}{n}\right)\leqslant\\
+			\leqslant2+\sum_{k=2}^{n}\frac{1}{k!}\left(1-\frac{1}{n+1}\right)\cdot\left(1-\frac{2}{n+1}\right)\cdot\ldots\cdot\left(1-\frac{k-1}{n+1}\right)\leqslant\\
+			\leqslant2+\sum_{k=2}^{n+1}\frac{1}{k!}\left(1-\frac{1}{n+1}\right)\cdot\left(1-\frac{2}{n+1}\right)\cdot\ldots\cdot\left(1-\frac{k}{n+1}\right)=a_{n+1}
+		\end{multline*}
+	\end{proof}
+\end{theorem}
+\begin{theorem}[Принцип вложенных отрезков]
+	Всякая последовательность $\{[a_n,b_n]\}_{n=1}^\infty$ вложенных
+	отрезков имеет общую точку. Кроме того, если $b_n-a_n\to0$, то такая
+	точка только одна.
+	\begin{proof}
+		Рассмотрим $A=\{a_n\}_{n=1}^\infty,B=\{b_n\}_{n=1}^\infty$. По условию:
+		$$\forall n\ (a_n\leqslant b_n) \land (a_{n+1}\geqslant a_n) \land
+		(b_{n+1}\leqslant b_n)$$
+		Заметим, $\forall a\in A, b\in B\ a\leqslant b$, тогда по аксиоме
+		непрерывности:
+		$$\exists\,c\colon \forall a\in A, b\in B\ a\leqslant c\leqslant
+		b\implies \forall n\ c\in[a_n, b_n]$$
+		Теперь пусть $b_n-a_n\to0$, $\exists\,c'\neq c\colon \forall
+		n\ c'\in [a_n,b_n]$. Пусть $c'>c$, тогда $c'-c\leqslant
+		b_n-a_n\to0$, значит $c=c'$, для $c'<c$ аналогично.
+	\end{proof}
+\end{theorem}
+\begin{definition}
+	Пусть задана последовательность $\{a_n\}_{n=1}^\infty$ и пусть
+	задана возрастающая последовательность натуральных чисел
+	$n_1<n_2<n_3<\ldots$ Последовательность $b_k=a_{n_k}$ называется
+	подпоследовательностью последовательности $\{a_n\}_{n=1}^\infty$.
+\end{definition}
+\begin{definition}
+	Число $a\in\R$ называется частичным пределом последовательности
+	$\{a_n\}_{n=1}^\infty$, если для некоторой подпоследовательности
+	$\{a_{n_k}\}_{k=1}^\infty$ оно является пределом.
+\end{definition}
+\begin{statement}
+	Любая подпоследовательность сходящейся последовательности сходится к
+	пределу этой последовательности.
+	\begin{proof}
+		По определению предела:
+		$$a=\lim_{n\to\infty}a_n\iff\forall\varepsilon>0\ \exists\,N_1(\varepsilon)\colon
+		\forall n\geqslant N_1(\varepsilon)\ |a_n-a|<\varepsilon$$
+		Заметим, что $n_k\geqslant k$. Для $k=1$ верно: $n_1\geqslant 1$,
+		пусть для $k$ верно, рассмотрим $k+1$: $n_{k+1}\geqslant n_k +
+		1\geqslant k+1$. Тогда получаем, что:
+		$$\forall\varepsilon>0\ \exists\,N_1(\varepsilon)\colon
+		\forall k\geqslant N_1(\varepsilon)\ |a_{n_k}-a|<\varepsilon$$
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Пусть $\{a_n\}_{n=1}^\infty$ -- ограниченная последовательность.
+	Рассмотрим последовательности $M_n\coloneq\sup a_k$ и
+	$m_n\coloneq\inf a_k, k>n$. Последовательность $M_n$ не возрастает и
+	ограничена снизу, а последовательность $m_n$ не убывает и ограничена
+	сверху, тогда по теореме Вейерштрасса существуют верхний и нижний
+	частичные пределы последовательности $\{a_n\}_{n=1}^\infty$:
+	$$\limsup_{n\to\infty}a_n\coloneq\lim_{n\to\infty} M_n, \qquad
+	\liminf_{n\to\infty}a_n\coloneq\lim_{n\to\infty} m_n$$
+\end{definition}
+\begin{theorem}
+	Пусть $\{a_n\}_{n=1}^\infty$ -- ограниченная последовательность.
+	Тогда $\limsup\limits_{n\to\infty}a_n$ и
+	$\liminf\limits_{n\to\infty}a_n$ -- частичные пределы
+	последовательности $\{a_n\}_{n=1}^\infty$, и любой другой частичный
+	предел принадлежит отрезку:
+	$$\left[\liminf_{n\to\infty}a_n, \limsup_{n\to\infty}a_n\right]$$
+	\begin{proof}
+		Пусть $M$ -- верхний частичный предел $a_n$. Тогда $M_{n_k}=\sup
+		a_l, l>n_k$, то есть $\forall l>n_k\ a_l\leqslant M_{n_k}$, значит:
+		$$\exists\,n_k\colon \forall
+		k\ M_{n_k}-\frac{1}{k}<a_{n_{k+1}}\leqslant M_{n_k}\implies
+		M\leqslant a_{n_{k+1}}\leqslant M$$
+	\end{proof}
+\end{theorem}
 
 \end{document}
