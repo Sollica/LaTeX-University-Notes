@@ -350,7 +350,7 @@ right=15mm]{geometry}
 	$\sgn(\sigma)=(-1)^k$.
 \end{consequence}
 \begin{consequence}
-	Для произвольной транспозиции $\tau_{ij}\in S_n$ $\sgn(\tau)=-1$.
+	Для произвольной транспозиции $\tau_{ij}\in S_n$ $\sgn(\tau_{ij})=-1$.
 	\begin{proof}
 		Пусть $i<j$ (доказательство при $i>j$ аналогично), тогда:
 		$$\tau_{ij}=\tau_{i,i+1}\cdot\tau_{i+1,i+2}\cdot\ldots\cdot\tau_{j-2,j-1}\cdot\tau_{j-1,j}\cdot\tau_{j-2,j-1}\cdot\ldots\cdot\tau_{i,i+1}$$
@@ -401,6 +401,110 @@ right=15mm]{geometry}
 			a_{1, \rho(1)}a_{2,\rho(2)}\ldots
 			a_{n,\rho(n)}=\det A
 		\end{multline*}
+	\end{proof}
+\end{statement}
+\begin{statement}
+	Если в $A$ есть нулевая строка или столбец, то $\det A=0$.
+	\begin{proof}
+		Пусть $A_{(i)}$ нулевая, тогда $\forall\sigma\in
+		S_n\ a_{i,\sigma(i)}=0$, то есть каждое слагаемое равно нулю. Для
+		столбцов верно, так как $\det A=\det A^T$.
+	\end{proof}
+\end{statement}
+\begin{statement}
+	Если в $A$ некоторую строку или столбец умножить на скаляр
+	$\lambda$, то $\det A$ умножится на $\lambda$.
+	\begin{proof}
+		Пусть $A_{(i)}$ умножили на $\lambda$, тогда $\forall\sigma\in
+		S_n\ a_{i,\sigma(i)}$ умножился на $\lambda$, то есть каждое
+		слагаемое умножилось на $\lambda$. Для столбцов верно, так как
+		$\det A=\det A^T$.
+	\end{proof}
+\end{statement}
+\setcounter{subsection}{3}
+\begin{consequence}
+	$$\det(\lambda A)=\lambda^n\det A, A\in M_n$$
+\end{consequence}
+\setcounter{subsection}{0}
+\begin{statement}
+	Пусть $A_{(i)}=A_{(i)}'+A_{(i)}''$, тогда $\det A=\det A'+\det A''$,
+	где $A'$ -- матрица $A$, в которой $i$-ую строку заменили на
+	$A_{(i)}'$, $A''$ -- матрица $A$, в которой $i$-ую строку заменили
+	на $A_{(i)}''$. Аналогичное утверждение верно для столбцов.
+	\begin{proof}
+		По условию $a_{ij}=a_{ij}'+a_{ij}''$. Тогда получаем, что:
+		\begin{multline*}
+			\det A=\sum_{\sigma\in S_n}\sgn \sigma\cdot
+			a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots(a_{i,\sigma(i)}'+a_{i,\sigma(i)}'')
+			a_{n,\sigma(n)}=\\
+			=\sum_{\sigma\in S_n}\sgn \sigma\cdot
+			a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{i,\sigma(i)}'\ldots
+			a_{n,\sigma(n)}+\sum_{\sigma\in S_n}\sgn \sigma\cdot
+			a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{i,\sigma(i)}''\ldots
+			a_{n,\sigma(n)}=\\
+			=\det A' + \det A''
+		\end{multline*}
+		Для столбцов верно, так как $\det A=\det A^T$.
+	\end{proof}
+\end{statement}
+\begin{statement}
+	Если в $A$ есть две одинаковые строки или столбца, то $\det A=0$.
+	\begin{proof}
+		Пусть $A_{(i)}=A_{(j)}, i<j$, $\tau=\tau_{ij}\in S_n$ --
+		соответствующая транспозиция. Достаточно доказать, что для каждой
+		пары $\{\sigma, \sigma\tau\}$ (чётная и нечётная перестановка) два
+		соответствующих слагаемых в сумме дают 0. Слагаемое для $\sigma$ имеет вид:
+		$$\alpha=\sgn \sigma\cdot a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots
+		a_{n,\sigma(n)}$$
+		Тогда применяя то, что $i$ и $j$ строки совпадают, слагаемое для
+		$\sigma\tau$ имеет вид:
+		$$\beta=\sgn (\sigma\tau)\cdot
+		a_{1,(\sigma\tau)(1)}a_{2,(\sigma\tau)(2)}\ldots
+		a_{n,(\sigma\tau)(n)}=-\sgn\sigma\cdot
+		a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{i, \sigma(j)}\ldots
+		a_{j,\sigma(i)}\ldots a_{n,\sigma(n)}=-\alpha$$
+		Для столбцов верно, так как $\det A=\det A^T$.
+	\end{proof}
+\end{statement}
+\begin{statement}
+	Если к одной строке (или столбцу) матрицы $A$ прибавить другую
+	строку (или столбец), умноженную на скаляр, то $\det A$ не изменится.
+	\begin{proof}
+		Рассмотрим такую $A'$, что $A'_{(i)}=A_{(i)}+A_\lambda{(j)}, i\neq
+		j$, и такую $A''$, что $A''_{(i)}=\lambda A_{(j)}$ Тогда $\det
+		A'=\det A + \det A''=\det A$, так как в $A''$ две строки совпадают,
+		то есть $\det A''=0$. Для столбцов верно, так как $\det A=\det A^T$.
+	\end{proof}
+\end{statement}
+\begin{statement}
+	Если в $A$ поменять местами две строки или столбца, то $\det A$
+	поменяет знак, то есть умножится на $-1$.
+	\begin{proof}
+		Пусть $A'$ -- матрица, в которой поменяли местами $i$-ую и $j$-ую
+		строки. Тогда её можно получить прибавляя и вычитая строки $A$,
+		после чего домножить одну из строк на $-1$, откуда $\det A'=-\det
+		A$. Для столбцов верно, так как $\det A=\det A^T$.
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Матрица $A$ называется верхнетреугольной (нижнетреугольной), если
+	$\forall i>j\ a_{ij}=0$ ($\forall i<j\ a_{ij}=0$).
+\end{definition}
+\begin{statement}
+	Если $A$ верхнетреугольна (нижнетреугольна), то $\det A=a_{11}\cdot
+	a_{22}\cdot\ldots\cdot a_{nn}$.
+	\begin{proof}
+		Рассмотрим в сумме определения определителя верхнетреугольной $A$
+		слагаемые, отличные от нуля. Пусть для $\sigma\in S_n$
+		соответствующее слагаемое $\alpha$ не равно нулю, тогда:
+		$$\sgn \sigma\cdot a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{n,\sigma(n)}\neq0$$
+		$a_{n,\sigma(n)}\neq0\implies \sigma(n)=n,
+		a_{n-1,\sigma(n-1)}\neq0\implies \sigma(n-1)\in\{n-1, n\}$, но
+		$\sigma$ -- перестановка, то есть инъективна, значит
+		$\sigma(n-1)=n-1$. Аналогично получаем, что $\sigma=\id$, то есть
+		$\alpha\neq0\implies \sigma=\id$, значит единственное ненулевое
+		слагаемое равно произведению элементов на главной диагонали. Для
+		нижнетреугольной верно, так как $\det A=\det A^T$.
 	\end{proof}
 \end{statement}
 
