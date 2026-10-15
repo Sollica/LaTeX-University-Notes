@@ -492,6 +492,54 @@ right=15mm]{geometry}
 		$$\exists\,n_k\colon \forall
 		k\ M_{n_k}-\frac{1}{k}<a_{n_{k+1}}\leqslant M_{n_k}\implies
 		M\leqslant a_{n_{k+1}}\leqslant M$$
+		Покажем, что любой частичный предел принадлежит отрезку:
+		$$m_{n_k-1}\leqslant a_{n_k}\leqslant M_{n_k-1}\leqslant M_{n_{k-1}}$$
+	\end{proof}
+\end{theorem}
+\begin{theorem}[Больцано-Вейерштрасса]
+	Во всякой ограниченной последовательности можно найти сходящуюся
+	подпоследовательность.
+\end{theorem}
+\begin{theorem}
+	Ограниченная последовательность сходится тогда и только тогда, когда
+	множество её частичных пределов состоит из одного элемента.
+	\begin{proof}
+		Если последовательность сходится, то все её подпоследовательности
+		сходятся к тому же пределу, то есть множество её частичных пределов
+		состоит из одного элемента.\bigskip
+
+		Пусть $a_n$ ограничена и $M_n\to a, m_n\to a$. Поскольку
+		$m_{n-1}\leqslant a_n\leqslant M_{n-1}$, по лемме о зажатой
+		последовательности $a_n\to a$, то есть сходится.
+	\end{proof}
+\end{theorem}
+\begin{definition}
+	Говорят, что последовательность $\{a_n\}_{n=1}^\infty$
+	фундаментальна (или является последовательностью Коши), если:
+	$$\forall \varepsilon>0\ \exists\,N(\varepsilon)\in\N\colon\forall
+	n, m>N(\varepsilon)\  |a_n-a_m|<\varepsilon$$
+\end{definition}
+\begin{theorem}[Критерий Коши]
+	Числовая последовательность сходится тогда и только тогда, когда она
+	фундаментальна.
+	\begin{proof}
+		Пусть $a_n\to a$, возьмём произвольный $\varepsilon>0$, тогда:
+		$$\exists\,N\colon\forall n\geqslant N\ |a_n-a|<\frac{\varepsilon}{2}$$
+		Тогда получаем, что последовательность фундаментальна по определению:
+		$$\forall n, m>N\ |a_n-a_m|\leqslant
+		|a_n-a|+|a_m-a|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon$$
+		Пусть последовательность $a_n$ фундаментальна, возьмём $\varepsilon=1$, тогда:
+		$$\forall n, m>N\ |a_n-a_m|<1$$
+		Рассмотрим $m=N+1$, тогда
+		$1>|a_n-a_{N+1}|\geqslant|a_n|-|a_{N+1}|\implies
+		|a_n|<|a_{N+1}|+1$, то есть последовательность ограничена:
+		$$\forall n\ |a_n|\leqslant \max\{|a_{N+1}|+1, |a_N|,
+		|a_{N-1}|,\ldots,|a_1|\}$$
+		Значит, по теореме Больцано-Вейерштрасса для фиксированного $\varepsilon>0$:
+		$$\exists\,K\colon\forall k\geqslant K\ |a_{n_k}-a|<\frac{\varepsilon}{2}$$
+		Рассмотрим $N$ из условия фундаментальности $a_n$, тогда она сходится:
+		$$\forall n\geqslant N\ |a_n-a|\leqslant
+		|a_n-a_{n_k}|+|a_{n_k}-a|<\varepsilon$$
 	\end{proof}
 \end{theorem}
 
