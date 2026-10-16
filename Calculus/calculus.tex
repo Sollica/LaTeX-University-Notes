@@ -136,7 +136,6 @@ right=15mm]{geometry}
 \begin{statement}[Неравенство треугольника]
 	$$|a+b|\leqslant |a|+|b|$$
 \end{statement}
-\setcounter{subsection}{2}
 \begin{consequence}
 	$$|a|-|b|\leqslant |a-b|$$
 	\begin{proof}
@@ -145,7 +144,6 @@ right=15mm]{geometry}
 		|a|-|b|\leqslant |a-b|$$
 	\end{proof}
 \end{consequence}
-\setcounter{subsection}{0}
 
 \section{Пределы}
 
@@ -212,7 +210,6 @@ right=15mm]{geometry}
 		есть $c$ -- не точная верхняя грань.
 	\end{proof}
 \end{theorem}
-\setcounter{subsection}{2}
 \begin{consequence}[Целая часть числа]
 	$$\forall x\in\R\ \exists!\,m\in\Z\colon m\leqslant x < m+1$$
 	\begin{proof}
@@ -235,7 +232,6 @@ right=15mm]{geometry}
 		Противоречие, то есть $a<q<b$.
 	\end{proof}
 \end{consequence}
-\setcounter{subsection}{1}
 
 \subsection{Пределы числовых последовательностей}
 
@@ -540,6 +536,89 @@ right=15mm]{geometry}
 		Рассмотрим $N$ из условия фундаментальности $a_n$, тогда она сходится:
 		$$\forall n\geqslant N\ |a_n-a|\leqslant
 		|a_n-a_{n_k}|+|a_{n_k}-a|<\varepsilon$$
+	\end{proof}
+\end{theorem}
+
+\subsection{Числовые ряды}
+
+\begin{definition}
+	Пусть $\{a_n\}_{n=1}^\infty$ -- числовая последовательность.
+	Числовым рядом с членами $a_n$ называется выражение:
+	$$\sum_{k=1}^{\infty}a_k$$
+\end{definition}
+\begin{definition}
+	Конечные суммы $S_n\coloneq\sum\limits_{k=1}^{n}a_k$ называют
+	частичными суммами ряда $\sum\limits_{k=1}^{\infty}a_k$.
+\end{definition}
+\begin{definition}
+	Говорят, что ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится, если у
+	последовательности $\{S_n\}_{n=1}^\infty$ существует предел, который
+	называют суммой ряда.
+\end{definition}
+\begin{theorem}[Критерий Коши]
+	$$\text{Ряд }\sum\limits_{k=1}^{\infty}a_k\text{ сходится}\iff
+	\forall\varepsilon>0\ \exists\, N\colon\forall
+	n>m>N\ \left|\sum_{k=m+1}^{n}a_k\right|=|S_n-S_m|<\varepsilon$$
+	\begin{proof}
+		$$|S_n-S_m|=\left|\sum_{k=1}^{n}a_k-\sum_{k=1}^{m}a_k\right|=\left|\sum_{k=m+1}^{n}a_k\right|$$
+	\end{proof}
+\end{theorem}
+\begin{consequence}
+	Если ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится, то
+	$\lim\limits_{k\to\infty}a_k=0$.
+	\begin{proof}
+		По критерию Коши получаем:
+		$$\forall\varepsilon>0\ \exists\, N\colon\forall
+		n>m>N\ \left|\sum_{k=m+1}^{n}a_k\right|=|S_n-S_m|<\varepsilon$$
+		Пусть $m=n+1$, тогда
+		$|S_m-S_n|=|S_{n+1}-S_n|=|a_{n+1}|<\varepsilon$, то есть $a_k\to0$.
+	\end{proof}
+\end{consequence}
+\begin{consequence}
+	Из сходимости ряда $\sum\limits_{k=1}^{\infty}|a_k|$ следует
+	сходимость ряда $\sum\limits_{k=1}^{\infty}a_k$.
+	\begin{proof}
+		Из неравенства треугольника $|a+b|\leqslant |a|+|b|$:
+		$$\forall\varepsilon>0\ \exists\, N\colon\forall
+		n>m>N\ \left|\sum_{k=m+1}^{n}a_k\right|\leqslant\left|\sum_{k=m+1}^{n}|a_k|\right|<\varepsilon$$
+	\end{proof}
+\end{consequence}
+\begin{definition}
+	Говорят, что ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится абсолютно,
+	если сходится ряд $\sum\limits_{k=1}^{\infty}|a_k|$.
+\end{definition}
+\begin{definition}
+	Говорят, что ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится условно,
+	если он сходится, но ряд $\sum\limits_{k=1}^{\infty}|a_k|$ расходится.
+\end{definition}
+\begin{statement}
+	Пусть $a_k\geqslant0$, тогда ряд $\sum\limits_{k=1}^{n}a_k$ сходится тогда
+	и только тогда, когда последовательность его частичных сумм ограничена.
+	\begin{proof}
+		$S_n$ не убывает, тогда по теореме Вейерштрасса она сходится тогда
+		и только тогда, когда она ограничена.
+	\end{proof}
+\end{statement}
+\begin{statement}[Признак сравнения]
+	Пусть $\forall k\ 0\leqslant a_k\leqslant b_k$. Если ряд
+	$\sum\limits_{k=1}^{\infty}b_k$ сходится, то ряд
+	$\sum\limits_{k=1}^{\infty}a_k$ сходится. Если ряд
+	$\sum\limits_{k=1}^{\infty}a_k$ расходится, то ряд
+	$\sum\limits_{k=1}^{\infty}b_k$ расходится.
+	\begin{proof}
+		Пусть $A_n=\sum\limits_{k=1}^{\infty}a_k$,
+		$B_n=\sum\limits_{k=1}^{\infty}b_k$. Тогда $A_n\leqslant B_n$, при
+		этом $A_n$ и $B_n$ не убывают. Если $B_n$ ограничена, то есть
+		сходится, то $A_n$ тоже сходится. Если $A_n$ неограниченна, то есть
+		расходится, тогда $B_n$ тоже расходится.
+	\end{proof}
+\end{statement}
+\begin{theorem}[Признак Лобачевского-Коши]
+	Пусть $\{a_n\}_{n=1}^\infty$ -- невозрастающая последовательность,
+	$a_n\geqslant0$ Ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится тогда и
+	только тогда, когда сходится ряд $\sum\limits_{k=1}^{\infty}2^ka_{2^k}$.
+	\begin{proof}
+		$$\sum_{k=0}^{n}2^{k-1}a_{2^k}\leqslant\sum_{k=1}^{n}a_k\leqslant\sum_{k=0}^{n}2^ka_{k}$$
 	\end{proof}
 \end{theorem}
 

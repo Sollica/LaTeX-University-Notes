@@ -26,7 +26,8 @@
 \newtheorem{postulate}[theorem]{Постулат}
 \newtheorem{formula}[theorem]{Формула}
 \newtheorem{statement}[theorem]{Утверждение}
-\newtheorem{consequence}{Следствие}[subsection]
+\newtheorem{consequence}{Следствие}[theorem]
+\renewcommand{\theconsequence}{\thetheorem.\arabic{consequence}}
 \renewcommand\qedsymbol{$\blacksquare$}
 
 % Картинки
