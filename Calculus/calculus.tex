@@ -618,7 +618,8 @@ right=15mm]{geometry}
 	$a_n\geqslant0$ Ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится тогда и
 	только тогда, когда сходится ряд $\sum\limits_{k=1}^{\infty}2^ka_{2^k}$.
 	\begin{proof}
-		$$\sum_{k=0}^{n}2^{k-1}a_{2^k}\leqslant\sum_{k=1}^{n}a_k\leqslant\sum_{k=0}^{n}2^ka_{k}$$
+		$$\sum_{k=1}^{n}2^{k-1}a_{2^k}\leqslant\sum_{k=2}^{2^n}a_k\leqslant\sum_{k=1}^{n}2^ka_{2^k}$$
+		Тогда аналогично признаку сравнения выполняется утверждение теоремы.
 	\end{proof}
 \end{theorem}
 

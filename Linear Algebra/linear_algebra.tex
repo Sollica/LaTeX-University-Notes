@@ -270,19 +270,6 @@ right=15mm]{geometry}
 	матрицам для преобразования строк.
 \end{statement}
 
-\subsection{Обратные матрицы}
-
-\begin{definition}
-	Пусть $A\in M_n$. Матрица $B=A^{-1}\in M_n$ называется обратной к
-	$A$, если $AB=BA=E$.
-\end{definition}
-\begin{statement}
-	Если у матрицы существует обратная, то она единственная.
-\end{statement}
-\begin{statement}
-	Если $A,B\in M_n$ таковы, что $AB=E$, то $BA=E$.
-\end{statement}
-
 \subsection{Перестановки}
 
 \begin{definition}
@@ -534,4 +521,194 @@ right=15mm]{geometry}
 		второго случая аналогично.
 	\end{proof}
 \end{statement}
+\begin{statement}
+	Пусть $A,B\in M_n$. Тогда $\det(AB)=\det A\cdot \det B$.
+	\begin{proof}
+		Применим цепочку элементарных преобразований строк, приводящую $A$
+		к улучшенному ступенчатому виду $C$, то есть $C=U_kU_{k-1}\ldots
+		U_1A$. При этом $\det C=\alpha\cdot\det A, \alpha\neq0$. Применим
+		ту же цепочку преобразований к $AB$, получим $CB$, причём
+		$\det(CB)=\alpha\cdot\det(AB)$. Пусть последняя строка $C_{(n)}$
+		нулевая, тогда $(CB)_{(n)}$ также нулевая, то есть $\det
+		C=0\implies \det (CB)=0=\det C\cdot \det B$. Пусть последняя строка
+		ненулевая, тогда $C=E\implies CB=B\implies \det(CB)=\det B=\det
+		C\cdot \det B$. В обоих случаях $\det(CB)=\det C\cdot \det
+		B\implies \alpha\cdot \det(AB)=\alpha\cdot\det A\cdot \det
+		B\implies \det(AB)=\det A\cdot \det B$.
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Пусть $A\in M_n$. Дополнительный минор $\bar{M}_{ij}$ к
+	элементу $a_{ij}$ -- это
+	определитель матрицы размера $(n-1)\times (n-1)$, полученной из $A$
+	вычёркиванием $i$-й строки и $j$-го столбца.
+\end{definition}
+\begin{definition}
+	Пусть $A\in M_n$. Алгебраическое дополнение к элементу $a_{ij}$ --
+	это величина:
+	$$A_{ij}=(-1)^{i+j}\cdot \bar{M}_{ij}$$
+\end{definition}
+\begin{lemma}
+	Пусть $A\in M_n$ и $\forall k\neq j\ a_{ik}=0$, тогда $\det
+	A=a_{ij}\cdot A_{ij}$.
+	\begin{proof}
+		Переставляем соседние строки $i-1$ раз до тех пор, пока $i$-я
+		строка не станет первой. После этого переставляем соседние столбцы
+		$j-1$ раз до тех пор, пока $j$-й столбец не станет первым:
+		$$A=
+		\begin{pmatrix}
+			P & U & Q\\
+			0\ldots0 & a_{ij} & 0\ldots0\\
+			R & V & S\\
+		\end{pmatrix}\sim A'=
+		\begin{pmatrix}
+			0\ldots0 & a_{ij} & 0\ldots0\\
+			P & U & Q\\
+			R & V & S\\
+		\end{pmatrix}\sim A''=
+		\begin{pmatrix}
+			a_{ij} & 0\ldots0 & 0\ldots0\\
+			U & P & Q\\
+			V & R & S\\
+		\end{pmatrix}$$
+		Тогда по утверждению об определителе с углом нулей:
+		$$\det A''=a_{ij}\cdot\det
+		\begin{pmatrix}
+			P & Q\\
+			R & S\\
+		\end{pmatrix}=a_{ij}\cdot \bar{M}_{ij}$$
+		Тогда, учитывая количество перестановок строк, получаем:
+		$$\det A=(-1)^{i-1+j-1}\cdot\det A''=(-1)^{i+j}\cdot a_{ij}\cdot
+		\bar{M}_{ij}=a_{ij}\cdot A_{ij}$$
+	\end{proof}
+\end{lemma}
+\begin{theorem}[Разложение определителя по строке или столбцу]
+	$$\det A=\sum_{j=1}^{n}a_{ij}\cdot A_{ij}=\sum_{i=1}^{n}a_{ij}\cdot A_{ij}$$
+	\begin{proof}
+		$$A_{(i)}=
+		\begin{pmatrix}
+			a_{i1} & a_{i2} & \ldots & a_{in}
+		\end{pmatrix}=
+		\begin{pmatrix}
+			a_{i1} & 0 & \ldots & 0
+		\end{pmatrix}+
+		\begin{pmatrix}
+			0 & a_{i2} & \ldots & 0
+		\end{pmatrix}+\ldots+
+		\begin{pmatrix}
+			0 & 0 & \ldots & a_{in}
+		\end{pmatrix}$$
+		Тогда, разложив определитель по строкам, получаем:
+		$$\det A=
+		\begin{vmatrix}
+			*\\
+			a_{i1}\;0\;\ldots\; 0\\
+			*\\
+		\end{vmatrix}+
+		\begin{vmatrix}
+			*\\
+			0\;a_{i2}\;\ldots\; 0\\
+			*\\
+		\end{vmatrix}+\ldots+
+		\begin{vmatrix}
+			*\\
+			0\;0\;\ldots\; a_{in}\\
+			*\\
+		\end{vmatrix}=\sum_{j=1}^{n}a_{ij}\cdot A_{ij}$$
+		Для столбцов также верно, так как $\det A=\det A^T$.
+	\end{proof}
+\end{theorem}
+\begin{lemma}[О фальшивом разложении определителя]
+	$$\forall i,k\in\{1,\ldots,n\},i\neq k\ \sum_{j=1}^{n}a_{ij}\cdot
+	A_{kj}=0\quad \forall j,m\in\{1,\ldots,n\},j\neq
+	m\ \sum_{i=1}^{n}a_{ij}\cdot A_{im}=0$$
+	\begin{proof}
+		Пусть $B$ -- матрица, полученная из $A$ заменой $k$-й строки на
+		$i$-ю, тогда $\forall j\ b_{kj}=a_{ij}\implies
+		B_{(i)}=B_{(k)}\implies \det B=0$. С другой стороны, разлагая по
+		$k$-й строке, получаем:
+		$$\det B=0=\sum_{j=1}^{n}b_{kj}\cdot B_{kj}=\sum_{j=1}^{n}a_{kj}\cdot A_{kj}$$
+		Для столбцов также верно, так как $\det A=\det A^T$.
+	\end{proof}
+\end{lemma}
+\begin{definition}
+	Матрица $A$ называется вырожденной, если $\det A=0$.
+\end{definition}
+\begin{definition}
+	Матрица $\widehat{A}=(A_{ij})^T$ называется присоединённой к $A$.
+\end{definition}
+\begin{theorem}[Формула Крамера]
+	Пусть дана СЛУ $Ax=b, A\in M_n,\ x, b\in\R^n$. Тогда если $\det
+	A\neq0$, то СЛУ имеет единственное решение вида $x_i=\frac{\det
+	A_i}{\det A}$, где $A_i$ -- матрица, полученная из $A$ заменой
+	$i$-го столбца на $b$.
+	\begin{proof}
+		Поскольку $\det A\neq0$, у неё есть обратная. Умножим СЛУ слева на
+		$A^{-1}$, получая $x=A^{-1}b$, откуда видно, что решение
+		единственно. При этом $A^{-1}=\frac{\widehat{A}}{\det A}$, тогда
+		$x=\frac{\widehat{A}}{\det A}b$. Получаем, что:
+		$$\det A\cdot x_i=(\widehat{A})_{(i)}b=\sum_{j=1}^{n}A_{ji}b_j=\det A_i$$
+	\end{proof}
+\end{theorem}
+
+\subsection{Обратные матрицы}
+
+\begin{definition}
+	Пусть $A\in M_n$. Матрица $B=A^{-1}\in M_n$ называется обратной к
+	$A$, если $AB=BA=E$.
+\end{definition}
+\begin{lemma}
+	Если у матрицы существует обратная, то она единственная.
+	\begin{proof}
+		Пусть $B, B'$ -- обе обратные к $A$, тогда:
+		$$B'=EB'=(BA)B=B(AB')=BE=B$$
+	\end{proof}
+\end{lemma}
+\begin{lemma}\label{Если обратима, то невырождена}
+	Если $A$ обратима, то $\det A\neq0$ и $\det A^{-1}=\frac{1}{\det A}$.
+	\begin{proof}
+		$$AA^{-1}=E\implies \det(AA^{-1})=\det E=1\implies \det A\cdot\det A^{-1}=1$$
+	\end{proof}
+\end{lemma}
+\begin{theorem}
+	Матрица $A$ обратима тогда и только тогда, когда $A$ невырождена,
+	при этом:
+	$$A^{-1}=\frac{1}{\det A}\cdot \widehat{A}$$
+	\begin{proof}
+		Следствие в одну сторону верно из леммы \ref{Если обратима, то
+		невырождена}. Пусть $\det A\neq0$, покажем, что
+		$A\cdot\frac{\widehat{A}}{\det A}=\frac{\widehat{A}}{\det A}\cdot
+		A=E$. Для матрицы $X=A\cdot \widehat{A}$ имеем:
+		$$x_{ij}=\sum_{k=1}^{n}a_{ik}\cdot(\widehat{A})_{kj}=\sum_{k=1}^{n}a_{ik}\cdot
+		A_{jk}=
+		\begin{+cases}
+			\det A,\ i=j\\
+			0,\ i\neq j
+		\end{+cases}$$
+		Аналогично для $Y=\widehat{A}\cdot A$ имеем:
+		$$y_{ij}=\sum_{k=1}^{n}(\widehat{A})_{ik}\cdot
+		a_{kj}=\sum_{k=1}^{n}a_{kj}\cdot A_{ki}=
+		\begin{+cases}
+			\det A,\ i=j\\
+			0,\ i\neq j
+		\end{+cases}$$
+		То есть, $A\widehat{A}=\widehat{A}A=\det A\cdot E$.
+	\end{proof}
+\end{theorem}
+\begin{consequence}
+	Если $A, B\in M_n$ и $AB=E$, то $BA=E$.
+	\begin{proof}
+		$$AB=E\implies \det A\cdot \det B=1\implies \det A\neq0\implies
+		\exists\,A^{-1}$$
+		$$BA=EBA=(A^{-1}A)(BA)=A^{-1}(AB)A=A^{-1}A=E$$
+	\end{proof}
+\end{consequence}
+\begin{consequence}
+	Пусть $A, B\in M_n$, тогда $AB$ обратима тогда и только тогда, когда
+	и $A$, и $B$ обратимы, при этом $(AB)^{-1}=B^{-1}A^{-1}$.
+	\begin{proof}
+		Первая часть следует напрямую из теоремы. Остаётся заметить, что
+		$$(AB)(B^{-1}A^{-1})=(B^{-1}A^{-1})(AB)=E$$
+	\end{proof}
+\end{consequence}
 \end{document}
