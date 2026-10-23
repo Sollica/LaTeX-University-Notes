@@ -31,12 +31,12 @@ right=15mm]{geometry}
 \end{definition}
 \begin{definition}
 	Матрицы $A,B\in \mat_{m \times n}$ называются равными, если:
-	$$\forall 1 \leqslant i \leqslant m, 1 \leqslant j \leqslant
-	n\ a_{ij} = b_{ij}$$
+	\[\forall 1 \leqslant i \leqslant m, 1 \leqslant j \leqslant
+	n\ a_{ij} = b_{ij}\]
 \end{definition}
 \begin{definition}
 	Пространством $\R^n$ называется:
-	$$\R^n \coloneqq \{(x_1, x_2, \ldots, x_n) \mid x_i \in \R\}$$
+	\[\R^n \coloneqq \{(x_1, x_2, \ldots, x_n) \mid x_i \in \R\}\]
 \end{definition}
 \begin{definition}
 	Матрица $A\in \mat_{n \times n}$ (или $A \in M_n$) называется
@@ -44,8 +44,8 @@ right=15mm]{geometry}
 \end{definition}
 \begin{definition}
 	Матрица $A\in M_n$ называется диагональной, если:
-	$$\forall i, j, i \neq j\ a_{ij}=0$$
-	Такие матрицы обозначаются $\diag(a_1, \ldots, a_n)$, где $a_k$ --
+	\[\forall i, j, i \neq j\ a_{ij}=0\]	Такие матрицы обозначаются
+	$\diag(a_1, \ldots, a_n)$, где $a_k$ --
 	$k$-й элемент главной диагонали.
 \end{definition}
 \begin{definition}
@@ -54,21 +54,21 @@ right=15mm]{geometry}
 \begin{definition}
 	Пусть $A\in \mat_{m \times n}$. Транспонированной матрицей $B=A^T\in
 	\mat_{n \times m}$ называется матрица, для которой:
-	$$\forall i, j\ b_{ij}=a_{ji}$$
+	\[\forall i, j\ b_{ij}=a_{ji}\]
 \end{definition}
 
 \subsection{Сложение матриц и умножение на скаляр}
 
 \begin{definition}
 	Пусть $A,B \in \mat_{m \times n}$. Суммой матриц $A$ и $B$ называется:
-	$$A + B \coloneqq C \in \mat_{m \times n}\colon c_{ij} = a_{ij} +
-	b_{ij}\ \forall 1 \leqslant i \leqslant m, 1 \leqslant j \leqslant n$$
+	\[A + B \coloneqq C \in \mat_{m \times n}\colon c_{ij} = a_{ij} +
+	b_{ij}\ \forall 1 \leqslant i \leqslant m, 1 \leqslant j \leqslant n\]
 \end{definition}
 \begin{definition}
 	Пусть $A\in \mat_{m \times n}, \lambda \in \R$. Умножением матрицы
 	$A$ на скаляр $\lambda$ называется:
-	$$\lambda A \coloneqq B \in \mat_{m \times n}\colon b_{ij} = \lambda
-	a_{ij}\ \forall 1 \leqslant i \leqslant m, 1 \leqslant j \leqslant n$$
+	\[\lambda A \coloneqq B \in \mat_{m \times n}\colon b_{ij} = \lambda
+	a_{ij}\ \forall 1 \leqslant i \leqslant m, 1 \leqslant j \leqslant n\]
 \end{definition}
 \begin{statement}[Свойства сложения матриц и умножения на скаляр]
 	Пусть $A,B,C \in \mat_{m \times n}, \lambda, \mu \in \R$. Тогда:
@@ -96,39 +96,39 @@ right=15mm]{geometry}
 \begin{definition}
 	Пусть $A \in \mat_{m \times n}$, $B \in \mat_{n \times p}$,
 	умножением матриц $A$ и $B$ называется:
-	$$AB \coloneqq C \in \mat_{m \times p} \colon
-	c_{ij}=A_{(i)}B^{(j)}=\sum_{k=1}^{n}a_{ik}\cdot b_{kj}$$
+	\[AB \coloneqq C \in \mat_{m \times p} \colon
+	c_{ij}=A_{(i)}B^{(j)}=\sum_{k=1}^{n}a_{ik}\cdot b_{kj}\]
 \end{definition}
 \begin{statement}[Левая дистрибутивность умножения]
-	$$A(B+C) = AB + AC;\  A \in \mat_{m \times n}, B, C \in \mat_{n
-	\times p}$$
+	\[A(B+C) = AB + AC;\  A \in \mat_{m \times n}, B, C \in \mat_{n
+	\times p}\]	
 	\begin{proof}
 		Пусть $X=A(B+C), Y=AB + AC$. Тогда:
-		$$x_{ij}=\sum_{k=1}^na_{ik}(b_{kj}+c_{kj})=\sum_{k=1}^{n}a_{ik}b_{kj}+\sum_{k=1}^{n}a_{ik}c_{kj}=y_{ij}$$
+		\[x_{ij}=\sum_{k=1}^na_{ik}(b_{kj}+c_{kj})=\sum_{k=1}^{n}a_{ik}b_{kj}+\sum_{k=1}^{n}a_{ik}c_{kj}=y_{ij}\]	
 	\end{proof}
 \end{statement}
 \begin{statement}[Правая дистрибутивность умножения]
-	$$(A+B)C = AC + BC;\  A, B \in \mat_{m \times n}, C \in \mat_{n
-	\times p}$$
+	\[(A+B)C = AC + BC;\  A, B \in \mat_{m \times n}, C \in \mat_{n
+	\times p}\]
 \end{statement}
 \begin{statement}
-	$$\lambda(AB)=(\lambda A)B=A(\lambda B);\ A \in \mat_{m \times n}, B
-	\in \mat_{n \times p}, \lambda \in \R$$
+	\[\lambda(AB)=(\lambda A)B=A(\lambda B);\ A \in \mat_{m \times n}, B
+	\in \mat_{n \times p}, \lambda \in \R\]
 \end{statement}
 \begin{statement}[Ассоциотивность умножения]
-	$$(AB)C=A(BC);\ A \in \mat_{m \times n}, B \in \mat_{n \times p}, C
-	\in \mat_{p \times q}$$
+	\[(AB)C=A(BC);\ A \in \mat_{m \times n}, B \in \mat_{n \times p}, C
+	\in \mat_{p \times q}\]	
 	\begin{proof}
 		Пусть $X=(AB)C, Y=A(BC), U=AB, V=BC$. Тогда:
-		$$x_{ij}=\sum_{k=1}^p u_{ik}c_{kj} =
-		\sum_{k=1}^{p}\left(\sum_{l=1}^{n}a_{il}b_{lk}\right)c_{kj}=\sum_{l=1}^{n}\left(a_{il}\sum_{k=1}^{p}b_{lk}c_{kj}\right)=\sum_{l=1}^{n}a_{il}v_{lj}=y_{ij}$$
+		\[x_{ij}=\sum_{k=1}^p u_{ik}c_{kj} =
+		\sum_{k=1}^{p}\left(\sum_{l=1}^{n}a_{il}b_{lk}\right)c_{kj}=\sum_{l=1}^{n}\left(a_{il}\sum_{k=1}^{p}b_{lk}c_{kj}\right)=\sum_{l=1}^{n}a_{il}v_{lj}=y_{ij}\]	
 	\end{proof}
 \end{statement}
 \begin{statement}
-	$$(AB)^T=B^TA^T;\ A \in \mat_{m \times n}, B \in \mat_{n \times p}$$
+	\[(AB)^T=B^TA^T;\ A \in \mat_{m \times n}, B \in \mat_{n \times p}\]	
 	\begin{proof}
 		Пусть $X=(AB)^T, Y=B^TA^T$. Тогда:
-		$$x_{ij}=(AB)_{ji}=A_{(j)}B^{(i)}=(B^T)_{(i)}(A^T)^{(j)}=y_{ij}$$
+		\[x_{ij}=(AB)_{ji}=A_{(j)}B^{(i)}=(B^T)_{(i)}(A^T)^{(j)}=y_{ij}\]	
 	\end{proof}
 \end{statement}
 
@@ -150,10 +150,10 @@ right=15mm]{geometry}
 	\end{center}
 \end{statement}
 \begin{statement}
-	$$\forall A\in \mat_{m \times n}, B \in \mat_{n \times m}\ \tr(AB)=\tr(BA)$$
+	\[\forall A\in \mat_{m \times n}, B \in \mat_{n \times m}\ \tr(AB)=\tr(BA)\]	
 	\begin{proof}
 		Пусть $X=AB, Y=BA$. Тогда:
-		$$\tr(X)=\sum_{i=1}^{m}x_{ii}=\sum_{i=1}^{m}\left(\sum_{j=1}^{n}a_{ij}b_{ji}\right)=\sum_{j=1}^{n}y_{jj}=\tr(Y)$$
+		\[\tr(X)=\sum_{i=1}^{m}x_{ii}=\sum_{i=1}^{m}\left(\sum_{j=1}^{n}a_{ij}b_{ji}\right)=\sum_{j=1}^{n}y_{jj}=\tr(Y)\]	
 	\end{proof}
 \end{statement}
 
@@ -241,15 +241,15 @@ right=15mm]{geometry}
 	совместна, $L\subseteq \R^n$ -- её множество решений,
 	$x_0\in L$ -- её частное решение, $S\subseteq \R^n$ -- множество
 	решений ОСЛУ. Тогда:
-	$$L=x_0+S\text{, где }x_0+S\coloneqq \{x_0+v\mid v\in S\}$$
+	\[L=x_0+S\text{, где }x_0+S\coloneqq \{x_0+v\mid v\in S\}\]	
 	\begin{proof}
 		Так как $x_0\in L$, имеем $Ax_0=b$. Рассмотрим $u\in L$. Пусть
 		$v=u-x_0$, то есть $u=x_0+v$, значит:
-		$$Av=A(u-x_0)=Au-Ax_0=b-b=0\implies v\in S\implies u\in
-		x_0+S\implies L\subseteq x_0+S$$
-		Теперь докажем, что $x_0+S$ также подмножество $L$:
-		$$v\in S\implies Av=0\implies A(x_0+v)=Ax_0+Av=b+0=b\implies
-		x_0+v\in L\implies x_0+S\subseteq L$$
+		\[Av=A(u-x_0)=Au-Ax_0=b-b=0\implies v\in S\implies u\in
+		x_0+S\implies L\subseteq x_0+S\]		Теперь докажем, что $x_0+S$ также
+		подмножество $L$:
+		\[v\in S\implies Av=0\implies A(x_0+v)=Ax_0+Av=b+0=b\implies
+		x_0+v\in L\implies x_0+S\subseteq L\]	
 	\end{proof}
 \end{lemma}
 \begin{statement}
@@ -284,7 +284,7 @@ right=15mm]{geometry}
 \end{definition}
 \begin{definition}
 	Знак перестановки $\sigma \in S_n$ -- это число:
-	$$\sgn(\sigma)\coloneqq (-1)^{\text{число инверсий в }\sigma}$$
+	\[\sgn(\sigma)\coloneqq (-1)^{\text{число инверсий в }\sigma}\]
 \end{definition}
 \begin{definition}
 	Перестановка $\sigma \in S_n$ называется чётной, если
@@ -293,15 +293,15 @@ right=15mm]{geometry}
 \begin{definition}
 	Произведением (или композицией) двух перестановок $\sigma, \rho\in
 	S_n$ называется перестановка $\sigma\cdot\rho$, действующая по правилу:
-	$$\forall x\in \{1,2,\ldots,n\}\ (\sigma\cdot \rho)(x)=\sigma(\rho(x))$$
+	\[\forall x\in \{1,2,\ldots,n\}\ (\sigma\cdot \rho)(x)=\sigma(\rho(x))\]
 \end{definition}
 \begin{statement}[Умножение перестановок ассоциативно]
-	$$\forall \sigma, \rho, \pi\in
-	S_n\ (\sigma\rho)\pi=\sigma(\rho\pi)$$
+	\[\forall \sigma, \rho, \pi\in
+	S_n\ (\sigma\rho)\pi=\sigma(\rho\pi)\]	
 	\begin{proof}
-		$$\forall \sigma, \rho, \pi\in
-		S_n\ ((\sigma\rho)\pi)(x)=(\sigma\rho)(\pi(x))=\sigma(\rho(\pi(x))),
-		(\sigma(\rho\pi))(x)=\sigma((\rho\pi)(x))=\sigma(\rho(\pi(x)))$$
+		\[\forall \sigma, \rho, \pi\in
+			S_n\ ((\sigma\rho)\pi)(x)=(\sigma\rho)(\pi(x))=\sigma(\rho(\pi(x))),
+		(\sigma(\rho\pi))(x)=\sigma((\rho\pi)(x))=\sigma(\rho(\pi(x)))\]	
 	\end{proof}
 \end{statement}
 \begin{definition}
@@ -313,7 +313,7 @@ right=15mm]{geometry}
 \end{definition}
 \begin{definition}
 	Транспозициями называются перестановки $\tau_{ij}, i\neq j$ вида:
-	$$\tau_{ij}(i)=j, \tau_{ij}(j)=i, \forall k\neq i, j\ \tau_{ij}(k)=k$$
+	\[\tau_{ij}(i)=j, \tau_{ij}(j)=i, \forall k\neq i, j\ \tau_{ij}(k)=k\]
 \end{definition}
 \begin{definition}
 	Перестановки вида $\tau_{i,i+1}$ называются элементарными транспозициями.
@@ -339,22 +339,22 @@ right=15mm]{geometry}
 	Для произвольной транспозиции $\tau_{ij}\in S_n$ $\sgn(\tau_{ij})=-1$.
 	\begin{proof}
 		Пусть $i<j$ (доказательство при $i>j$ аналогично), тогда:
-		$$\tau_{ij}=\tau_{i,i+1}\cdot\tau_{i+1,i+2}\cdot\ldots\cdot\tau_{j-2,j-1}\cdot\tau_{j-1,j}\cdot\tau_{j-2,j-1}\cdot\ldots\cdot\tau_{i,i+1}$$
-		Получаем произведение $2(j-i-1)+1$ элементарных транспозиций, то
+		\[\tau_{ij}=\tau_{i,i+1}\cdot\tau_{i+1,i+2}\cdot\ldots\cdot\tau_{j-2,j-1}\cdot\tau_{j-1,j}\cdot\tau_{j-2,j-1}\cdot\ldots\cdot\tau_{i,i+1}\]		Получаем
+		произведение $2(j-i-1)+1$ элементарных транспозиций, то
 		есть $\sgn(\tau_{ij})=-1$.
 	\end{proof}
 \end{consequence}
 \begin{theorem}
-	$$\forall \sigma,\rho\in S_n\ \sgn(\sigma\rho)=\sgn(\sigma)\cdot\sgn(\rho)$$
+	\[\forall \sigma,\rho\in S_n\ \sgn(\sigma\rho)=\sgn(\sigma)\cdot\sgn(\rho)\]	
 	\begin{proof}
 		Пусть $\sigma=\tau_1\ldots\tau_k, \rho=\tau_1'\ldots\tau_m'$, тогда
 		$\sgn(\sigma)=(-1)^k, \sgn(\rho)=(-1)^m$, при этом:
-		$$\sigma\rho=\tau_1\ldots\tau_k\tau_1'\ldots\tau_m'\implies
-		\sgn(\sigma\rho)=(-1)^{k+m}=\sgn(\sigma)\cdot\sgn(\rho)$$
+		\[\sigma\rho=\tau_1\ldots\tau_k\tau_1'\ldots\tau_m'\implies
+		\sgn(\sigma\rho)=(-1)^{k+m}=\sgn(\sigma)\cdot\sgn(\rho)\]	
 	\end{proof}
 \end{theorem}
 \begin{consequence}
-	$$\forall \sigma\in S_n\ \sgn(\sigma)=\sgn(\sigma^{-1})$$
+	\[\forall \sigma\in S_n\ \sgn(\sigma)=\sgn(\sigma^{-1})\]
 \end{consequence}
 \begin{statement}
 	Пусть $\tau\in S_n$ -- некоторая транспозиция, тогда отображение
@@ -366,11 +366,11 @@ right=15mm]{geometry}
 
 \begin{definition}
 	Пусть $A\in M_n$, определителем матрицы $A$ называется величина:
-	$$\det A=|A|=\sum_{\sigma\in S_n}\sgn \sigma\cdot
-	a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{n,\sigma(n)}$$
+	\[\det A=|A|=\sum_{\sigma\in S_n}\sgn \sigma\cdot
+	a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{n,\sigma(n)}\]
 \end{definition}
 \begin{statement}
-	$$\det A = \det A^T, A\in M_n$$
+	\[\det A = \det A^T, A\in M_n\]	
 	\begin{proof}
 		Пусть $B=A^T$, тогда:
 		\begin{multline*}
@@ -406,7 +406,7 @@ right=15mm]{geometry}
 	\end{proof}
 \end{statement}
 \begin{consequence}
-	$$\det(\lambda A)=\lambda^n\det A, A\in M_n$$
+	\[\det(\lambda A)=\lambda^n\det A, A\in M_n\]
 \end{consequence}
 \begin{statement}
 	Пусть $A_{(i)}=A_{(i)}'+A_{(i)}''$, тогда $\det A=\det A'+\det A''$,
@@ -436,16 +436,16 @@ right=15mm]{geometry}
 		соответствующая транспозиция. Достаточно доказать, что для каждой
 		пары $\{\sigma, \sigma\tau\}$ (чётная и нечётная перестановка) два
 		соответствующих слагаемых в сумме дают 0. Слагаемое для $\sigma$ имеет вид:
-		$$\alpha=\sgn \sigma\cdot a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots
-		a_{n,\sigma(n)}$$
-		Тогда применяя то, что $i$ и $j$ строки совпадают, слагаемое для
+		\[\alpha=\sgn \sigma\cdot a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots
+		a_{n,\sigma(n)}\]		Тогда применяя то, что $i$ и $j$ строки
+		совпадают, слагаемое для
 		$\sigma\tau$ имеет вид:
-		$$\beta=\sgn (\sigma\tau)\cdot
-		a_{1,(\sigma\tau)(1)}a_{2,(\sigma\tau)(2)}\ldots
-		a_{n,(\sigma\tau)(n)}=-\sgn\sigma\cdot
-		a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{i, \sigma(j)}\ldots
-		a_{j,\sigma(i)}\ldots a_{n,\sigma(n)}=-\alpha$$
-		Для столбцов верно, так как $\det A=\det A^T$.
+		\[\beta=\sgn (\sigma\tau)\cdot
+			a_{1,(\sigma\tau)(1)}a_{2,(\sigma\tau)(2)}\ldots
+			a_{n,(\sigma\tau)(n)}=-\sgn\sigma\cdot
+			a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{i, \sigma(j)}\ldots
+		a_{j,\sigma(i)}\ldots a_{n,\sigma(n)}=-\alpha\]		Для столбцов
+		верно, так как $\det A=\det A^T$.
 	\end{proof}
 \end{statement}
 \begin{statement}
@@ -479,8 +479,8 @@ right=15mm]{geometry}
 		Рассмотрим в сумме определения определителя верхнетреугольной $A$
 		слагаемые, отличные от нуля. Пусть для $\sigma\in S_n$
 		соответствующее слагаемое $\alpha$ не равно нулю, тогда:
-		$$\sgn \sigma\cdot a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{n,\sigma(n)}\neq0$$
-		$a_{n,\sigma(n)}\neq0\implies \sigma(n)=n,
+		\[\sgn \sigma\cdot a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots
+		a_{n,\sigma(n)}\neq0\]		$a_{n,\sigma(n)}\neq0\implies \sigma(n)=n,
 		a_{n-1,\sigma(n-1)}\neq0\implies \sigma(n-1)\in\{n-1, n\}$, но
 		$\sigma$ -- перестановка, то есть инъективна, значит
 		$\sigma(n-1)=n-1$. Аналогично получаем, что $\sigma=\id$, то есть
@@ -491,16 +491,16 @@ right=15mm]{geometry}
 \end{statement}
 \begin{statement}[Определитель с углом нулей]
 	Пусть матрица $A\in M_n$ имеет блочный вид:
-	$$A=
-	\begin{+pmatrix}
-		P & Q\\
-		0 & R
-	\end{+pmatrix}\text{ или }A=
-	\begin{+pmatrix}
-		P & 0\\
-		Q & R
-	\end{+pmatrix}$$
-	Причём $P$ и $R$ квадратные, тогда $\det A=\det P\cdot \det R$.
+	\[A=
+		\begin{+pmatrix}
+			P & Q\\
+			0 & R
+		\end{+pmatrix}\text{ или }A=
+		\begin{+pmatrix}
+			P & 0\\
+			Q & R
+	\end{+pmatrix}\]	Причём $P$ и $R$ квадратные, тогда $\det A=\det
+	P\cdot \det R$.
 	\begin{proof}
 		Пусть $A$ -- марица с левым нижним нулевым углом. Если матрицы $P,
 		R$ верхнетреугольны, то $A$ верхнетреугольна, тогда утверждение
@@ -510,14 +510,13 @@ right=15mm]{geometry}
 		скаляр $\alpha$. Аналогично приведём блок $(0\;R)$ к виду
 		$(0\;R')$, где $R'$ -- верхнетреугольная, при этом $\det A$ и $\det
 		R$ умножаются на один и тот же ненулевой скаляр $\beta$. Тогда рассмотрим:
-		$$A'=
-		\begin{+pmatrix}
-			P' & Q'\\
-			0 & R'
-		\end{+pmatrix}$$
-		$$\det A'=\det P'\cdot \det R'=\alpha\det P\cdot \beta \det
-		R=\alpha\beta\det A$$
-		Сокращая на $\alpha\beta\neq0$, получаем искомое утверждение. Для
+		\[A'=
+			\begin{+pmatrix}
+				P' & Q'\\
+				0 & R'
+		\end{+pmatrix}\]		\[\det A'=\det P'\cdot \det R'=\alpha\det P\cdot \beta \det
+		R=\alpha\beta\det A\]		Сокращая на $\alpha\beta\neq0$, получаем
+		искомое утверждение. Для
 		второго случая аналогично.
 	\end{proof}
 \end{statement}
@@ -546,7 +545,7 @@ right=15mm]{geometry}
 \begin{definition}
 	Пусть $A\in M_n$. Алгебраическое дополнение к элементу $a_{ij}$ --
 	это величина:
-	$$A_{ij}=(-1)^{i+j}\cdot \bar{M}_{ij}$$
+	\[A_{ij}=(-1)^{i+j}\cdot \bar{M}_{ij}\]
 \end{definition}
 \begin{lemma}
 	Пусть $A\in M_n$ и $\forall k\neq j\ a_{ik}=0$, тогда $\det
@@ -555,80 +554,79 @@ right=15mm]{geometry}
 		Переставляем соседние строки $i-1$ раз до тех пор, пока $i$-я
 		строка не станет первой. После этого переставляем соседние столбцы
 		$j-1$ раз до тех пор, пока $j$-й столбец не станет первым:
-		$$A=
-		\begin{pmatrix}
-			P & U & Q\\
-			0\ldots0 & a_{ij} & 0\ldots0\\
-			R & V & S\\
-		\end{pmatrix}\sim A'=
-		\begin{pmatrix}
-			0\ldots0 & a_{ij} & 0\ldots0\\
-			P & U & Q\\
-			R & V & S\\
-		\end{pmatrix}\sim A''=
-		\begin{pmatrix}
-			a_{ij} & 0\ldots0 & 0\ldots0\\
-			U & P & Q\\
-			V & R & S\\
-		\end{pmatrix}$$
-		Тогда по утверждению об определителе с углом нулей:
-		$$\det A''=a_{ij}\cdot\det
-		\begin{pmatrix}
-			P & Q\\
-			R & S\\
-		\end{pmatrix}=a_{ij}\cdot \bar{M}_{ij}$$
-		Тогда, учитывая количество перестановок строк, получаем:
-		$$\det A=(-1)^{i-1+j-1}\cdot\det A''=(-1)^{i+j}\cdot a_{ij}\cdot
-		\bar{M}_{ij}=a_{ij}\cdot A_{ij}$$
+		\[A=
+			\begin{pmatrix}
+				P & U & Q\\
+				0\ldots0 & a_{ij} & 0\ldots0\\
+				R & V & S\\
+			\end{pmatrix}\sim A'=
+			\begin{pmatrix}
+				0\ldots0 & a_{ij} & 0\ldots0\\
+				P & U & Q\\
+				R & V & S\\
+			\end{pmatrix}\sim A''=
+			\begin{pmatrix}
+				a_{ij} & 0\ldots0 & 0\ldots0\\
+				U & P & Q\\
+				V & R & S\\
+		\end{pmatrix}\]		Тогда по утверждению об определителе с углом нулей:
+		\[\det A''=a_{ij}\cdot\det
+			\begin{pmatrix}
+				P & Q\\
+				R & S\\
+		\end{pmatrix}=a_{ij}\cdot \bar{M}_{ij}\]		Тогда, учитывая
+		количество перестановок строк, получаем:
+		\[\det A=(-1)^{i-1+j-1}\cdot\det A''=(-1)^{i+j}\cdot a_{ij}\cdot
+		\bar{M}_{ij}=a_{ij}\cdot A_{ij}\]	
 	\end{proof}
 \end{lemma}
 \begin{theorem}[Разложение определителя по строке или столбцу]
-	$$\det A=\sum_{j=1}^{n}a_{ij}\cdot A_{ij}=\sum_{i=1}^{n}a_{ij}\cdot A_{ij}$$
+	\[\det A=\sum_{j=1}^{n}a_{ij}\cdot A_{ij}=\sum_{i=1}^{n}a_{ij}\cdot A_{ij}\]	
 	\begin{proof}
-		$$A_{(i)}=
-		\begin{pmatrix}
-			a_{i1} & a_{i2} & \ldots & a_{in}
-		\end{pmatrix}=
-		\begin{pmatrix}
-			a_{i1} & 0 & \ldots & 0
-		\end{pmatrix}+
-		\begin{pmatrix}
-			0 & a_{i2} & \ldots & 0
-		\end{pmatrix}+\ldots+
-		\begin{pmatrix}
-			0 & 0 & \ldots & a_{in}
-		\end{pmatrix}$$
-		Тогда, разложив определитель по строкам, получаем:
-		$$\det A=
-		\begin{vmatrix}
-			*\\
-			a_{i1}\;0\;\ldots\; 0\\
-			*\\
-		\end{vmatrix}+
-		\begin{vmatrix}
-			*\\
-			0\;a_{i2}\;\ldots\; 0\\
-			*\\
-		\end{vmatrix}+\ldots+
-		\begin{vmatrix}
-			*\\
-			0\;0\;\ldots\; a_{in}\\
-			*\\
-		\end{vmatrix}=\sum_{j=1}^{n}a_{ij}\cdot A_{ij}$$
-		Для столбцов также верно, так как $\det A=\det A^T$.
+		\[A_{(i)}=
+			\begin{pmatrix}
+				a_{i1} & a_{i2} & \ldots & a_{in}
+			\end{pmatrix}=
+			\begin{pmatrix}
+				a_{i1} & 0 & \ldots & 0
+			\end{pmatrix}+
+			\begin{pmatrix}
+				0 & a_{i2} & \ldots & 0
+			\end{pmatrix}+\ldots+
+			\begin{pmatrix}
+				0 & 0 & \ldots & a_{in}
+		\end{pmatrix}\]		Тогда, разложив определитель по строкам, получаем:
+		\[\det A=
+			\begin{vmatrix}
+				*\\
+				a_{i1}\;0\;\ldots\; 0\\
+				*\\
+			\end{vmatrix}+
+			\begin{vmatrix}
+				*\\
+				0\;a_{i2}\;\ldots\; 0\\
+				*\\
+			\end{vmatrix}+\ldots+
+			\begin{vmatrix}
+				*\\
+				0\;0\;\ldots\; a_{in}\\
+				*\\
+		\end{vmatrix}=\sum_{j=1}^{n}a_{ij}\cdot A_{ij}\]		Для столбцов
+		также верно, так как $\det A=\det A^T$.
 	\end{proof}
 \end{theorem}
 \begin{lemma}[О фальшивом разложении определителя]
-	$$\forall i,k\in\{1,\ldots,n\},i\neq k\ \sum_{j=1}^{n}a_{ij}\cdot
-	A_{kj}=0\quad \forall j,m\in\{1,\ldots,n\},j\neq
-	m\ \sum_{i=1}^{n}a_{ij}\cdot A_{im}=0$$
+	\[\forall i,k\in\{1,\ldots,n\},i\neq k\ \sum_{j=1}^{n}a_{ij}\cdot
+		A_{kj}=0\quad \forall j,m\in\{1,\ldots,n\},j\neq
+	m\ \sum_{i=1}^{n}a_{ij}\cdot A_{im}=0\]	
 	\begin{proof}
 		Пусть $B$ -- матрица, полученная из $A$ заменой $k$-й строки на
 		$i$-ю, тогда $\forall j\ b_{kj}=a_{ij}\implies
 		B_{(i)}=B_{(k)}\implies \det B=0$. С другой стороны, разлагая по
 		$k$-й строке, получаем:
-		$$\det B=0=\sum_{j=1}^{n}b_{kj}\cdot B_{kj}=\sum_{j=1}^{n}a_{kj}\cdot A_{kj}$$
-		Для столбцов также верно, так как $\det A=\det A^T$.
+		\[\det B=0=\sum_{j=1}^{n}b_{kj}\cdot
+		B_{kj}=\sum_{j=1}^{n}a_{kj}\cdot A_{kj}\]		Для столбцов также
+		верно, так как $\det A=\det A^T$.
 	\end{proof}
 \end{lemma}
 \begin{definition}
@@ -647,7 +645,7 @@ right=15mm]{geometry}
 		$A^{-1}$, получая $x=A^{-1}b$, откуда видно, что решение
 		единственно. При этом $A^{-1}=\frac{\widehat{A}}{\det A}$, тогда
 		$x=\frac{\widehat{A}}{\det A}b$. Получаем, что:
-		$$\det A\cdot x_i=(\widehat{A})_{(i)}b=\sum_{j=1}^{n}A_{ji}b_j=\det A_i$$
+		\[\det A\cdot x_i=(\widehat{A})_{(i)}b=\sum_{j=1}^{n}A_{ji}b_j=\det A_i\]	
 	\end{proof}
 \end{theorem}
 
@@ -661,46 +659,43 @@ right=15mm]{geometry}
 	Если у матрицы существует обратная, то она единственная.
 	\begin{proof}
 		Пусть $B, B'$ -- обе обратные к $A$, тогда:
-		$$B'=EB'=(BA)B=B(AB')=BE=B$$
+		\[B'=EB'=(BA)B=B(AB')=BE=B\]	
 	\end{proof}
 \end{lemma}
 \begin{lemma}\label{Если обратима, то невырождена}
 	Если $A$ обратима, то $\det A\neq0$ и $\det A^{-1}=\frac{1}{\det A}$.
 	\begin{proof}
-		$$AA^{-1}=E\implies \det(AA^{-1})=\det E=1\implies \det A\cdot\det A^{-1}=1$$
+		\[AA^{-1}=E\implies \det(AA^{-1})=\det E=1\implies \det A\cdot\det A^{-1}=1\]	
 	\end{proof}
 \end{lemma}
 \begin{theorem}
 	Матрица $A$ обратима тогда и только тогда, когда $A$ невырождена,
 	при этом:
-	$$A^{-1}=\frac{1}{\det A}\cdot \widehat{A}$$
+	\[A^{-1}=\frac{1}{\det A}\cdot \widehat{A}\]	
 	\begin{proof}
 		Следствие в одну сторону верно из леммы \ref{Если обратима, то
 		невырождена}. Пусть $\det A\neq0$, покажем, что
 		$A\cdot\frac{\widehat{A}}{\det A}=\frac{\widehat{A}}{\det A}\cdot
 		A=E$. Для матрицы $X=A\cdot \widehat{A}$ имеем:
-		$$x_{ij}=\sum_{k=1}^{n}a_{ik}\cdot(\widehat{A})_{kj}=\sum_{k=1}^{n}a_{ik}\cdot
-		A_{jk}=
-		\begin{+cases}
-			\det A,\ i=j\\
-			0,\ i\neq j
-		\end{+cases}$$
-		Аналогично для $Y=\widehat{A}\cdot A$ имеем:
-		$$y_{ij}=\sum_{k=1}^{n}(\widehat{A})_{ik}\cdot
-		a_{kj}=\sum_{k=1}^{n}a_{kj}\cdot A_{ki}=
-		\begin{+cases}
-			\det A,\ i=j\\
-			0,\ i\neq j
-		\end{+cases}$$
-		То есть, $A\widehat{A}=\widehat{A}A=\det A\cdot E$.
+		\[x_{ij}=\sum_{k=1}^{n}a_{ik}\cdot(\widehat{A})_{kj}=\sum_{k=1}^{n}a_{ik}\cdot
+			A_{jk}=
+			\begin{+cases}
+				\det A,\ i=j\\
+				0,\ i\neq j
+		\end{+cases}\]		Аналогично для $Y=\widehat{A}\cdot A$ имеем:
+		\[y_{ij}=\sum_{k=1}^{n}(\widehat{A})_{ik}\cdot
+			a_{kj}=\sum_{k=1}^{n}a_{kj}\cdot A_{ki}=
+			\begin{+cases}
+				\det A,\ i=j\\
+				0,\ i\neq j
+		\end{+cases}\]		То есть, $A\widehat{A}=\widehat{A}A=\det A\cdot E$.
 	\end{proof}
 \end{theorem}
 \begin{consequence}
 	Если $A, B\in M_n$ и $AB=E$, то $BA=E$.
 	\begin{proof}
-		$$AB=E\implies \det A\cdot \det B=1\implies \det A\neq0\implies
-		\exists\,A^{-1}$$
-		$$BA=EBA=(A^{-1}A)(BA)=A^{-1}(AB)A=A^{-1}A=E$$
+		\[AB=E\implies \det A\cdot \det B=1\implies \det A\neq0\implies
+		\exists\,A^{-1}\]		\[BA=EBA=(A^{-1}A)(BA)=A^{-1}(AB)A=A^{-1}A=E\]	
 	\end{proof}
 \end{consequence}
 \begin{consequence}
@@ -708,7 +703,7 @@ right=15mm]{geometry}
 	и $A$, и $B$ обратимы, при этом $(AB)^{-1}=B^{-1}A^{-1}$.
 	\begin{proof}
 		Первая часть следует напрямую из теоремы. Остаётся заметить, что
-		$$(AB)(B^{-1}A^{-1})=(B^{-1}A^{-1})(AB)=E$$
+		\[(AB)(B^{-1}A^{-1})=(B^{-1}A^{-1})(AB)=E\]	
 	\end{proof}
 \end{consequence}
 \end{document}
