@@ -99,7 +99,7 @@ right=15mm]{geometry}
 	\begin{center}
 		\begin{minipage}{0.91\textwidth}
 			\begin{enumerate}[itemsep=0pt, start=16]
-				\item $A, B \subset \R, A\neq \varnothing, B \neq \varnothing, \forall
+				\item $A, B \subset \R, A, B \neq \varnothing, \forall
 					a\in A, b\in B\ a\leqslant b\implies \exists\, c\in \R\colon \forall a\in
 					A, b\in B\ a\leqslant c\leqslant b$.
 			\end{enumerate}
@@ -120,28 +120,29 @@ right=15mm]{geometry}
 	Для вещественных чисел в форме бесконечной десятичной дроби
 	выполняется аксиома непрерывности.
 	\begin{proof}
-		Если $\forall a\in A, b\in B\ a\leqslant 0, b\geqslant 0\implies c=0$.\bigskip
+		Если $\forall a\in A, b\in B\ a\leqslant 0, b\geqslant 0\implies c=0$.\par
 
 		Если $\exists\, a\in A\colon a>0$, то $\forall b\in B\ b>0$.
 		Рассмотрим $c_0=\min\{b_0\mid \exists\, b\in B\colon
 		b=b_0\ldots\}$, $c_1=\min\{b_1\mid \exists\, b\in B\colon b=c_0b_1\ldots\}$,
 		$c_k=\min\{b_k\mid \exists\, b\in B\colon b=c_0c_1\ldots
 		c_{k-1}b_k\ldots\}$. Пусть $c=c_0c_1\ldots c_k\ldots$. Тогда $\forall a\in
-		A, b\in B\ a\leqslant c\leqslant b$ по построению.\bigskip
+		A, b\in B\ a\leqslant c\leqslant b$ по построению.\par
 
 		Если $\exists\, b\in B\colon b<0$, то рассмотрим $A'=-B, B'=-A$,
 		далее аналогично предыдущему случаю.
 	\end{proof}
 \end{theorem}
 \begin{statement}[Неравенство треугольника]
-	\[|a+b|\leqslant |a|+|b|\]
+	\[\abs{a+b}\leqslant \abs{a}+\abs{b}\]
 \end{statement}
 \begin{consequence}
-	\[|a|-|b|\leqslant |a-b|\]
+	\[\abs{a}-\abs{b}\leqslant \abs{a-b}\]
 	\begin{proof}
 		Пусть $a'=a-b, b'=b$, тогда:
-		\[|a'+b'|\leqslant |a'|+|b'| \implies |(a-b)+b|\leqslant |a-b|+|b|\implies
-		|a|-|b|\leqslant |a-b|\]	
+		\[\abs{a'+b'}\leqslant \abs{a'}+\abs{b'} \implies
+			\abs{(a-b)+b}\leqslant \abs{a-b}+\abs{b}\implies
+		\abs{a}-\abs{b}\leqslant \abs{a-b}\]	
 	\end{proof}
 \end{consequence}
 
@@ -184,7 +185,7 @@ right=15mm]{geometry}
 	\exists\,a\in A\colon a>M')\]
 \end{definition}
 \begin{definition}
-	Число $M\in \R$ называется точной нижней гранью (или инфинумом)
+	Число $M\in \R$ называется точной нижней гранью (или инфимумом)
 	$A\subset \R$, если:
 	\[M=\inf A\iff (\forall a\in A\ a\geqslant M) \land (\forall M'>M\
 	\exists\,a\in A\colon a<M')\]
@@ -255,17 +256,17 @@ right=15mm]{geometry}
 	Пусть $\alpha>0$ -- фиксированное число, тогда:
 	\[a=\lim_{n\to\infty}a_n\iff
 		\forall\varepsilon>0\ \exists\,N(\varepsilon)\colon \forall n>
-	N(\varepsilon)\ |a_n-a|\leqslant \alpha\varepsilon\]
+	N(\varepsilon)\ \abs{a_n-a}\leqslant \alpha\varepsilon\]
 \end{statement}
 \begin{statement}[Единственность предела]
 	\[\lim_{n\to\infty}a_n=a, \lim_{n\to\infty}a_n=b \implies a=b\]
 	\begin{proof}
 		Пусть $a>b$, тогда $a-b=\varepsilon_0>0$. Рассмотрим
 		$\varepsilon=\frac{\varepsilon_0}{2}$, тогда:
-		\[\exists\,N_1\colon \forall n\geqslant N_1\ |a_n-a|<\varepsilon, \qquad
+		\[\exists\,N_1\colon \forall n\geqslant N_1\ \abs{a_n-a}<\varepsilon, \qquad
 			\exists\,N_2\colon \forall n\geqslant
-		N_2\ |a_n-b|<\varepsilon\]		\[\forall n\geqslant \max(N_1,
-		N_2)\ \varepsilon_0=|a-b|\leqslant|a_n-a|+|a_n-b|<\frac{\varepsilon_0}{2}+\frac{\varepsilon_0}{2}=\varepsilon_0\]	
+		N_2\ \abs{a_n-b}<\varepsilon\]		\[\forall n\geqslant \max(N_1,
+		N_2)\ \varepsilon_0=\abs{a-b}\leqslant\abs{a_n-a}+\abs{a_n-b}<\frac{\varepsilon_0}{2}+\frac{\varepsilon_0}{2}=\varepsilon_0\]	
 	\end{proof}
 \end{statement}
 \begin{definition}
@@ -279,23 +280,25 @@ right=15mm]{geometry}
 	Сходящаяся последовательность ограничена.
 	\begin{proof}
 		\[a=\lim_{n\to\infty}a_n\iff \forall \varepsilon >0\ \exists\,
-		N\colon \forall n\geqslant N\ |a_n-a|<\varepsilon\]		Пусть
-		$\varepsilon=1$, тогда $|a_n-a|<1$ и $|a_n-a|\geqslant|a_n|-|a|$,
-		то есть $|a_n|<1+|a|$. Тогда возьмем:
-		\[C=\max\{a_1,a_2,\ldots,a_{N-1}, 1+|a|\}, \qquad
-		c=\min\{a_1,a_2,\ldots,a_{N-1}, -(1+|a|)\}\]		Получаем, что
+		N\colon \forall n\geqslant N\ \abs{a_n-a}<\varepsilon\]		Пусть
+		$\varepsilon=1$, тогда $\abs{a_n-a}<1$ и
+		$\abs{a_n-a}\geqslant\abs{a_n}-\abs{a}$,
+		то есть $\abs{a_n}<1+\abs{a}$. Тогда возьмем:
+		\[C=\max\{a_1,a_2,\ldots,a_{N-1}, 1+\abs{a}\}, \qquad
+		c=\min\{a_1,a_2,\ldots,a_{N-1}, -(1+\abs{a})\}\]		Получаем, что
 		$\forall n\in \N\ c\leqslant a_n \leqslant C$, то есть
 		последовательность ограничена.
 	\end{proof}
 \end{statement}
 \begin{lemma}[Об отделимости]
 	\[a_n\to a, a\neq0 \implies \exists\, N\in \N\colon \forall
-	n>N\ |a_n|>\frac{|a|}{2}>0\]	
+	n>N\ \abs{a_n}>\frac{\abs{a}}{2}>0\]	
 	\begin{proof}
-		Пусть $\varepsilon=\frac{|a|}{2}>0$. Тогда:
+		Пусть $\varepsilon=\frac{\abs{a}}{2}>0$. Тогда:
 		$\exists\, N\in \N\colon
-		\forall n>N\ |a_n-a|<\frac{|a|}{2}$, но
-		$|a|-|a_n|\leqslant|a_n-a|<\frac{|a|}{2}$, то есть $|a_n|>\frac{|a|}{2}$.
+		\forall n>N\ \abs{a_n-a}<\frac{\abs{a}}{2}$, но
+		$\abs{a}-\abs{a_n}\leqslant\abs{a_n-a}<\frac{\abs{a}}{2}$, то есть
+		$\abs{a_n}>\frac{\abs{a}}{2}$.
 	\end{proof}
 \end{lemma}
 \begin{theorem}[Арифметические свойства предела]
@@ -315,32 +318,35 @@ right=15mm]{geometry}
 		\begin{enumerate}
 			\item Докажем, что предел линейной комбинации равен линейной
 				комбинации пределов.
-				\[|\alpha a_n+\beta b_n-(\alpha a+\beta
-					b)|=|\alpha(a_n-a)+\beta(b_n-b)|\leqslant
-				|\alpha|\cdot|a_n-a|+|\beta|\cdot|b_n-b|\]				Тогда воспользуемся
-				определением предела при $\gamma=|\alpha|+|\beta|$:
+				\[\abs{\alpha a_n+\beta b_n-(\alpha a+\beta
+					b)}=\abs{\alpha(a_n-a)+\beta(b_n-b)}\leqslant
+				\abs{\alpha}\cdot\abs{a_n-a}+\abs{\beta}\cdot\abs{b_n-b}\]				Тогда
+				воспользуемся
+				определением предела при $\gamma=\abs{\alpha}+\abs{\beta}$:
 				\[\forall \varepsilon>0\ \exists\, N\colon \forall
-					n>N\ |\alpha a_n+\beta b_n-(\alpha a+\beta b)|\leqslant
+					n>N\ \abs{\alpha a_n+\beta b_n-(\alpha a+\beta b)}\leqslant
 				\gamma\varepsilon\]			
 			\item Докажем, что предел произведения равен произведению пределов.
-				\[|a_nb_n|\leqslant |a_nb_n-a_nb| +
-				|a_nb-ab|=|a_n|\cdot|b_n-b|+|b|\cdot|a_n-a|\]				$a_n$ и $b_n$
+				\[\abs{a_nb_n}\leqslant \abs{a_nb_n-a_nb} +
+				\abs{a_nb-ab}=\abs{a_n}\cdot\abs{b_n-b}+\abs{b}\cdot\abs{a_n-a}\]				$a_n$
+				и $b_n$
 				сходятся, а значит ограничены, то есть для
 				фиксированного $\varepsilon$ верно:
-				\[|a_n|\leqslant M, |b_n-b|<\varepsilon,
-					|a_n-a|<\varepsilon\implies
-					|a_n|\cdot|b_n-b|+|b|\cdot|a_n-a|\leqslant
-				M\varepsilon+|b|\varepsilon=(M+|b|)\varepsilon\]				Тогда
-				воспользуемся определением предела при $\alpha=M+|b|$:
+				\[\abs{a_n}\leqslant M, \abs{b_n-b}<\varepsilon,
+					\abs{a_n-a}<\varepsilon\implies
+					\abs{a_n}\cdot\abs{b_n-b}+\abs{b}\cdot\abs{a_n-a}\leqslant
+				M\varepsilon+\abs{b}\varepsilon=(M+\abs{b})\varepsilon\]				Тогда
+				воспользуемся определением предела при $\alpha=M+\abs{b}$:
 				\[\forall \varepsilon>0\ \exists\, N\colon \forall
-				n>N\ |a_nb_n-ab|\leqslant \alpha\varepsilon\]			
+				n>N\ \abs{a_nb_n-ab}\leqslant \alpha\varepsilon\]			
 			\item Докажем, что предел отношения равен отношению пределов.
-				\[\left|\frac{1}{b_n}-\frac{1}{b}\right|=\left|\frac{b-b_n}{b\cdot
-				b_n}\right|=\frac{|b-b_n|}{|b|\cdot|b_n|}\]				По лемме об отделимости:
+				\[\abs{\frac{1}{b_n}-\frac{1}{b}}=\abs{\frac{b-b_n}{b\cdot
+				b_n}}=\frac{\abs{b-b_n}}{\abs{b}\cdot\abs{b_n}}\]				По
+				лемме об отделимости:
 				\[\exists\, N\in \N\colon \forall
-				n>N\ |b_n|>\frac{|b|}{2}\]				Отсюда получаем предел $b_n^{-1}$
+				n>N\ \abs{b_n}>\frac{\abs{b}}{2}\]				Отсюда получаем предел $b_n^{-1}$
 				при $\varepsilon=\frac{b^2}{2}$:
-				\[\frac{|b-b_n|}{|b|\cdot|b_n|}<\frac{2|b-b_n|}{b^2}<\frac{2\varepsilon}{b^2}\]
+				\[\frac{\abs{b-b_n}}{\abs{b}\cdot\abs{b_n}}<\frac{2\abs{b-b_n}}{b^2}<\frac{2\varepsilon}{b^2}\]
 				Тогда предел отношения $a_n$ к $b_n$ получается умножением
 				пределов $a_n$ и $b_n^{-1}$, что уже было
 				доказано в предыдущем пункте.
@@ -349,14 +355,14 @@ right=15mm]{geometry}
 \end{theorem}
 \begin{lemma}[О переходе к пределу в неравенстве]
 	Пусть $\lim\limits_{n\to\infty}a_n=a,
-	\lim\limits_{n\to\infty}a_n=a$, тогда:
+	\lim\limits_{n\to\infty}b_n=b$, тогда:
 	\[\exists\,N\colon \forall
 	n>N\ a_n\leqslant b_n\implies a\leqslant b\]	
 	\begin{proof}
 		Пусть $a>b$, $a-b=\varepsilon_0>0$,  $N$ -- номер, для которого:
-		\[\forall n>N\ |a-a_n|<\frac{\varepsilon_0}{2},
-		|b-b_n|<\frac{\varepsilon_0}{2}\]		\[\varepsilon_0=a-b=a-a_n+a_n-b_n+b_n-b\leqslant
-		a-a_n+b_n-b\leqslant |a-a_n|+|b_n-b|<\varepsilon_0\]	
+		\[\forall n>N\ \abs{a-a_n}<\frac{\varepsilon_0}{2},
+		\abs{b-b_n}<\frac{\varepsilon_0}{2}\]		\[\varepsilon_0=a-b=a-a_n+a_n-b_n+b_n-b\leqslant
+		a-a_n+b_n-b\leqslant \abs{a-a_n}+\abs{b_n-b}<\varepsilon_0\]	
 	\end{proof}
 \end{lemma}
 \begin{lemma}[О зажатой последовательности]
@@ -365,11 +371,11 @@ right=15mm]{geometry}
 	b_n\implies \lim\limits_{n\to\infty}c_n=a\]	
 	\begin{proof}
 		Для фиксированного $\varepsilon$ справедливо:
-		\[|a_n-a|<\varepsilon\iff
+		\[\abs{a_n-a}<\varepsilon\iff
 			\begin{+cases}
 				a_n-a<\varepsilon\\
 				-a_n+a<\varepsilon
-			\end{+cases}\implies a-\varepsilon<a_n\qquad
+			\end{+cases}\qquad
 		b_n<a+\varepsilon\]		Тогда есть $N$, для которого:
 		\[a_n-\varepsilon<a_n\leqslant c_n \leqslant b_n < a+\varepsilon\]
 	\end{proof}
@@ -378,13 +384,13 @@ right=15mm]{geometry}
 	Пусть последовательность $\{a_n\}_{n=1}^\infty$ не убывает и
 	ограничена сверху, тогда:
 	\[\lim_{n\to\infty}a_n=\sup a_n\]
-	Аналогичное утверждение верно для инфинума.
+	Аналогичное утверждение верно для инфимума.
 	\begin{proof}
 		Пусть $M=\sup a_n$, он существует, так как $a_n$
 		ограничена, тогда:
 		\[(\forall n\ a_n\leqslant M)\land (\forall M'<M\ \exists\, n\colon a_n>M')\]
 		Возьмём $M'=M-\varepsilon<M$, тогда $\exists\, N\colon
-		a_N>M-\varepsilon\implies \forall n\geqslant N\  |a_n-M|<\varepsilon$.
+		a_N>M-\varepsilon\implies \forall n\geqslant N\  \abs{a_n-M}<\varepsilon$.
 	\end{proof}
 \end{theorem}
 \begin{definition}
@@ -393,7 +399,7 @@ right=15mm]{geometry}
 \end{definition}
 \begin{definition}
 	Последовательность $\{a_n\}$ называется бесконечно большой, если:
-	\[\forall c>0\ \exists\, N\colon \forall n>N\ |a_n|>c\]
+	\[\forall c>0\ \exists\, N\colon \forall n>N\ \abs{a_n}>c\]
 \end{definition}
 
 \begin{statement}
@@ -408,7 +414,7 @@ right=15mm]{geometry}
 \begin{theorem}
 	\[\exists\,a\colon a=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\]
 	\begin{proof}
-		Покажем, что последовательность ограничена:
+		Покажем, что последовательность ограничена сверху:
 		\begin{multline*}
 			a_n=\left(1+\frac{1}{n}\right)^n=\sum_{k=0}^{n}C_n^k\frac{1}{n^k}=2+\sum_{k=2}^{n}\frac{n!}{k!\cdot(n-k)!}\cdot\frac{1}{n^k}=\\
 			=2+\sum_{k=2}^{n}\frac{1}{k!}\left(\frac{n}{n}\cdot\frac{n-1}{n}\cdot\ldots\cdot\frac{n-(k-1)}{n}\right)=2+\sum_{k=2}^{n}\frac{1}{k!}\left(1-\frac{1}{n}\right)\cdot\left(1-\frac{2}{n}\right)\cdot\ldots\cdot\left(1-\frac{k-1}{n}\right)\leqslant\\
@@ -420,6 +426,7 @@ right=15mm]{geometry}
 			\leqslant2+\sum_{k=2}^{n}\frac{1}{k!}\left(1-\frac{1}{n+1}\right)\cdot\left(1-\frac{2}{n+1}\right)\cdot\ldots\cdot\left(1-\frac{k-1}{n+1}\right)\leqslant\\
 			\leqslant2+\sum_{k=2}^{n+1}\frac{1}{k!}\left(1-\frac{1}{n+1}\right)\cdot\left(1-\frac{2}{n+1}\right)\cdot\ldots\cdot\left(1-\frac{k}{n+1}\right)=a_{n+1}
 		\end{multline*}
+		Тогда по теореме Вейерштрасса данная последовательность сходится.
 	\end{proof}
 \end{theorem}
 \begin{theorem}[Принцип вложенных отрезков]
@@ -457,18 +464,18 @@ right=15mm]{geometry}
 		По определению предела:
 		\[a=\lim_{n\to\infty}a_n\iff\forall\varepsilon>0\ \exists\,N_1(\varepsilon)\colon
 			\forall n\geqslant
-		N_1(\varepsilon)\ |a_n-a|<\varepsilon\]		Заметим, что $n_k\geqslant
+		N_1(\varepsilon)\ \abs{a_n-a}<\varepsilon\]		Заметим, что $n_k\geqslant
 		k$. Для $k=1$ верно: $n_1\geqslant 1$,
 		пусть для $k$ верно, рассмотрим $k+1$: $n_{k+1}\geqslant n_k +
 		1\geqslant k+1$. Тогда получаем, что:
 		\[\forall\varepsilon>0\ \exists\,N_1(\varepsilon)\colon
-		\forall k\geqslant N_1(\varepsilon)\ |a_{n_k}-a|<\varepsilon\]	
+		\forall k\geqslant N_1(\varepsilon)\ \abs{a_{n_k}-a}<\varepsilon\]	
 	\end{proof}
 \end{statement}
 \begin{definition}
 	Пусть $\{a_n\}_{n=1}^\infty$ -- ограниченная последовательность.
-	Рассмотрим последовательности $M_n\coloneq\sup a_k$ и
-	$m_n\coloneq\inf a_k, k>n$. Последовательность $M_n$ не возрастает и
+	Рассмотрим последовательности $M_n\coloneq\sup\limits_{k>n} a_k$ и
+	$m_n\coloneq\inf\limits_{k>n} a_k$. Последовательность $M_n$ не возрастает и
 	ограничена снизу, а последовательность $m_n$ не убывает и ограничена
 	сверху, тогда по теореме Вейерштрасса существуют верхний и нижний
 	частичные пределы последовательности $\{a_n\}_{n=1}^\infty$:
@@ -483,26 +490,32 @@ right=15mm]{geometry}
 	предел принадлежит отрезку:
 	\[\left[\liminf_{n\to\infty}a_n, \limsup_{n\to\infty}a_n\right]\]
 	\begin{proof}
-		Пусть $M$ -- верхний частичный предел $a_n$. Тогда $M_{n_k}=\sup
-		a_l, l>n_k$, то есть $\forall l>n_k\ a_l\leqslant M_{n_k}$, значит:
-		\[\exists\,n_k\colon \forall
-			k\ M_{n_k}-\frac{1}{k}<a_{n_{k+1}}\leqslant M_{n_k}\implies
-		M\leqslant a_{n_{k+1}}\leqslant M\]		Покажем, что любой частичный
-		предел принадлежит отрезку:
-		\[m_{n_k-1}\leqslant a_{n_k}\leqslant M_{n_k-1}\leqslant M_{n_{k-1}}\]
+		Пусть $M_n=\sup\limits_{k>n} a_k,\ M=\lim\limits_{n\to\infty}M_n$.
+		Положим $n_1=1$ и $n_1<n_2<\ldots<n_k$, возьмём такой $n_{k+1}>n_k$, что:
+		\[M_{n_k}-\frac{1}{k}<a_{n_{k+1}}\leqslant M_{n_k}\]
+		Тогда $M_{n_k}\to M$ как подпоследовательность сходящейся
+		последовательности и $M_{n_k}-\frac{1}{k}\to M$. Значит по лемме о
+		зажатой последовательности $a_{n_k}\to M$, то есть $M$ -- частичный
+		предел $a_n$. Аналогично доказывается для нижнего предела.\par
+
+		Пусть $a$ -- частичный предел, то есть
+		$a=\lim\limits_{k\to\infty}a_{n_k}$. Заметим, что:
+		\[m_{n_{k-1}}\leqslant a_{n_k}\leqslant M_{n_{k-1}}\]
+		Тогда по лемме о переходе к пределу в неравенстве $a$ лежит в
+		отрезке из условия.
 	\end{proof}
 \end{theorem}
-\begin{theorem}[Больцано-Вейерштрасса]
+\begin{consequence}[Теорема Больцано-Вейерштрасса]
 	Во всякой ограниченной последовательности можно найти сходящуюся
 	подпоследовательность.
-\end{theorem}
+\end{consequence}
 \begin{theorem}
 	Ограниченная последовательность сходится тогда и только тогда, когда
 	множество её частичных пределов состоит из одного элемента.
 	\begin{proof}
 		Если последовательность сходится, то все её подпоследовательности
 		сходятся к тому же пределу, то есть множество её частичных пределов
-		состоит из одного элемента.\bigskip
+		состоит из одного элемента.\par
 
 		Пусть $a_n$ ограничена и $M_n\to a, m_n\to a$. Поскольку
 		$m_{n-1}\leqslant a_n\leqslant M_{n-1}$, по лемме о зажатой
@@ -513,29 +526,30 @@ right=15mm]{geometry}
 	Говорят, что последовательность $\{a_n\}_{n=1}^\infty$
 	фундаментальна (или является последовательностью Коши), если:
 	\[\forall \varepsilon>0\ \exists\,N(\varepsilon)\in\N\colon\forall
-	n, m>N(\varepsilon)\  |a_n-a_m|<\varepsilon\]
+	n, m>N(\varepsilon)\  \abs{a_n-a_m}<\varepsilon\]
 \end{definition}
 \begin{theorem}[Критерий Коши]
 	Числовая последовательность сходится тогда и только тогда, когда она
 	фундаментальна.
 	\begin{proof}
 		Пусть $a_n\to a$, возьмём произвольный $\varepsilon>0$, тогда:
-		\[\exists\,N\colon\forall n\geqslant N\ |a_n-a|<\frac{\varepsilon}{2}\]
+		\[\exists\,N\colon\forall n\geqslant N\ \abs{a_n-a}<\frac{\varepsilon}{2}\]
 		Тогда получаем, что последовательность фундаментальна по определению:
-		\[\forall n, m>N\ |a_n-a_m|\leqslant
-		|a_n-a|+|a_m-a|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\]		Пусть
+		\[\forall n, m>N\ \abs{a_n-a_m}\leqslant
+		\abs{a_n-a}+\abs{a_m-a}<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\]		Пусть
 		последовательность $a_n$ фундаментальна, возьмём $\varepsilon=1$, тогда:
-		\[\forall n, m>N\ |a_n-a_m|<1\]
+		\[\forall n, m>N\ \abs{a_n-a_m}<1\]
 		Рассмотрим $m=N+1$, тогда
-		$1>|a_n-a_{N+1}|\geqslant|a_n|-|a_{N+1}|\implies
-		|a_n|<|a_{N+1}|+1$, то есть последовательность ограничена:
-		\[\forall n\ |a_n|\leqslant \max\{|a_{N+1}|+1, |a_N|,
-		|a_{N-1}|,\ldots,|a_1|\}\]		Значит, по теореме
+		$1>\abs{a_n-a_{N+1}}\geqslant\abs{a_n}-\abs{a_{N+1}}\implies
+		\abs{a_n}<\abs{a_{N+1}}+1$, то есть последовательность ограничена:
+		\[\forall n\ \abs{a_n}\leqslant \max\{\abs{a_{N+1}}+1, \abs{a_N},
+		\abs{a_{N-1}},\ldots,\abs{a_1}\}\]		Значит, по теореме
 		Больцано-Вейерштрасса для фиксированного $\varepsilon>0$:
-		\[\exists\,K\colon\forall k\geqslant K\ |a_{n_k}-a|<\frac{\varepsilon}{2}\]
+		\[\exists\,K\colon\forall k\geqslant
+		K\ \abs{a_{n_k}-a}<\frac{\varepsilon}{2}\]
 		Рассмотрим $N$ из условия фундаментальности $a_n$, тогда она сходится:
-		\[\forall n\geqslant N\ |a_n-a|\leqslant
-		|a_n-a_{n_k}|+|a_{n_k}-a|<\varepsilon\]	
+		\[\forall n\geqslant N\ \abs{a_n-a}\leqslant
+		\abs{a_n-a_{n_k}}+\abs{a_{n_k}-a}<\varepsilon\]	
 	\end{proof}
 \end{theorem}
 
@@ -558,9 +572,9 @@ right=15mm]{geometry}
 \begin{theorem}[Критерий Коши]
 	\[\text{Ряд }\sum\limits_{k=1}^{\infty}a_k\text{ сходится}\iff
 		\forall\varepsilon>0\ \exists\, N\colon\forall
-	n>m>N\ \left|\sum_{k=m+1}^{n}a_k\right|=|S_n-S_m|<\varepsilon\]	
+	n>m>N\ \abs{\sum_{k=m+1}^{n}a_k}=\abs{S_n-S_m}<\varepsilon\]	
 	\begin{proof}
-		\[|S_n-S_m|=\left|\sum_{k=1}^{n}a_k-\sum_{k=1}^{m}a_k\right|=\left|\sum_{k=m+1}^{n}a_k\right|\]
+		\[\abs{S_n-S_m}=\abs{\sum_{k=1}^{n}a_k-\sum_{k=1}^{m}a_k}=\abs{\sum_{k=m+1}^{n}a_k}\]
 	\end{proof}
 \end{theorem}
 \begin{consequence}
@@ -569,27 +583,28 @@ right=15mm]{geometry}
 	\begin{proof}
 		По критерию Коши получаем:
 		\[\forall\varepsilon>0\ \exists\, N\colon\forall
-		n>m>N\ \left|\sum_{k=m+1}^{n}a_k\right|=|S_n-S_m|<\varepsilon\]		Пусть
-		$m=n+1$, тогда
-		$|S_m-S_n|=|S_{n+1}-S_n|=|a_{n+1}|<\varepsilon$, то есть $a_k\to0$.
+		n>m>N\ \abs{\sum_{k=m+1}^{n}a_k}=\abs{S_n-S_m}<\varepsilon\]		
+		Пусть $m=n+1$, тогда
+		$\abs{S_m-S_n}=\abs{S_{n+1}-S_n}=\abs{a_{n+1}}<\varepsilon$, то
+		есть $a_k\to0$.
 	\end{proof}
 \end{consequence}
 \begin{consequence}
-	Из сходимости ряда $\sum\limits_{k=1}^{\infty}|a_k|$ следует
+	Из сходимости ряда $\sum\limits_{k=1}^{\infty}\abs{a_k}$ следует
 	сходимость ряда $\sum\limits_{k=1}^{\infty}a_k$.
 	\begin{proof}
-		Из неравенства треугольника $|a+b|\leqslant |a|+|b|$:
+		Из неравенства треугольника $\abs{a+b}\leqslant \abs{a}+\abs{b}$:
 		\[\forall\varepsilon>0\ \exists\, N\colon\forall
-		n>m>N\ \left|\sum_{k=m+1}^{n}a_k\right|\leqslant\left|\sum_{k=m+1}^{n}|a_k|\right|<\varepsilon\]	
+		n>m>N\ \abs{\sum_{k=m+1}^{n}a_k}\leqslant\sum_{k=m+1}^{n}\abs{a_k}<\varepsilon\]	
 	\end{proof}
 \end{consequence}
 \begin{definition}
 	Говорят, что ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится абсолютно,
-	если сходится ряд $\sum\limits_{k=1}^{\infty}|a_k|$.
+	если сходится ряд $\sum\limits_{k=1}^{\infty}\abs{a_k}$.
 \end{definition}
 \begin{definition}
 	Говорят, что ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится условно,
-	если он сходится, но ряд $\sum\limits_{k=1}^{\infty}|a_k|$ расходится.
+	если он сходится, но ряд $\sum\limits_{k=1}^{\infty}\abs{a_k}$ расходится.
 \end{definition}
 \begin{statement}
 	Пусть $a_k\geqslant0$, тогда ряд $\sum\limits_{k=1}^{n}a_k$ сходится тогда
@@ -600,14 +615,14 @@ right=15mm]{geometry}
 	\end{proof}
 \end{statement}
 \begin{statement}[Признак сравнения]
-	Пусть $\forall k\ 0\leqslant a_k\leqslant b_k$. Если ряд
+	Пусть $0\leqslant a_n\leqslant b_n$. Если ряд
 	$\sum\limits_{k=1}^{\infty}b_k$ сходится, то ряд
 	$\sum\limits_{k=1}^{\infty}a_k$ сходится. Если ряд
 	$\sum\limits_{k=1}^{\infty}a_k$ расходится, то ряд
 	$\sum\limits_{k=1}^{\infty}b_k$ расходится.
 	\begin{proof}
-		Пусть $A_n=\sum\limits_{k=1}^{\infty}a_k$,
-		$B_n=\sum\limits_{k=1}^{\infty}b_k$. Тогда $A_n\leqslant B_n$, при
+		Пусть $A_n=\sum\limits_{k=1}^{n}a_k$,
+		$B_n=\sum\limits_{k=1}^{n}b_k$. Тогда $A_n\leqslant B_n$, при
 		этом $A_n$ и $B_n$ не убывают. Если $B_n$ ограничена, то есть
 		сходится, то $A_n$ тоже сходится. Если $A_n$ неограниченна, то есть
 		расходится, тогда $B_n$ тоже расходится.
@@ -615,7 +630,7 @@ right=15mm]{geometry}
 \end{statement}
 \begin{theorem}[Признак Лобачевского-Коши]
 	Пусть $\{a_n\}_{n=1}^\infty$ -- невозрастающая последовательность,
-	$a_n\geqslant0$ Ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится тогда и
+	$a_n\geqslant0$. Ряд $\sum\limits_{k=1}^{\infty}a_k$ сходится тогда и
 	только тогда, когда сходится ряд $\sum\limits_{k=1}^{\infty}2^ka_{2^k}$.
 	\begin{proof}
 		\[\sum_{k=1}^{n}2^{k-1}a_{2^k}\leqslant\sum_{k=2}^{2^n}a_k\leqslant\sum_{k=1}^{n}2^ka_{2^k}\]
@@ -627,7 +642,7 @@ right=15mm]{geometry}
 	получен перестановкой членов ряда $\sum\limits_{k=1}^{\infty}a_k$,
 	если $\exists\,\{k_k\}_{j=1}^\infty$, задающая взаимно-однозначное
 	преобразование множества $\N$ на себя, и такая, что $\forall
-	j\in\N\ \tilde{a}_j=a_{kj}$.
+	j\in\N\ \tilde{a}_j=a_{k_j}$.
 \end{definition}
 \begin{theorem}
 	Если ряд $\sum\limits_{j=1}^{\infty}\tilde{a}_j$ получен
@@ -636,18 +651,27 @@ right=15mm]{geometry}
 	$\sum\limits_{j=1}^{\infty}\tilde{a}_j$ абсолютно сходится, и его
 	сумма равна сумме ряда $\sum\limits_{k=1}^{\infty}a_k$.
 	\begin{proof}
-		Пусть $\forall j\ a_j>0$, $M_n=\max\{k_j\colon j\leqslant n\}$, тогда:
-		\[\tilde{A}_n=\sum_{j=1}^{n}\tilde{a}_j=\sum_{j=1}^{n}a_{k_j}\leqslant
-		\sum_{j=1}^{M_n}a_j\leqslant \sum_{j=1}^{\infty}a_j=A\]		То есть
-		рассматриваемый ряд сходится к $\tilde{A}$. Пусть $a_j$
+		Пусть $\forall j\ a_j>\geqslant0$, $M_n=\max\{k_j\colon j\leqslant
+		n\}$, тогда:
+		\[\sum_{j=1}^{n}\tilde{a}_j=\sum_{j=1}^{n}a_{k_j}\leqslant
+		\sum_{k=1}^{M_n}a_k\leqslant \sum_{k=1}^{\infty}a_k\]
+		Тогда при $n\to\infty$ получаем, что
+		$\sum\limits_{j=1}^{\infty}\tilde{a}_j\leqslant\sum\limits_{k=1}^{\infty}a_k$,
+		но поскольку можем провести обратную перестановку слагаемых, также
+		верно
+		$\sum\limits_{k=1}^{\infty}a_k\leqslant\sum\limits_{j=1}^{\infty}\tilde{a}_j$,
+		то есть при перестановке слагаемых с неотрицательными челнами сумма
+		не меняется.\par
+
+		Пусть $a_j$
 		могут быть отрицательны, тогда рассмотрим $a_j^+=\max\{0, a_j\}$ и
 		$a_j^-=\max\{0 -a_j\}$, тогда $a_j=a_j^+-a_j^-$, аналогично для
 		$\tilde{a}_j$. Заметим. что ряды
 		$\sum a_j^+$ и $\sum a_j^-$ сходятся, так как по условию сходится
-		$\sum|a_j|$, тогда ряды $\sum \tilde{a}_j^+$ и $\sum \tilde{a}_j^-$
-		тоже сходятся, так как сходится $\sum|a_{k_j}|$. Получаем, что ряд
+		$\sum\abs{a_j}$, тогда ряды $\sum \tilde{a}_j^+$ и $\sum \tilde{a}_j^-$
+		тоже сходятся, так как сходится $\sum\abs{a_{k_j}}$. Получаем, что ряд
 		$\sum\tilde{a}_j$ тоже сходится, то есть:
-		\[\tilde{A}=\sum_{j=1}^{\infty}\tilde{a}_j=\sum_{j=1}^{\infty}(\tilde{a}_j^+-\tilde{a}_j^-)=\sum_{j=1}^{\infty}\tilde{a}_j^+-\sum_{j=1}^{\infty}\tilde{a}_j^-=\sum_{j=1}^{\infty}a_j^+-\sum_{j=1}^{\infty}a_j^-=\sum_{j=1}^{\infty}(a_j^+-a_j^-)=\sum_{j=1}^{\infty}a_j=A\]
+		\[\sum_{j=1}^{\infty}\tilde{a}_j=\sum_{j=1}^{\infty}(\tilde{a}_j^+-\tilde{a}_j^-)=\sum_{j=1}^{\infty}\tilde{a}_j^+-\sum_{j=1}^{\infty}\tilde{a}_j^-=\sum_{j=1}^{\infty}a_j^+-\sum_{j=1}^{\infty}a_j^-=\sum_{j=1}^{\infty}(a_j^+-a_j^-)=\sum_{j=1}^{\infty}a_j\]
 	\end{proof}
 \end{theorem}
 \begin{theorem}[Римана]
@@ -663,7 +687,7 @@ right=15mm]{geometry}
 \begin{definition}
 	Окрестностью радиуса $\varepsilon>0$ точки $a\in\R$ называется множество:
 	\[B_\varepsilon(a)\coloneq\{x\in\R\colon
-	|x-a|<\varepsilon\}=(a-\varepsilon,a+\varepsilon)\]
+	\abs{x-a}<\varepsilon\}=(a-\varepsilon,a+\varepsilon)\]
 \end{definition}
 \begin{definition}
 	Проколотой окрестностью радиуса $\varepsilon>0$ точки $a\in\R$
@@ -691,7 +715,8 @@ right=15mm]{geometry}
 		Пусть $a$ -- предельная точка $M$, тогда $\forall n\exists a_n\in
 		B'_{1/n}(a)\cap M$. Тогда $a_n\in M\setminus\{a\}$ и $a_n\to a$.
 		Пусть $a_n\in M\setminus\{a\}$ и $a_n\to a$, тогда:
-		\[\forall\varepsilon>0\ \exists\,N\colon \forall n>N\ |a_n-a|<\varepsilon\]
+		\[\forall\varepsilon>0\ \exists\,N\colon \forall
+		n>N\ \abs{a_n-a}<\varepsilon\]
 		То есть $a_{N+1}\in B'_\varepsilon(a)\cap M$, а значит $a$ --
 		предельная точка.
 	\end{proof}
@@ -699,40 +724,54 @@ right=15mm]{geometry}
 \begin{definition}[Предел функции по Гейне]
 	Пусть функция $f$ определена в некоторой проколотой окрестности
 	$B'(a)$ точки $a$, тогда:
-	\[A=\lim_{x\to a}f(x)\iff \forall x_n\in B'(a)\ \lim_{n\to\infty}f(x_n)=a\]
+	\[A=\lim_{x\to a}f(x)\iff \forall x_n\in B'(a)\colon
+	\lim_{n\to\infty}x_n=a\ \lim_{n\to\infty}f(x_n)=A\]
 \end{definition}
 \begin{definition}[Предел функции по Коши]
 	Пусть функция $f$ определена в некоторой проколотой окрестности
 	$B'(a)$ точки $a$, тогда:
 	\[A=\lim_{x\to a}f(x)\iff
 		\forall\varepsilon>0\ \exists\,\delta>0\colon\forall x\in
-	B'_\delta(a)\ |f(x)-A|<\varepsilon\]
+	B'_\delta(a)\ \abs{f(x)-A}<\varepsilon\]
 \end{definition}
 \begin{definition}[Предел функции по множеству по Коши]
 	Пусть функция $f$ определена на некотором множестве $D\subset\R$ и
 	$a$ -- предельная точка $D$, тогда:
 	\[A=\lim_{x\to a}f(x)\iff
 		\forall\varepsilon>0\ \exists\,\delta>0\colon\forall x\in
-	D\cap B'_\delta(a)\ |f(x)-A|<\varepsilon\]
+	D\cap B'_\delta(a)\ \abs{f(x)-A}<\varepsilon\]
 \end{definition}
 \begin{definition}[Предел функции по множеству по Гейне]
 	Пусть функция $f$ определена на некотором множестве $D\subset\R$ и
 	$a$ -- предельная точка $D$, тогда:
 	\[A=\lim_{x\to a}f(x)\iff \forall x_n\in
-	D\setminus\{a\}\ \lim_{n\to\infty}f(x_n)=a\]
+	D\setminus\{a\}\colon \lim_{n\to\infty}x_n=a\ \lim_{n\to\infty}f(x_n)=A\]
+\end{definition}
+\begin{definition}
+	Если множество $D$, на котором определена функция $f$, не ограничено
+	сверху (снизу), окрестностью при $x\to+\infty$ ($x\to-\infty$) будем считать:
+	\[B'_\varepsilon(+\infty)\coloneq(\varepsilon^{-1}, +\infty)\qquad
+	B'_\varepsilon(-\infty)\coloneq(-\infty, \varepsilon^{-1})\]
+\end{definition}
+\begin{definition}[Бесконечный предел]
+	Пусть функция $f$ определена на некотором множестве $D\subset\R$ и
+	$a$ -- предельная точка $D$, тогда:
+	\[\lim_{x\to a}f(x)=\pm\infty\iff
+		\forall\varepsilon>0\ \exists\,\delta>0\colon\forall x\in D\cap
+	B'_\delta(a)\ f(x)\in B'_\varepsilon(\pm\infty)\]
 \end{definition}
 \begin{theorem}
 	Определения предела функции по Коши и Гейне эквивалентны.
 	\begin{proof}
 		Пусть выполняется определение по Коши, то есть:
 		\[\forall\varepsilon>0\ \exists\,\delta>0\colon\forall x\in
-		D\cap B'_\delta(a)\ |f(x)-A|<\varepsilon\]
+		D\cap B'_\delta(a)\ \abs{f(x)-A}<\varepsilon\]
 		Пусть $x_n\to a,\ x_n\in D\setminus\{a\}$, тогда верно:
 		\[\forall\delta>0\ \exists\,N\colon \forall
-		n>N\ |x_n-a|<\delta\implies |f(x)-A|<\varepsilon\]
+		n>N\ \abs{x_n-a}<\delta\implies \abs{f(x_n)-A}<\varepsilon\]
 		Пусть не выполняется определение по Коши, то есть:
 		\[\exists\,\varepsilon>0\colon \forall\delta>0\ \exists\ x\in D\cap
-		B'_\delta(a)\colon |f(x)-A|\geqslant\varepsilon\]
+		B'_\delta(a)\colon \abs{f(x)-A}\geqslant\varepsilon\]
 		Для последовательности $x_{1/n}\in D\setminus\{a\}$ выполнено
 		$x_{1/n}\to a$, но последовательность $f(x_{1/n})$ не сходится к
 		$A$, то есть $A$ не является пределом функции $f$ по Гейне.
