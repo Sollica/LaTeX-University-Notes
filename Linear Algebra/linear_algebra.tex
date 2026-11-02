@@ -369,6 +369,9 @@ right=15mm]{geometry}
 	\[\det A=\abs{A}=\sum_{\sigma\in S_n}\sgn \sigma\cdot
 	a_{1,\sigma(1)}a_{2,\sigma(2)}\ldots a_{n,\sigma(n)}\]
 \end{definition}
+
+\subsection{Свойства определителей}
+
 \begin{statement}
 	\[\det A = \det A^T, A\in M_n\]	
 	\begin{proof}
@@ -706,4 +709,147 @@ right=15mm]{geometry}
 		\[(AB)(B^{-1}A^{-1})=(B^{-1}A^{-1})(AB)=E\]	
 	\end{proof}
 \end{consequence}
+
+\section{Поля}
+
+\begin{definition}
+	Полем называется множество $F$, на котором определены «сложение»\\
+	$(a,b)\mapsto a+b$ и «умножение» $(a,b)\mapsto a\cdot b$,
+	удовлетворяющие аксиомам поля:
+	\begin{center}
+		\begin{minipage}{0.75\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item $\forall a, b\in F\ a+b=b+a$ (коммутативность сложения);
+				\item $\forall a, b, c\in F\ (a+b)+c=a+(b+c)$ (ассоциативность сложения);
+				\item $\exists\,0\in F\colon \forall a\in F\ a+0=0+a=a$ (нулевой элемент);
+				\item $\forall a\in F\ \exists\,-a\in F\colon a+(-a)=(-a)+a=0$
+					(противоположный элемент);
+				\item $\forall a, b, c\in F\ a(b+c)=ab+ac$ (дистрибутивность);
+				\item $\forall a,b\in F\ a\cdot b=b\cdot a$ (коммутативность умножения);
+				\item $\forall a, b, c\in F\ (a\cdot b)\cdot c=a\cdot (b\cdot c)$
+					(ассоциативность умножения);
+				\item $\exists\,1\in F\setminus\{0\}\colon\forall a\in
+					F\ a\cdot1=1\cdot a=a$ (единичный элемент);
+				\item $\forall a\in F\setminus\{0\}\ \exists\,a^{-1}\in F\colon
+					a\cdot a^{-1}=a^{-1}\cdot a=1$ (обратный элемент).
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+	$F$ называется абелевой группой по сложению, если выполняются
+	аксиомы (1)--(4). $F\setminus\{0\}$ называется абелевой группой по
+	умножению, если выполняются аксиомы (6)--(9).
+\end{definition}
+
+\subsection{Поле комплексных чисел}
+
+\begin{definition}
+	Полем комплексных чисел называется $\clx\coloneq \{(a, b)\mid
+	a,b\in\R\}$, для которого:
+	\[(a_1,b_1)+(a_2,b_2)\coloneq(a_1+a_2, b_1+b_2)\qquad
+	(a_1,b_1)\cdot(a_2,b_2)\coloneq(a_1a_2-b_1b_2, a_1b_2+b_1a_2)\]
+\end{definition}
+\begin{definition}
+	Представление числа $z\in\clx$ в виде $z=a+bi,\ a, b\in\R$
+	называется его алгебраической формой. $\operatorname{Re} z\coloneq
+	a$ называется
+	его действительной (вещественной) частью. $\operatorname{Im} z\coloneq b$
+	называется его мнимой частью. Числа вида $bi,\ b\in\R\setminus\{0\}$
+	называются чисто мнимыми.
+\end{definition}
+\begin{definition}
+	Число $\bar{z}\coloneq a-bi$ называется комплексно сопряжённым к
+	$z\in\clx\colon z=a+bi$.
+\end{definition}
+\begin{definition}
+	Отображение $z\mapsto\bar{z}$ называется комплексным сопряжением.
+\end{definition}
+\begin{lemma}
+	\[\forall z,
+		w\in\clx\ \overline{z+w}=\bar{z}+\bar{w},\ \overline{z\cdot
+	w}=\bar{z}\cdot\bar{w}\]
+	\begin{proof}
+		Пусть $z=a+bi,\ w=c+di$, тогда:
+		\[\overline{z+w}=\overline{(a+bi)+(c+di)}=\overline{(a+c)+(b+d)i}=(a+c)-(b+d)i=(a-bi)+(c-di)=\bar{z}+\bar{w}\]
+		\[\overline{z\cdot
+		w}=\overline{(a+bi)\cdot(c+di)}=\overline{ac-bd+(ad+bc)i}=(ac-bd)-(ad+bc)i=(a-bi)\cdot(c-di)=\bar{z}\cdot\bar{w}\]
+	\end{proof}
+\end{lemma}
+\begin{definition}
+	Модулем комплексного числа $z=a+bi$ называется величина
+	$\abs{z}=\sqrt{a^2+b^2}$.
+\end{definition}
+\begin{statement}[Неравенство треугольника]
+	\[\forall z, w\in\clx\ \abs{z+w}\leqslant\abs{z}+\abs{w}\]
+	\begin{proof}
+		Пусть $z=a+bi,\ w=c+di$, тогда:
+		\begin{multline*}
+			\sqrt{(a+c)^2+(b+d)^2}\leqslant\sqrt{a^2+b^2}+\sqrt{c^2+d^2}\iff(a+c)^2+(b+d)^2\leqslant
+			a^2+b^2+c^2+d^2+\\
+			+2\sqrt{a^2+b^2}\cdot\sqrt{c^2+d^2}\iff
+			ac+bd\leqslant\sqrt{a^2+b^2}\cdot\sqrt{c^2+d^2}
+		\end{multline*}
+		Если $ac+bd<0$, то автоматически верно. Если $ac+bd\geqslant0$, то:
+		\[ac+bd\leqslant\sqrt{a^2+b^2}\cdot\sqrt{c^2+d^2}\iff
+			a^2c^2+b^2d^2+2abcd\leqslant a^2c^2+a^2d^2+b^2c^2+b^2d^2\iff
+		(ad-bc)^2\geqslant0\]
+	\end{proof}
+\end{statement}
+\begin{statement}
+	\[\forall z\in\clx\ z\cdot\bar{z}=\abs{z}^2\]
+	\begin{proof}
+		Пусть $z=a+bi$, тогда:
+		\[z\cdot\bar{z}=(a+bi)(a-bi)=a^2-b^2i^2=a^2+b^2=\abs{z}^2\]
+	\end{proof}
+\end{statement}
+\begin{consequence}
+	\[\forall
+	z\neq0\in\clx\ z^{-1}=\frac{\bar{z}}{\abs{z}^2}\iff\frac{1}{a+bi}=\frac{a-bi}{a^2+b^2}\]
+\end{consequence}
+\begin{statement}
+	\[\forall z, w\in\clx\ \abs{z\cdot w}=\abs{z}\cdot\abs{w}\]
+	\begin{proof}
+		\[\abs{z\cdot
+		w}^2=(zw)\cdot(\overline{zw})=(z\cdot\bar{z})(w\cdot\bar{w})=\abs{z}^2\cdot\abs{w}^2\]
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Аргументом комплексного числа $z=a+bi\neq0$ называется:
+	\[\varphi\in\R\colon
+	\cos\varphi=\frac{a}{\abs{z}}=\frac{a}{\sqrt{a^2+b^2}},\ \sin\varphi=\frac{b}{\abs{z}}=\frac{b}{\sqrt{a^2+b^2}}\]
+\end{definition}
+\begin{definition}
+	Множеством всех аргументов $z\in\clx$ называется $\operatorname{Arg}
+	z=\{\varphi+2\pi k\mid k\in\Z\}$, где $\varphi$ -- один из
+	аргументов $z$. $\arg z$ -- такой аргумент
+	$\varphi_0\in\operatorname{Arg} z$, что
+	$\varphi_0\in[0,2\pi)$.
+\end{definition}
+\begin{definition}
+	Представление числа $z\in\clx$ в виде
+	$z=\abs{z}\cdot(\cos\varphi+i\sin\varphi)$, где $\varphi$ -- его
+	аргумент, называется его тригонометрической формой.
+\end{definition}
+\begin{statement}
+	Пусть
+	$z_1,z_2\in\clx,\ z_1\abs{z_1}\cdot(\cos\varphi_1+i\sin\varphi_1),
+	z_2=\abs{z_2}\cdot(\cos\varphi_2+i\sin\varphi_2)$, тогда:
+	\[z_1z_2=\abs{z_1}\abs{z_2}\cdot(\cos(\varphi_1+\varphi_2)+i\sin(\varphi_1+\varphi_2))\]
+	\begin{proof}
+		\begin{multline*}
+			z_1z_2=\abs{z_1}\abs{z_2}\cdot(\cos\varphi_1\cos\varphi_2-\sin\varphi_1\sin\varphi_2+i(\sin\varphi_1\cos\varphi_2+\cos\varphi_1\sin\varphi_2))=\\
+			=\abs{z_1}\abs{z_2}\cdot(\cos(\varphi_1+\varphi_2)+i\sin(\varphi_1+\varphi_2))
+		\end{multline*}
+	\end{proof}
+\end{statement}
+\begin{consequence}
+	Пусть
+	$z_1,z_2\in\clx,\ z_1\abs{z_1}\cdot(\cos\varphi_1+i\sin\varphi_1),
+	z_2=\abs{z_2}\cdot(\cos\varphi_2+i\sin\varphi_2)\neq0$, тогда:
+	\[\frac{z_1}{z_2}=\frac{\abs{z_1}}{\abs{z_2}}\cdot(\cos(\varphi_1-\varphi_2)+i\sin(\varphi_1-\varphi_2))\]
+\end{consequence}
+\begin{consequence}[Формула Муавра]
+	Пусть $z=\abs{z}\cdot(\cos\varphi+i\sin\varphi), n\in\Z$, тогда:
+	\[z^n=\abs{z}^n\cdot(\cos n\varphi+i\sin n\varphi)\]
+\end{consequence}
+
 \end{document}
