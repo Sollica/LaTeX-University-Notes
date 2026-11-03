@@ -301,7 +301,7 @@ right=15mm]{geometry}
 		$\abs{a_n}>\frac{\abs{a}}{2}$.
 	\end{proof}
 \end{lemma}
-\begin{theorem}[Арифметические свойства предела]
+\begin{theorem}[Арифметические свойства предела последовательности]
 	Пусть $\lim\limits_{n\to\infty}a_n=a, \lim\limits_{n\to\infty}b_n=b$, тогда:
 	\begin{center}
 		\begin{minipage}{0.35\textwidth}
@@ -651,7 +651,7 @@ right=15mm]{geometry}
 	$\sum\limits_{j=1}^{\infty}\tilde{a}_j$ абсолютно сходится, и его
 	сумма равна сумме ряда $\sum\limits_{k=1}^{\infty}a_k$.
 	\begin{proof}
-		Пусть $\forall j\ a_j>\geqslant0$, $M_n=\max\{k_j\colon j\leqslant
+		Пусть $\forall j\ a_j\geqslant0$, $M_n=\max\{k_j\colon j\leqslant
 		n\}$, тогда:
 		\[\sum_{j=1}^{n}\tilde{a}_j=\sum_{j=1}^{n}a_{k_j}\leqslant
 		\sum_{k=1}^{M_n}a_k\leqslant \sum_{k=1}^{\infty}a_k\]
@@ -775,6 +775,167 @@ right=15mm]{geometry}
 		Для последовательности $x_{1/n}\in D\setminus\{a\}$ выполнено
 		$x_{1/n}\to a$, но последовательность $f(x_{1/n})$ не сходится к
 		$A$, то есть $A$ не является пределом функции $f$ по Гейне.
+	\end{proof}
+\end{theorem}
+\begin{theorem}[Арифметические свойства предела функции]
+	Пусть функции $f, g$ определены на некотором множестве $D\subset \R$
+	и $a$ -- предельная для $D$ точка, тогда:
+	\begin{enumerate}
+		\item Единственность предела:
+			\[
+				\lim_{x\to a}f(x)=A, \lim_{x\to a}f(x)=B\implies A=B
+			\]
+		\item Линейность предела:
+			\[
+				\lim_{x\to a}f(x)=A, \lim_{x\to a}g(x)=B \implies
+				\forall\alpha,\beta \in\R\ \lim_{x\to a}\left(\alpha f(x)+\beta
+				g(x)\right)=\alpha A+\beta B
+			\]
+		\item Предел произведения:
+			\[
+				\lim_{x\to a}f(x)=A, \lim_{x\to a}g(x)=B \implies
+				\lim_{x\to a}\left(f(x)\cdot g(x)\right)=A\cdot B
+			\]
+		\item Предел отношения:
+			\[
+				\lim_{x\to a}f(x)=A, \lim_{x\to a}g(x)=B\neq0, \forall x\in
+				D\ g(x)\neq0 \implies
+				\lim_{x\to a}\frac{f(x)}{g(x)}=\frac{A}{B}
+			\]
+	\end{enumerate}
+	\begin{proof}
+		Доказательства всех арифметических свойств следуют из определения
+		предела функции по Гейне.
+	\end{proof}
+\end{theorem}
+\begin{theorem}[Предел функции и неравенства]
+	Пусть функции $f, g, h$ определены на некотором множестве $D\subset \R$
+	и $a$ -- предельная для $D$ точка, тогда:
+	\begin{enumerate}
+		\item Переход к пределу в неравенстве:
+			\[\exists\,r>0\colon \forall x\in D\cap B'_r(a)\ f(x)\leqslant g(x),
+			\lim_{x\to a}f(x)=A, \lim_{x\to a}g(x)=B\implies A\leqslant B\]
+		\item Предел зажатой функции:
+			\[\exists\,r>0\colon \forall x\in D\cap B'_r(a)\ f(x)\leqslant
+				h(x)\leqslant g(x), \lim_{x\to a}f(x)=\lim_{x\to a}g(x)=A\implies
+			\lim_{x\to a}h(x)=A\]
+		\item Ограниченность функции:
+			\[\lim_{x\to a}f(x)=A\implies \exists\,\delta>0, C>0\colon \forall
+			x\in D\cap B'_\delta(a)\ \abs{f(x)}\leqslant C\]
+		\item Отделимость от нуля:
+			\[\lim_{x\to a}f(x)=A\neq0\implies \exists\,\delta>0\colon \forall
+			x\in D\cap B'_\delta(a)\ \abs{f(x)}>\frac{\abs{A}}{2}\]
+	\end{enumerate}
+	\begin{proof}
+		Доказательства первых двух свойств следуют из определения предела
+		функции по Гейне. Докажем ограниченность функции. По определению
+		предела по Коши $\exists\,\delta>0\colon \abs{f(x)-A}<1$, тогда
+		выполнено $\abs{f(x)}<1+\abs{A}$. Докажем отделимость от нуля. По
+		определению предела по Коши
+		$\exists\,\delta>0\colon\abs{f(x)-A}<\abs{A}/2$, тогда
+		$\abs{f(x)}>\abs{A}/2$.
+	\end{proof}
+\end{theorem}
+\begin{theorem}[О пределе сложной функции]
+	Пусть $f\colon D\to E,\ g\colon E\to\R$, $a$ -- предельная точка
+	$D$, $b$ -- предельная точка $E$, $\lim\limits_{x\to
+	a}f(x)=b,\ \lim\limits_{y\to b}g(y)=c$, $\exists\,B'_\delta(a)\colon
+	\forall x\in B'_\delta(a)\cap D\ f(x)\neq b$. Тогда
+	$\lim\limits_{x\to a}g(f(x))=c$.
+	\begin{proof}
+		Пусть $x_n\to a, x_n\in D, x_n\neq a$. $f(x)\neq b\implies \forall
+		x\in B'_\delta(a)\cap D\ \exists\,N\colon\forall n>N\  f(x_n)\neq
+		b$. Тогда последовательность $f(x_{N+1}), f(x_{N+2}),\ldots$
+		состоит из элементов $E$, причём ни один из этих элементов не
+		совпадает с $b$, и эта последовательность сходится к $b$. Тогда
+		последовательность $g(f(x_{N+1})), g(f(x_{N+2})),\ldots$ сходится к
+		$c$, тогда вся последовательность $\{g(f(x_n))\}$ сходится к $c$.
+	\end{proof}
+\end{theorem}
+
+\begin{lemma}\label{Предел косинуса}
+	\[\lim_{x\to y}\cos x=\cos y\]
+	\begin{proof}
+		\[\abs{\cos x-\cos
+		y}=2\abs{\sin\frac{x+y}{2}\sin\frac{x-y}{2}}\leqslant2\abs{\sin\frac{x-y}{2}}\leqslant\abs{x-y}\]
+		Тогда при $\delta=\varepsilon$ выполняется определение предела по Коши.
+	\end{proof}
+\end{lemma}
+\begin{statement}[Первый замечательный предел]
+	\[\lim_{x\to0}\frac{\sin x}{x}=1\]
+	\begin{proof}
+		Сравним при $x\in(0, \pi/2)$ площади сектора единичной окружности с
+		площадями двух треугольников:
+		\[\frac{1}{2}\cdot 1\cdot 1\cdot \sin x\leqslant\frac{1}{2}\cdot
+		1^2\cdot x\leqslant\frac{1}{2}\cdot 1\cdot \tg x\]
+		Отсюда при рассмотрении обратных и домножения на положительный
+		$\sin x$, имеем:
+		\[\cos x\leqslant\frac{\sin x}{x}\leqslant 1\]
+		По лемме \ref{Предел косинуса} $\lim\limits_{x\to0}\cos x=1$. Тогда
+		по теореме о пределе
+		зажатой функции $\lim\limits_{x\to0}\frac{\sin x}{x}=1$.
+	\end{proof}
+\end{statement}
+\begin{statement}[Второй замечательный предел]
+	\[\lim_{x\to+\infty}\left(1+\frac{1}{x}\right)^x=e\]
+	\begin{proof}
+		Введём функции $f$ и $g$:
+		\[f(x)=\left(1+\frac{1}{[x]+1}\right)^{[x]}\qquad
+		g(x)=\left(1+\frac{1}{[x]}\right)^{[x]+1}\]
+		Тогда $f(x)\leqslant\left(1+\frac{1}{x}\right)^x\leqslant g(x)$,
+		при этом по определению предела по Гейне:
+		\[\lim_{n\to\infty}\left(1+\frac{1}{n+1}\right)^n=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^{n+1}=e\implies\lim_{x\to+\infty}f(x)=\lim_{x\to+\infty}g(x)=e\]
+		Значит утверждение верно из теоремы о пределе зажатой функции.
+	\end{proof}
+\end{statement}
+\begin{theorem}[Критерий Коши]
+	Пусть $f\colon D\to \R$ и $a$ -- предельная точка $D$, тогда:
+	\[\exists\,\lim_{x\to a}f(x)\iff
+		\forall\varepsilon>0\ \exists\,\delta>0\colon \forall x,y\in
+	B'_\delta(a)\cap D\ \abs{f(x)-f(y)}<\varepsilon\]
+	\begin{proof}
+		Если $\lim\limits_{x\to a}f(x)=A$, то найдётся $\delta>0$, при
+		котором $\abs{f(x)-A}<\varepsilon/2$, тогда
+		$\abs{f(x)-f(y)}\leqslant\abs{f(x)-A}+\abs{A-f(y)}<\varepsilon$.\par
+
+		Если выполнено условие Коши, то для произвольной последовательности
+		$x_n\in D\setminus\{a\}, x_n\to a$ последовательность $\{f(x_n)\}$
+		фундаментальная, а значит сходится. Пусть $\lim\limits_{n\to
+		\infty}f(x_)=A$. Если есть другая аналогичная последовательность
+		$y_n$, то рассмотрим такую $z_n$, что $z_{2k-1}=x_k, z_{2k}=y_k$,
+		эта последовательность также сходится к $a$ и $\{f(z_n)\}$
+		фундаментальна и сходится к $A$. Отсюда $\{f(y_n)\}\to A$, то есть
+		предел единственный.
+	\end{proof}
+\end{theorem}
+\begin{definition}
+	\[D_a^+\coloneq D\cap(a,+\infty)\qquad D_a^-\coloneq D\cap(-\infty,a)\]
+\end{definition}
+\begin{definition}
+	Пусть $a$ -- предельная точка $D_a^+$ и существует предел $f$ по
+	множеству $D_a^+$ в точке $a$. Этот предел называют пределом справа
+	функции $f$ в точке $a$ и обозначают $\lim\limits_{x\to a+0}f(x)$
+	или $f(a+0)$. Аналогично определяется предел слева
+	$\lim\limits_{x\to a-0}f(x)$ или $f(a-0)$ю
+\end{definition}
+\begin{theorem}[Вейерштрасс]
+	Пусть $f$ не убывает и ограничена на множестве $D$, $a$ --
+	предельная точка $D_a^-$, тогда существует предел слева:
+	\[\lim_{x\to a-0}f(x)=\sup\{f(x)\mid x\in D_a^-\}\]
+	Пусть $f$ не убывает и ограничена на множестве $D$, $a$ --
+	предельная точка $D_a^+$, тогда существует предел справа:
+	\[\lim_{x\to a+0}f(x)=\inf\{f(x)\mid x\in D_a^+\}\]
+	Аналогичные утверждения с заменой $\sup$ на $\inf$ и наоборот
+	справедливы для не возрастающей функции.
+	\begin{proof}
+		Пусть $M=\sup\{f(x)\mid x\in D_a^-\}$, тогда
+		$\forall\varepsilon>0\ \exists\,x_0\in D_a^-\colon
+		M-\varepsilon<f(x_0)$. Поскольку $f$ не убывает на $D_a^-$, то
+		$\forall x\in(x_0,a)\cap D_a^-\ M-\varepsilon<f(x_0)\leqslant
+		f(x)\leqslant M<M+\varepsilon$. Тогда при $\delta=a-x_0$ получаем,
+		что $\forall x\in D_a^-\cap
+		B'_\delta(a)\ \abs{f(x)-M}<\varepsilon$. Аналогично для предела
+		справа и не возрастающей функции.
 	\end{proof}
 \end{theorem}
 \end{document}

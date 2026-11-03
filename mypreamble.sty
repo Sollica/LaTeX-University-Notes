@@ -68,6 +68,17 @@
 \usepackage[inline]{enumitem}
 \usepackage{hyperref}
 \usepackage{tabularray}
+\usepackage{minted}
+
+\setminted{
+	linenos=true,             % Включить номера строк
+	bgcolor=gray!7,          % Фоновый цвет
+	xleftmargin=25pt,         % Сдвиг блока вправо, чтобы номера строк
+	% помещались на фоне
+	numbersep=8pt,            % Расстояние от номеров до кода
+	style=tango,              % Стиль подсветки
+	breaklines=true
+}
 
 % Математические шрифты
 \UseTblrLibrary{amsmath}
