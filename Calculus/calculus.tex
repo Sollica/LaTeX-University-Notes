@@ -938,4 +938,108 @@ right=15mm]{geometry}
 		справа и не возрастающей функции.
 	\end{proof}
 \end{theorem}
+
+\section{Отношение эквивалентности}
+
+\begin{definition}
+	Бинарное отношение $\sim$ на множестве $X$ называется отношением
+	эквивалентности, если оно обладает свойствами:
+	\begin{center}
+		\begin{minipage}{0.65\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item $\forall x\in X\ x\sim x$ (рефлексивность);
+				\item $\forall x,y\in X\ x\sim y\implies y\sim x$ (симметричность);
+				\item $\forall x, y, z\in X\ x\sim y, y\sim z\implies x\sim z$
+					(транзитивность).
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{definition}
+\begin{definition}
+	Пусть функции $f$ и $g$ определены и не обращаются в 0 в некоторой
+	$B'_\delta(x_0)$. Функции $f$ и $g$ называются эквивалентными при
+	$x\to x_0$, если:
+	\[\lim_{x\to x_0}\frac{f(x)}{g(x)}=1\]
+\end{definition}
+\begin{lemma}
+	Отношение эквивалентности функций при $x\to x_0$ является отношением
+	эквивалетности на множестве функций, определённых и не обращающихся
+	в ноль в $B'_\delta(x_0)$.
+	\begin{proof}
+		\[\tag{Рефлексивность}
+		\lim_{x\to x_0}\frac{f(x)}{f(x)}=1\]
+		\[\tag{Симметричность}
+			\lim_{x\to x_0}\frac{g(x)}{f(x)}=\lim_{x\to
+		x_0}\frac{1}{\frac{f(x)}{g(x)}}=\lim_{x\to x_0}\frac{f(x)}{g(x)}=1\]
+		\[\tag{Транзитивность}
+			\lim_{x\to x_0}\frac{f(x)}{g(x)}=1, \lim_{x\to
+			x_0}\frac{g(x)}{h(x)}=1\implies \lim_{x\to
+			x_0}\frac{f(x)}{h(x)}=\lim_{x\to
+		x_0}\frac{f(x)}{g(x)}\cdot\frac{g(x)}{h(x)}=1\]
+	\end{proof}
+\end{lemma}
+\begin{statement}
+	\[x\sim\sin x\sim \tg x\sim \arctg x\sim \arcsin x\sim e^x-1\sim
+	\ln(1+x)\sim \sh x\sim \th x\]
+\end{statement}
+\begin{lemma}
+	Пусть функции $f_1(x), f_2(x), g_1(x), g_2(x)$ определены и не
+	обращаются в 0 в некоторой $B'_\delta(x_0)$ и $f_1(x)\sim f_2(x),
+	g_1(x)\sim g_2(x)$ при $x\to x_0$, тогда при $x\to x_0$:
+	\[f_1(x)g_1(x)\sim
+	f_2(x)g_2(x)\qquad\frac{f_1(x)}{g_1(x)}\sim\frac{f_2(x)}{g_2(x)}\]
+	\begin{proof}
+		\[\lim_{x\to x_0}\frac{f_1(x)g_1(x)}{f_2(x)g_2(x)}=\lim_{x\to
+		x_0}\frac{f_1(x)}{g_1(x)}\cdot\lim_{x\to x_0}\frac{f_2(x)}{g_2(x)}=1\]
+		\[\lim_{x\to x_0}\frac{f_1(x)g_2(x)}{f_2(x)g_1(x)}=\lim_{x\to
+		x_0}\frac{f_1(x)}{g_1(x)}\cdot\lim_{x\to x_0}\frac{f_2(x)}{g_2(x)}=1\]
+	\end{proof}
+\end{lemma}
+\begin{lemma}
+	Если $f(x)\sim g(x)$ при $x\to x_0$, то:
+	\[\lim_{x\to x_0}f(x)=\lim_{x\to x_0}g(x)\]
+	При этом если один из пределов не существует, то не существует и другой.
+	\begin{proof}
+		\[\lim_{x\to x_0}f(x)=\lim_{x\to x_0}\frac{f(x)}{g(x)}\cdot
+		g(x)=\lim_{x\to x_0}g(x)\]
+	\end{proof}
+\end{lemma}
+\begin{lemma}
+	Пусть $f(y)\sim g(y)$ при $y\to y_0$, $y(x)\to y_0$ при $x\to x_0$ и
+	$y(x)\neq y_0$ при $x\in B'_\delta(x_0)$, тогда $f(y(x))\sim
+	g(y(x))$ при $x\to x_0$.
+	\begin{proof}
+		\[\lim_{x\to x_0}\frac{f(y(x))}{g(y(x))}=\lim_{y\to y_0}\frac{f(x)}{g(x)}=1\]
+	\end{proof}
+\end{lemma}
+\begin{definition}[$o$-малое]
+	Пусть функции $f,g$ определены в $B'_\delta(x_0)$ и функция $g(x)$
+	не обращается в ноль. Функция $f$ называется бесконечно малой
+	относительно $g$ при $x\to x_0$, если:
+	\[f(x)=o(g(x))\text{ при }x\to x_0\iff\lim_{x\to x_0}\frac{f(x)}{g(x)}=0\]
+\end{definition}
+\begin{theorem}
+	\[f(x)\sim g(x)\text{ при }x\to x_0\iff f(x)-g(x)=o(g(x))\text{ при }x\to x_0\]
+	\begin{proof}
+		\[\lim_{x\to x_0}\frac{f(x)-g(x)}{g(x)}=0\iff\lim_{x\to
+		x_0}\left(\frac{f(x)}{g(x)}-1\right)=0\]
+	\end{proof}
+\end{theorem}
+\begin{definition}[$O$-большое]
+	Пусть функции $f,g$ определены в $B'_\delta(x_0)$. Функция $f$
+	называется ограниченной относительно функции $g$ при $x\to x_0$, если:
+	\[f(x)=O(g(x))\text{ при }x\to x_0\iff \exists\,\delta>0,
+	C\in\R\colon\forall x\in B'_\delta(x_0)\ \abs{f(x)}\leqslant C\abs{g(x)}\]
+\end{definition}
+\begin{theorem}[Свойства $o$-малого и $O$-большого]
+	Для функций $f, g$, не обращающихся в 0 в некоторой $B'_\delta(x_0)$
+	при $x\to x_0$ справедливо:
+	\begin{align*}
+		&o(f)\pm o(f)=o(f) & &o(O(f))=o(f) & &o(f)\cdot O(g)=o(fg)\\
+		&O(f)\pm O(f)=O(f) & &O(o(f))=o(f) & &O(f)\cdot O(g)=O(fg)\\
+		&o(f)=O(f) & &O(O(f))=O(f) &
+		&\forall\alpha>0\ \abs{o(f)}^\alpha=o(\abs{f}^\alpha)\\
+		& & & & &\forall\alpha>0\ \abs{O(f)}^\alpha=O(\abs{f}^\alpha)
+	\end{align*}
+\end{theorem}
 \end{document}
