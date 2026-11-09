@@ -543,11 +543,13 @@ right=15mm]{geometry}
 		$1>\abs{a_n-a_{N+1}}\geqslant\abs{a_n}-\abs{a_{N+1}}\implies
 		\abs{a_n}<\abs{a_{N+1}}+1$, то есть последовательность ограничена:
 		\[\forall n\ \abs{a_n}\leqslant \max\{\abs{a_{N+1}}+1, \abs{a_N},
-		\abs{a_{N-1}},\ldots,\abs{a_1}\}\]		Значит, по теореме
+		\abs{a_{N-1}},\ldots,\abs{a_1}\}\]
+		Значит, по теореме
 		Больцано-Вейерштрасса для фиксированного $\varepsilon>0$:
 		\[\exists\,K\colon\forall k\geqslant
 		K\ \abs{a_{n_k}-a}<\frac{\varepsilon}{2}\]
-		Рассмотрим $N$ из условия фундаментальности $a_n$, тогда она сходится:
+		Рассмотрим $N(\frac{\varepsilon}{2})$ из условия фундаментальности $a_n$,
+		тогда она сходится:
 		\[\forall n\geqslant N\ \abs{a_n-a}\leqslant
 		\abs{a_n-a_{n_k}}+\abs{a_{n_k}-a}<\varepsilon\]	
 	\end{proof}
@@ -640,7 +642,7 @@ right=15mm]{geometry}
 \begin{definition}
 	Будем говорить, что ряд $\sum\limits_{j=1}^{\infty}\tilde{a}_j$
 	получен перестановкой членов ряда $\sum\limits_{k=1}^{\infty}a_k$,
-	если $\exists\,\{k_k\}_{j=1}^\infty$, задающая взаимно-однозначное
+	если $\exists\,\{k_j\}_{j=1}^\infty$, задающая взаимно-однозначное
 	преобразование множества $\N$ на себя, и такая, что $\forall
 	j\in\N\ \tilde{a}_j=a_{k_j}$.
 \end{definition}
@@ -665,7 +667,7 @@ right=15mm]{geometry}
 
 		Пусть $a_j$
 		могут быть отрицательны, тогда рассмотрим $a_j^+=\max\{0, a_j\}$ и
-		$a_j^-=\max\{0 -a_j\}$, тогда $a_j=a_j^+-a_j^-$, аналогично для
+		$a_j^-=\max\{0, -a_j\}$, тогда $a_j=a_j^+-a_j^-$, аналогично для
 		$\tilde{a}_j$. Заметим. что ряды
 		$\sum a_j^+$ и $\sum a_j^-$ сходятся, так как по условию сходится
 		$\sum\abs{a_j}$, тогда ряды $\sum \tilde{a}_j^+$ и $\sum \tilde{a}_j^-$

@@ -851,5 +851,156 @@ right=15mm]{geometry}
 	Пусть $z=\abs{z}\cdot(\cos\varphi+i\sin\varphi), n\in\Z$, тогда:
 	\[z^n=\abs{z}^n\cdot(\cos n\varphi+i\sin n\varphi)\]
 \end{consequence}
+\begin{theorem}[Формула Эйлера]
+	В комплексном анализе функция $\operatorname{exp}\colon \R\to\R,
+	x\mapsto e^x$ доопределяется до функции
+	$\operatorname{exp}\colon\clx\to\clx, z\mapsto e^z$, тогда:
+	\[\forall x\in \R\ e^{ix}=\cos x+i\sin x\]
+\end{theorem}
+\begin{consequence}
+	Любое комплексное число представляется в показательной форме:
+	\[\forall z\in \clx\ z=\abs{z}\cdot e^{i\varphi}\]
+\end{consequence}
+\begin{definition}
+	Пусть $n\geqslant2$, корнем $n$-й степени из числа $z\in\clx$
+	называется всякое $w\in\clx$, такое что $w^n=z$:
+	\[\sqrt[n]{z}=\{w\in\clx\mid w^n=z\}\]
+\end{definition}
+\begin{statement}
+	\[\sqrt[n]{z}=\sqrt[n]{\abs{z}}\left(\cos\frac{\varphi+2\pi
+	k}{n}+i\sin\frac{\varphi+2\pi k}{n}\right),\ k\in\Z\]
+	\begin{proof}
+		Если $w^n=z$, то $\abs{w}^n=\abs{z}$. Пусть $\abs{z}=0$, тогда
+		$\abs{w}=0\implies w=0$. Пусть
+		$z\neq0,\ z=\abs{z}\cdot(\cos\varphi+i\sin\varphi),\ w=\abs{w}\cdot(\cos\psi+i\sin\psi)$,
+		то есть $w^n=\abs{w}^n\cdot(\cos n\psi+i\sin n\psi)$, тогда:
+		\[w^n=z\iff
+			\begin{cases}
+				\abs{w}^n=\abs{z}\\
+				n\psi=\varphi+2\pi k,\ k\in\Z
+			\end{cases}\iff
+			\begin{cases}
+				\abs{w}=\sqrt[n]{z}\\
+				\psi=\frac{\varphi+2\pi k}{n},\ k\in\Z
+		\end{cases}\]
+	\end{proof}
+\end{statement}
+\begin{consequence}
+	Все элементы из $\sqrt[n]{z},\ z\in\clx$ лежат на одной окружности с
+	центром в нуле радиуса $\sqrt[n]{\abs{z}}$, причём они являются
+	вершинами правильного $n$-угольника.
+\end{consequence}
+\begin{consequence}
+	Множество $\sqrt[n]{z}$ является множеством корней многочлена $x^n-z$.
+\end{consequence}
+
+\subsection{Многочлены}
+
+\begin{theorem}[Основная теорема алгебры комплексных чисел]
+	Всякий многочлен степени $n\geqslant1$ с комплексными коэффициентами
+	имеет комплексный корень:
+	\[f=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_1x+a_0, n\geqslant1, a_i\in\clx,
+	a_n\neq0\implies \exists\,c\in\clx\colon f(c)=0\]
+	Поля, для которых выполняется данное свойство, называются
+	алгебраически замкнутыми.
+\end{theorem}
+\begin{definition}
+	Пусть $F$ -- поле, тогда $F[x]$ -- множество многочленов от
+	переменной $x$ с коэффициентами из $F$.
+\end{definition}
+\begin{definition}
+	Пусть $F$ -- поле, $f\in F[x]$. Степенью $\deg f$ называется
+	наибольшее $n\in\Z\colon$, такое что $a_n\neq0$.
+\end{definition}
+\begin{definition}
+	Говорят, что многочлен $f(x)$ делится на многочлен $g(x)$, если:
+	\[\exists\,h(x)\colon f(x)=g(x)\cdot h(x)\]
+\end{definition}
+\begin{theorem}[Деление с остатком]
+	Пусть $f, g\in F[x], g\neq0$, тогда:
+	\[\exists!\,q(x), r(x)\colon f(x)=q(x)\cdot g(x)+r(x)\]
+	При этом выполняется:
+	\[
+		\begin{sqcases}
+			r(x)=0\\
+			\deg r(x)<\deg g(x)
+	\end{sqcases}\]
+\end{theorem}
+\begin{consequence}
+	Пусть $g(x)=x-c, c\in F,\ f(x)=q(x)\cdot g(x)+r(x)$, тогда:
+	\[
+		\begin{sqcases}
+			r(x)=0\\
+			\deg r<1
+	\end{sqcases}\iff r(x)=r=\const\]
+\end{consequence}
+\begin{theorem}[Безу]
+	Остаток от деления $f(x)$ на $x-c, c\in F$ равен $r=f(c)$.
+	\begin{proof}
+		\[f(c)=q(c)\cdot(c-c)+r=r\]
+	\end{proof}
+\end{theorem}
+\begin{consequence}
+	Если $c\in F$ -- корень $f(x)$, то $f(x)$ делится на $x-c$.
+\end{consequence}
+\begin{definition}
+	Кратностью корня $c\in F$ многочлена $f$ называется наибольшее
+	$k\in\N$, такое что $f(x)$ делится на $(x-c)^k$.
+\end{definition}
+\begin{statement}
+	Пусть $f\in\clx[x], \deg f=n\geqslant1$, $a_i\in\clx$ -- его
+	коэффициенты, $c_1,\ldots,c_S$ -- его корни, $k_1,\ldots, k_S$ -- их
+	кратности, тогда:
+	\[f(x)=a_n(x-c_1)^{k_1}\cdot (x-c_2)^{k_2}\cdot\ldots\cdot (x-c_S)^{k_S}\]
+\end{statement}
+
+\subsection{Векторные пространства}
+
+\begin{definition}
+	Множество $V$ называется векторным (или линейным) пространством над
+	полем $F$, если на $V$ заданы операции «сложение» $V\times V\to
+	V,\ (x, y)\mapsto x+y$ и «умножение на скаляр» $F\times V\to
+	V,\ (\alpha, x)\mapsto \alpha\cdot x$, удовлетворяющие аксиомам
+	векторного пространства:
+	\begin{center}
+		\begin{minipage}{0.86\textwidth}
+			\begin{enumerate}[itemsep=0pt]
+				\item $\forall x, y\in V\ x+y=y+x$ (коммутативность сложения);
+				\item $\forall x, y, z\in V\ (x+y)+z=x+(y+z)$ (ассоциативность сложения);
+				\item $\exists\,\vv{0}\in V\colon\forall x\in
+					V\ x+\vv{0}=\vv{0}+x=x$ (нулевой элемент);
+				\item $\forall x\in V\ \exists\,-x\in V\colon
+					x+(-x)=(-x)+x=\vv{0}$ (противоположный элемент);
+				\item $\forall\alpha,\beta\in F, x\in V\ (\alpha+\beta)\cdot
+					x=\alpha\cdot x+\beta\cdot x$;
+				\item $\forall\alpha\in F, x, y\in
+					V\ \alpha\cdot(x+y)=\alpha\cdot x+\alpha\cdot y$;
+				\item $\forall\alpha,\beta\in F, x\in V\ (\alpha\beta)\cdot
+					x=\alpha\cdot(\beta\cdot x)$;
+				\item $\forall x\in V\ 1\cdot x=x$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+\end{definition}
+\begin{definition}
+	Элементы векторного пространства называются (абстрактными) векторами.
+\end{definition}
+\begin{statement}[Свойства векторных пространств]
+	Пусть $V$ -- векторное пространство над полем $F$, тогда выполнены свойства:
+	\[\exists!\,\vv{0}\in V\]
+	\begin{proof}
+		Пусть $\vv{0}'$ -- ещё один нулевой элемент, тогда:
+		\[\vv{0}'=\vv{0}'+\vv{0}=\vv{0}\]
+	\end{proof}
+	\[\forall x\in V\ \exists!\,-x\in V\]
+	\begin{proof}
+		Пусть $(-x)'$ -- ещё один противоположный к $x$ элемент, тогда:
+		\[(-x)'=(-x)'+\vv{0}=(-x)'+(x+(-x))=((-x)'+x)+(-x)=\vv{0}+(-x)=(-x)\]
+	\end{proof}
+	\[\forall\alpha\in F\ \alpha\cdot\vv{0}=\vv{0}\]
+	\[\forall\alpha\in F, x\in V\ \alpha\cdot(-x)=-(\alpha\cdot x)\]
+	\[\forall x\in V\ 0\cdot x=\vv{0}\]
+	\[\forall x\in V\ (-1)\cdot x=-x\]
+\end{statement}
 
 \end{document}
