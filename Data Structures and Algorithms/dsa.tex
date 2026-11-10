@@ -54,17 +54,100 @@ right=15mm]{geometry}
 	-- первый вышел» (LIFO -- Last In First Out).
 \end{definition}
 \begin{definition}
-	Инфиксной записью называется запись арифметических выражений, где
-	операция записывается между операндами, префиксной записью --
-	операция записывается перед операндами, постфиксной записью --
-	операция записывается после операндов.
-\end{definition}
-\begin{definition}
 	Очередь -- структура данных, работающая по принципу первый пришёл
 	-- первый вышел» (FIFO -- First In First Out).
 \end{definition}
 \begin{definition}
-	Очередь -- двусторонняя очередь, можно добавлять и удалять элементы
+	Дек -- двусторонняя очередь, можно добавлять и удалять элементы
 	как с начала, так и с конца.
 \end{definition}
+
+\section{Сортировки}
+
+\subsection{Квадратичные сортировки}
+
+\begin{algorithm}[Сортировка пузырьком]
+	\hfill
+	\begin{minted}{python}
+def bubble_sort(a: list) -> None:
+	n = len(a)
+	for i in range(n):
+		for j in range(n - i - 1):
+			if a[j] > a[j + 1]:
+				a[j], a[j + 1] = a[j + 1], a[j]
+	\end{minted}
+\end{algorithm}
+\begin{algorithm}[Сортировка вставками]
+	\hfill
+	\begin{minted}{python}
+def insertion_sort(a: list) -> None:
+	n = len(a)
+	for k in range(n):
+		now = a[k]
+		new_place = 0
+		for j in range(k - 1, -1, -1):
+			if a[j] > now:
+				a[j + 1] = a[j]
+			else:
+				new_place = j + 1
+				break
+		a[new_place] = now
+	\end{minted}
+\end{algorithm}
+\begin{algorithm}[Сортировка выбором]
+	\hfill
+	\begin{minted}{python}
+def selection_sort(a: list) -> None:
+	n = len(a)
+	for k in range(n):
+		min_index = k
+		for j in range(k + 1, n):
+			if a[j] < a[min_index]:
+				min_index = j
+		a[k], a[min_index] = a[min_index], a[k]
+	\end{minted}
+\end{algorithm}
+\begin{statement}[Свойства сортировок]
+	\hfill
+	\begin{center}
+		\begin{tblr}{|l|c|c|c|}
+			\hline
+			Свойство {\textbackslash} Сортировка & Пузырьком & Вставками & Выбором\\
+			\hline
+			Худший случай & $O(n^2)$ & $O(n^2)$ & $O(n^2)$\\
+			Лучший случай & $O(n^2)$ & $O(n)$ & $O(n^2)$\\
+			Количество присваиваний & $O(n^2)$ & $O(n^2)$ & $O(n^2)$\\
+			Устойчивая & Да & Да & Нет\\
+			\hline
+		\end{tblr}
+	\end{center}
+\end{statement}
+
+\subsection{Эффективные сортировки}
+
+\begin{algorithm}[Сортировка слиянием]
+	\hfill
+	\begin{minted}{python}
+def merge(a: list, b: list) -> list:
+	ans = []
+	i = j = 0
+	while i < len(a) or j < len(b):
+		if i < len(a) and (j == len(b) or a[i] <= b[j]):
+			ans.append(a[i])
+			i += 1
+		else:
+			ans.append(b[j])
+			j += 1
+	return ans
+
+def merge_sort(a: list) -> list:
+	n = len(a)
+	if n == 1:
+		return a
+	return merge(
+		merge_sort(a[:(n + 1) // 2]),
+		merge_sort(a[(n + 1) // 2:])
+	)
+	\end{minted}
+\end{algorithm}
 \end{document}
