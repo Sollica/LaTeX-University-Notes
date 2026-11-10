@@ -146,7 +146,7 @@ right=15mm]{geometry}
 	\end{proof}
 \end{consequence}
 
-\section{Пределы}
+\section{Пределы последовательностей}
 
 \subsection{Верхняя и нижняя грани}
 
@@ -684,7 +684,7 @@ right=15mm]{geometry}
 	есть при $x\in \R$ ряд будет сходиться к $x$).
 \end{theorem}
 
-\subsection{Пределы функций}
+\section{Пределы функций}
 
 \begin{definition}
 	Окрестностью радиуса $\varepsilon>0$ точки $a\in\R$ называется множество:
@@ -782,7 +782,7 @@ right=15mm]{geometry}
 \begin{theorem}[Арифметические свойства предела функции]
 	Пусть функции $f, g$ определены на некотором множестве $D\subset \R$
 	и $a$ -- предельная для $D$ точка, тогда:
-	\begin{enumerate}
+	\begin{enumerate}[itemsep=0pt]
 		\item Единственность предела:
 			\[
 				\lim_{x\to a}f(x)=A, \lim_{x\to a}f(x)=B\implies A=B
@@ -941,7 +941,7 @@ right=15mm]{geometry}
 	\end{proof}
 \end{theorem}
 
-\section{Отношение эквивалентности}
+\subsection{Отношение эквивалентности}
 
 \begin{definition}
 	Бинарное отношение $\sim$ на множестве $X$ называется отношением
@@ -1043,5 +1043,117 @@ right=15mm]{geometry}
 		&\forall\alpha>0\ \abs{o(f)}^\alpha=o(\abs{f}^\alpha)\\
 		& & & & &\forall\alpha>0\ \abs{O(f)}^\alpha=O(\abs{f}^\alpha)
 	\end{align*}
+\end{theorem}
+
+\subsection{Непрерывные функции}
+
+\begin{definition}
+	Функция $f\colon D\to\R$ непрерывна по множеству $D$ в точке $a\in D$, если:
+	\[\forall\varepsilon>0\ \exists\,\delta>0\colon\forall x\in
+	D\ \abs{x-a}<\delta\implies \abs{f(x)-f(a)}<\varepsilon\]
+\end{definition}
+\begin{definition}
+	Точка $a\in D$ называется изолированной точкой множества $D$, если:
+	\[\exists\,\delta>0\colon B'_\delta(a)\cap D=\varnothing\]
+\end{definition}
+\begin{statement}
+	Пусть $f\colon D\to\R, a\in D$, тогда равносильны утверждения:
+	\begin{center}
+		\begin{minipage}{0.5\textwidth}
+			\begin{enumerate}
+				\item Функция $f$ непрерывна в точке $a$;
+				\item $\forall x_n\in D\colon x_n\to a\ f(x_n)\to f(a)$;
+				\item Либо $a$ -- изолированная точка $D$, либо $a$ -- предельная
+					точка $D$ и $\lim\limits_{x\to a}f(x)=f(a)$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+	\begin{proof}
+		Если $a$ -- изолированная точка $D$, то $\exists\,\delta>0\colon
+		B'_\delta(a)\cap D=\varnothing$, значит единственная точка $x\in
+		D\colon \abs{x-a}<\delta$ -- это точка $a$, тогда $f$ всегда
+		непрерывна в изолированной точке. При этом если $x_n\in D, x_n\to
+		a$, то начиная с какого-то номера $x_n=a$.\par
+
+		Если $a$ -- предельная точка, то пункт 2 следует из 1 аналогично
+		доказательству эквивалентности определений предела функции по Коши
+		и по Гейне. Пункт 3 следует из 2 в силу определения предела по
+		Гейне. Пункт 1 следует из 3 из определения предела по Коши и непрерывности.
+	\end{proof}
+\end{statement}
+\begin{statement}[Арифметические свойства непрерывных функций]
+	Пусть функции $f, g$ определены на некотором множестве $D\subset \R$
+	и непрерывны в некоторой точке $a\in D$, тогда:
+	\begin{center}
+		\begin{minipage}{0.7\textwidth}
+			\begin{enumerate}
+				\item Функции $\alpha f+\beta g,\ f\cdot g$ непрерывны в точке $a$;
+				\item Если $\forall x\in D\ g(x)\neq0$, то $f/g$ непрерывна в точке $a$;
+				\item $\exists\,\delta>0, C>0\colon\forall x\in D\cap B_\delta(a)
+					\abs{f(x)}\leqslant C$;
+				\item Если $f(a)\neq0$, то $\exists\,\delta>0\colon\forall X\in
+					D\cap B_\delta(a)\ \abs{f(x)}>\abs{f(a)}/2$.
+			\end{enumerate}
+		\end{minipage}
+	\end{center}
+	\begin{proof}
+		Для изолированных точек очевидно верно, для предельных точек
+		следует из свойств предела.
+	\end{proof}
+\end{statement}
+\begin{statement}
+	Пусть $f\colon D\to K\subset\R$ и $g\colon K\to\R$, причём $f$
+	непрерывна в точке $a\in D$ по множеству $D$, $g$ непрерывна в точке
+	$f(a)$ по множеству $K$, тогда $g\circ f$ непрерывна в точке $a$ по
+	множеству $D$.
+	\begin{proof}
+		Пусть $x_n\in D, x_n\to a$, тогда $f(x_n)\to f(a), f(x_n)\in K$, то
+		есть $g(f(x_n))\to g(f(a))$.
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Предельная точка $a$ множества $D$ называется точкой разрыва функции
+	$f\colon D\to\R$, если $a\notin D$ или $a\in D$ и $f$ не является
+	непрерывной в точке $a$.
+\end{definition}
+\begin{definition}[Классификация разрывов]
+	Пусть $x_0$ -- точка разрыва $f$.\par
+
+	Устранимым разрывом называется такой разрыв, что
+	$\exists\,\lim\limits_{x\to x_0}f(x)$, но $f$ не определена в $x_0$
+	или $\lim\limits_{x\to x_0}f(x)\neq f(x_0)$.\par
+
+	Разрывом 1-го рода называется такой разрыв, что существуют оба
+	односторонних предела, но скачок функции не равен нулю:
+	\[\Delta f(x_0)=\abs{f(x_0+0)-f(x_0-0)}\neq 0\]
+	Разрывом 2-го рода называется такой разрыв, что не существует хотя
+	бы один из односторонних пределов.
+\end{definition}
+\begin{statement}
+	Пусть $f$ -- монотонная на интервале $(a, b)$ функция, тогда $f$
+	может иметь разрывы только первого рода на интервале $(a, b)$.
+	\begin{proof}
+		Пусть $x_0\in (a, b)$ -- точка разрыва, $f$ не убывает, возьмём
+		$\delta>0\colon [x_0-\delta,x_0+\delta]\subset(a, b)$, тогда по
+		теореме Вейерштрасса:
+		\[\lim_{x\to x_0-0}f(x)=\sup_{x<x_0}f(x)\leqslant
+		f(x_0)\leqslant\inf_{x>x_0}f(x)=\lim_{x\to x_0+0}f(x)\]
+		Если односторонние пределы в точке $x_0$ равны, то $f$ непрерывна в
+		точке $x_0$, иначе имеем разрыв первого рода.
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Функция называется непрерывной на множестве $D$, если она непрерывна
+	в каждой точке множества $D$ по множеству $D$.
+\end{definition}
+\begin{definition}
+	Функция $f$ ограничена на множестве $D$, если:
+	\[\exists\,C>0\colon \forall x\in D\ \abs{f(x)}\leqslant C\]
+\end{definition}
+\begin{theorem}[Вейерштрасс]
+	Пусть $f$ непрерывна на отрезке $[a, b]$, тогда она ограничена на
+	$[a, b]$ и достигает минимума и максимума, то есть:
+	\[\exists\,x_m, x_M\in[a, b]\colon f(x_m)=\inf\{f(x)\mid x\in[a,
+	b]\}\quad f(x_M)=\sup\{f(x)\mid x\in[a,b]\}\]
 \end{theorem}
 \end{document}
