@@ -1002,5 +1002,79 @@ right=15mm]{geometry}
 	\[\forall x\in V\ 0\cdot x=\vv{0}\]
 	\[\forall x\in V\ (-1)\cdot x=-x\]
 \end{statement}
+\begin{definition}
+	Пусть $V$ -- векторное пространство над полем $F$. Подмножество
+	$U\subseteq V$ называется подпространством (или линейным
+	подпространством), если:
+	\[\vv{0}\in U\]
+	\[x, y\in U\implies x+y\in U\]
+	\[\alpha\in F, x\in U\implies \alpha\cdot x\in U\]
+\end{definition}
+\begin{statement}
+	Пусть $A\in\mat_{m\times n}(F)$, тогда множество решение $Ax=\vv{0}$
+	является подпространством в $F^n$.
+	\begin{proof}
+		Пусть $S\subseteq F^n$ -- множество решений $Ax=\vv{0}$, тогда:
+		\[\vv{0}=
+			\begin{pmatrix}
+				0 & 0 & \ldots & 0
+		\end{pmatrix}^T\in S\]
+		\[x,y\in S\implies Ax=\vv{0}, Ay=\vv{0}\implies
+		A(x+y)=Ax+Ay=\vv{0}+\vv{0}\implies x+y\in S\]
+		\[\alpha\in F,x\in S\implies A(\alpha
+		x)=\alpha(Ax)=\alpha\cdot\vv{0}=\vv{0}\implies \alpha x\in S\]
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Пусть $v_1,\ldots,v_m\in V$ -- конечный набор векторов. Всякое
+	выражение вида $\alpha_1v_1+\ldots+\alpha_mv_m$, где
+	$\alpha_1,\ldots,\alpha_m\in F$ называется линейной комбинацией
+	векторов $v_1,\ldots,v_m$.
+\end{definition}
+\begin{definition}
+	Пусть $S\subseteq V$ -- произвольное подмножество. Множество всех
+	векторов из $V$, представимых в виде линейной комбинации векторов из
+	$S$ называется линейной оболочкой $\langle S\rangle$ множества $S$.
+	Соглашение: $\langle\varnothing\rangle=\langle\vv{0}\rangle=\{\vv{0}\}$.
+\end{definition}
+\begin{statement} $\forall S\subseteq V\ \langle S\rangle$ является
+	подпространством в $V$.
+	\begin{proof}
+		Если $S=\varnothing$, то $\langle S\rangle=\langle
+		\varnothing\rangle=\{\vv{0}\}$ -- подпространство в $V$. Пусть
+		$S\neq\varnothing$, тогда:
+		\[\exists\,v\in S\implies \vv{0}=0\cdot v\in\langle S\rangle\]
+		\begin{multline*}
+			x, y\in\langle S\rangle \implies
+			x=\alpha_1v_1+\ldots+\alpha_mv_m,\ y=\beta_1w_1+\ldots+\beta_kw_k,\ v_i,w_i\in
+			S,\ \alpha_i,\beta_i\in F\implies\\
+			\implies
+			x+y=\alpha_1v_1+\ldots+\alpha_mv_m+\beta_1w_1+\ldots+\beta_kw_k\in
+			\langle S\rangle
+		\end{multline*}
+		\[x\in\langle S\rangle, \alpha\in F,
+			x=\alpha_1v_1+\ldots+\alpha_mv_m\implies \alpha
+		x=(\alpha\alpha_1)v_1+\ldots+(\alpha\alpha_m)v_m\in\langle S\rangle\]
+	\end{proof}
+\end{statement}
+\begin{definition}
+	Говорят, что $\langle S\rangle$ подпространство, натянутое на $S$
+	или порождённое множеством $S$.
+\end{definition}
+\begin{definition}
+	Линейная комбинация $\alpha_1v_1+\ldots+\alpha_mv_m$ называется
+	тривиальной, если $\alpha_1=\alpha_2=\ldots=\alpha_m=0$ и нетривиальной иначе.
+\end{definition}
+\begin{definition}
+	Векторы $v_1,\ldots,v_m$ называются линейно зависимыми, если
+	существует их нетривиальная линейная комбинация, равная $\vv{0}$.
+\end{definition}
+\begin{definition}
+	Подмножество $S\subseteq V$ называется линейно зависимым, если в $S$
+	есть конечное линейно зависимое подмножество.
+\end{definition}
+\begin{definition}
+	Системой векторов называется множество векторов, в котором возможны повторения.
+\end{definition}
 
 \end{document}
