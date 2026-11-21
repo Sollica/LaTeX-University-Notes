@@ -1228,7 +1228,7 @@ right=15mm]{geometry}
 	\end{proof}
 \end{theorem}
 
-\subsection{Дифференциал}
+\section{Производные}
 
 \begin{definition}
 	Линейной называется такая функция $l\colon\R\to\R$, что:
@@ -1243,4 +1243,50 @@ right=15mm]{geometry}
 	Линейную функцию $l$ называют дифференциалом $f$ в точке $a$
 	и обозначают $df$ или $\left.df\right|_{x=a}$.
 \end{definition}
+\begin{definition}
+	Пусть $f$ определена в некоторой окрестности $a$. Производной
+	функции $f$ в точке $a$ называют, если он существует, предел:
+	\[f'(a)=\frac{df}{dx}(a)=\lim_{x\to
+	a}\frac{f(x)-f(a)}{x-a}=\lim_{h\to0}\frac{f(a+h)-f(a)}{h}\]
+\end{definition}
+\begin{statement}
+	Функция $f$ дифференцируема в точке $a$ тогда и только тогда, когда
+	в этой точке существует производная $f'(a)$, при этом в случае
+	дифференцируемости:
+	\[\left.df\right|_{x=a}(h)=f'(a)h=f'(a)dx\]
+	\begin{proof}
+		\begin{multline*}
+			f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}{h}\iff
+			\lim_{h\to0}\frac{-f(a+h)+f(a)+f'(a)h}{h}=0\iff\\
+			\iff -f(a+h)+f(a)+f'(a)h=o(h)\iff f(a+h)=f(a)+f'(a)h-o(h)
+		\end{multline*}
+	\end{proof}
+\end{statement}
+\begin{statement}[Свойства дифференцируемых функций]
+	Пусть $f, g$ определены в некоторой окрестности $a$ и
+	дифференцируемы в $a$, тогда:
+	\begin{enumerate}
+		\item $f$ непрерывная в точке $a$;
+		\item Функция $\lambda f+\mu g$ дифференцируема в точке $a$, а также:
+			\[(\lambda f+\mu g)'(a)=\lambda f'(a)+\mu g'(a)\]
+		\item Функция $fg$ дифференцируема в точке $a$, а также:
+			\[(fg)'(a)=f'(a)g(a)+f(a)g'(a)\]
+		\item Если $g$ отличная от нуля в некоторой окрестности $a$, то
+			$\frac{f}{g}$ дифференцируема в $a$, а также:
+			\[\left(\frac{f}{g}\right)'(a)=\frac{f'(a)g(a)-f(a)f'(a)}{(g(a))^2}\]
+	\end{enumerate}
+	\begin{proof}
+		\[\lim_{x\to a}f(x)=\lim_{x\to
+		a}(f(a)+f'(a)(x-a)+\alpha(x-a)\cdot(x-a))=f(a)\]
+		\[\lim_{x\to a}\frac{f(x)g(x)-f(a)g(a)}{x-a}=\lim_{x\to
+			a}\frac{f(x)-f(a)}{x-a}g(x)+\lim_{x\to
+		a}\frac{g(x)-g(a)}{x-a}f(a)=f'(a)g(a)+f(a)g'(a)\]
+		\begin{multline*}
+			\lim_{x\to
+			a}\frac{\frac{f(x)}{g(x)}-\frac{f(a)}{g(a)}}{x-a}=\lim_{x\to
+			a}\frac{f(x)g(a)-f(a)g(x)}{x-a}\cdot\frac{1}{g(x)g(a)}=\\=\frac{1}{(g(a))^2}\lim_{x\to
+			a}\frac{(f(x)-f(a))g(a)-f(a)(g(x)-g(a))}{x-a}=\frac{f'(a)g(a)-f(a)g'(a)}{(g(a))^2}
+		\end{multline*}
+	\end{proof}
+\end{statement}
 \end{document}

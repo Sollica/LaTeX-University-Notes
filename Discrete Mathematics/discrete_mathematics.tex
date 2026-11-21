@@ -500,7 +500,7 @@ right=15mm]{geometry}
 		$S\in C_n^k$, равно количеству способов упорядочить $k$ элементов,
 		то есть количеству перестановок $A_k^k=k!$. Тогда из следствия
 		\ref{Счет гвоздей в упаковках} получаем:
-		\[C_n^k=k!\cdot A_n^k=\frac{n!}{k!(n-k)!}\]	
+		\[k!\cdot C_n^k=A_n^k\implies C_n^k=\frac{n!}{k!(n-k)!}\]	
 	\end{proof}
 \end{theorem}
 \begin{consequence}
@@ -714,7 +714,7 @@ right=15mm]{geometry}
 		используя правила перемножения степенных рядов, получаем:
 		\begin{multline*}
 			(1+x)^{-n}=\sum_{k=0}^{\infty}\binom{-n}{k}x^k=\left(\sum_{k=0}^{\infty}(-1)^kx^k\right)^n=\sum_{k=0}^{\infty}x^k\left(\sum_{a_1+a_2+\ldots+a_n=k}(-1)^{a_1+a_2+\ldots+a_n}\right)=\\
-			=\sum_{k=0}^{\infty}(-1)^k\multichoose{n}{k}x^k=\sum_{k=0}^{\infty}(-1)^k\binom{n+k-1}{k}x^k\sum_{k=0}^{\infty}=\frac{(-n)\cdot(-n-1)\cdot\ldots\cdot(-n-k+1)}{k!}
+			=\sum_{k=0}^{\infty}(-1)^k\multichoose{n}{k}x^k=\sum_{k=0}^{\infty}(-1)^k\binom{n+k-1}{k}x^k=\frac{(-n)\cdot(-n-1)\cdot\ldots\cdot(-n-k+1)}{k!}
 		\end{multline*}
 	\end{proof}
 \end{theorem}
@@ -810,7 +810,7 @@ right=15mm]{geometry}
 		множества, то есть $\binom{k}{p}$. Соединив всё вместе и
 		воспользовавшись формулой включений и исключений, получаем:
 		\[\surj(n,
-		k)=k^n-\sum_{p=1}^{k}(-1)\binom{k}{p}(k-p)^n=\sum_{p=0}^{k}(-1)^p\binom{k}{p}(k-p)^n\]	
+		k)=k^n-\sum_{p=1}^{k}(-1)^{p+1}\binom{k}{p}(k-p)^n=\sum_{p=0}^{k}(-1)^p\binom{k}{p}(k-p)^n\]	
 	\end{proof}
 \end{theorem}
 \begin{definition}
